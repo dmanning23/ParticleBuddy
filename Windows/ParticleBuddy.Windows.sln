@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParticleBuddy.Windows", "ParticleBuddy.Windows.csproj", "{679A3FB5-9B58-44D7-B4E4-A0C3B6F641A7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameTimer.Windows", "..\externals\GameTimer\Windows\GameTimer.Windows.csproj", "{6B6D4188-5C03-4E16-923B-96FDBC85B91A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Matrix2Lib.Windows", "..\externals\Matrix2\Matrix2Lib\Matrix2Lib.Windows.csproj", "{A35EEA46-8B16-401F-ACBC-1C8361ACAE8D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{679A3FB5-9B58-44D7-B4E4-A0C3B6F641A7}.Debug|x86.ActiveCfg = Debug|x86
+		{679A3FB5-9B58-44D7-B4E4-A0C3B6F641A7}.Debug|x86.Build.0 = Debug|x86
+		{679A3FB5-9B58-44D7-B4E4-A0C3B6F641A7}.Release|x86.ActiveCfg = Release|x86
+		{679A3FB5-9B58-44D7-B4E4-A0C3B6F641A7}.Release|x86.Build.0 = Release|x86
+		{6B6D4188-5C03-4E16-923B-96FDBC85B91A}.Debug|x86.ActiveCfg = Debug|x86
+		{6B6D4188-5C03-4E16-923B-96FDBC85B91A}.Debug|x86.Build.0 = Debug|x86
+		{6B6D4188-5C03-4E16-923B-96FDBC85B91A}.Release|x86.ActiveCfg = Release|x86
+		{6B6D4188-5C03-4E16-923B-96FDBC85B91A}.Release|x86.Build.0 = Release|x86
+		{A35EEA46-8B16-401F-ACBC-1C8361ACAE8D}.Debug|x86.ActiveCfg = Debug|x86
+		{A35EEA46-8B16-401F-ACBC-1C8361ACAE8D}.Debug|x86.Build.0 = Debug|x86
+		{A35EEA46-8B16-401F-ACBC-1C8361ACAE8D}.Release|x86.ActiveCfg = Release|x86
+		{A35EEA46-8B16-401F-ACBC-1C8361ACAE8D}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = ParticleBuddy.Windows.csproj
+	EndGlobalSection
+EndGlobal

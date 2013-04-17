@@ -1,0 +1,6 @@
+[submodule "externals/GameTimer"]
+	path = externals/GameTimer
+	url = https://github.com/dmanning23/GameTimer.git
+[submodule "externals/Matrix2"]
+	path = externals/Matrix2
+	url = https://github.com/dmanning23/Matrix2.git
