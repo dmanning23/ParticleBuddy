@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics;
 using Microsoft.Xna.Framework;
 using GameTimer;
-using MatrixLib;
+using MatrixExtensions;
 
 namespace ParticleBuddy
 {

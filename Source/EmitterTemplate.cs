@@ -4,6 +4,7 @@ using System.IO;
 using System.Xml;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
+using FilenameBuddy;
 
 namespace ParticleBuddy
 {
@@ -59,7 +60,7 @@ namespace ParticleBuddy
 		private int m_iBitmapID;
 
 		//the filename of the bitmap of this particle
-		private CFilename m_strBmpFileName;
+		private Filename m_strBmpFileName;
 
 		/// <summary>
 		/// random number generator for particle effects
@@ -170,7 +171,7 @@ namespace ParticleBuddy
 			set { m_StartRotation.Y = value; }
 		}
 
-		public CFilename Filename
+		public Filename Filename
 		{
 			get { return m_strBmpFileName; }
 		}
@@ -219,7 +220,7 @@ namespace ParticleBuddy
 			m_fCreationPeriod = 1.0f;
 			m_fFadeSpeed = 1.0f;
 			m_fParticleGravity = 0.0f;
-			m_strBmpFileName = new CFilename();
+			m_strBmpFileName = new Filename();
 		}
 
 		public void SetParticle(Particle rParticle)
