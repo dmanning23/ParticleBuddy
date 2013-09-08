@@ -3,8 +3,12 @@ using System.Diagnostics;
 using System.IO;
 using System.Xml;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 using FilenameBuddy;
+using RandomExtensions;
+using RenderBuddy;
+using Vector2Extensions;
 
 namespace ParticleBuddy
 {
@@ -13,21 +17,20 @@ namespace ParticleBuddy
 		#region Members
 
 		/// <summary>
+		/// random number generator for particle effects
+		/// </summary>
+		static private Random g_Random = new Random(DateTime.Now.Millisecond);
+
+		/// <summary>
 		/// Color of the particle emitter
 		/// </summary>
 		private Color m_Color;
 
-		//speed to add alpha to particles
-		//Must be between 0.0 and 1.0
-		private float m_fFadeSpeed;
+		//The id of the bitmap that this particle uses.
+		public Texture2D Bitmap { get; private set; }
 
-		//Maximum range of particle velocity
-		public Vector2 MaxParticleVelocity { get; set; }
-		//Minimum range of particle velocity
-		public Vector2 MinParticleVelocity { get; set; }
-
-		//start size of a particle
-		public float ParticleSize { get; set; }
+		//the filename of the bitmap of this particle
+		private Filename m_strBmpFileName;
 
 		//min/max scale of a particle
 		private Vector2 m_Scale;
@@ -40,77 +43,50 @@ namespace ParticleBuddy
 		//min/max spin of a particle
 		private Vector2 m_Spin;
 
-		//The number of particles this emitter starts with
-		private int m_iNumStartParticles;
+		/// <summary>
+		/// speed to add alpha to particles
+		/// Must be between 0.0 and 1.0
+		/// </summary>
+		public float FadeSpeed { get; set; }
 
-		//time to live of this emitter
-		private float m_fEmitterLife;
+		//Maximum range of particle velocity
+		public Vector2 MaxParticleVelocity { get; set; }
+		//Minimum range of particle velocity
+		public Vector2 MinParticleVelocity { get; set; }
 
-		//time to live of particles
-		private float m_fParticleLife;
-
-		//time delta to create particles
-		//This emitter will create a particle whenever this delta expires
-		private float m_fCreationPeriod;
-
-		//gravity applied to the particle's y velocity
-		private float m_fParticleGravity;
-
-		//The id of the bitmap that this particle uses.
-		private int m_iBitmapID;
-
-		//the filename of the bitmap of this particle
-		private Filename m_strBmpFileName;
+		//start size of a particle
+		public float ParticleSize { get; set; }
 
 		/// <summary>
-		/// random number generator for particle effects
+		/// The number of particles this emitter starts with
 		/// </summary>
-		static private Random g_Random = new Random(DateTime.Now.Millisecond);
+		public int NumStartParticles { get; set; }
+
+		/// <summary>
+		/// time to live of this emitter
+		/// </summary>
+		public float EmitterLife { get; set; }
+
+		/// <summary>
+		/// time to live of particles
+		/// </summary>
+		public float ParticleLife { get; set; }
+
+		/// <summary>
+		/// time delta to create particles
+		/// This emitter will create a particle whenever this delta expires
+		/// </summary>
+		public float CreationPeriod { get; set; }
+
+		/// <summary>
+		/// gravity applied to the particle's y velocity
+		/// </summary>
+		/// <value>The particle gravity.</value>
+		public float ParticleGravity { get; set; }
 
 		#endregion //Members
 
 		#region Properties
-
-		public float ParticleLife
-		{
-			get { return m_fParticleLife; }
-			set { m_fParticleLife = value; }
-		}
-
-		public float CreationPeriod
-		{
-			get { return m_fCreationPeriod; }
-			set { m_fCreationPeriod = value; }
-		}
-
-		public float FadeSpeed
-		{
-			get { return m_fFadeSpeed; }
-			set { m_fFadeSpeed = value; }
-		}
-
-		public float ParticleGravity
-		{
-			get { return m_fParticleGravity; }
-			set { m_fParticleGravity = value; }
-		}
-
-		public float EmitterLife
-		{
-			get { return m_fEmitterLife; }
-			set { m_fEmitterLife = value; }
-		}
-
-		public int ImageID
-		{
-			get { return m_iBitmapID; }
-		}
-
-		public int NumStartParticles
-		{
-			get { return m_iNumStartParticles; }
-			set { m_iNumStartParticles = value; }
-		}
 
 		public Color ParticleColor
 		{
@@ -213,13 +189,12 @@ namespace ParticleBuddy
 			Scale = new Vector2(-100.0f, 100.0f);
 			Spin = new Vector2(0.0f);
 			StartRotation = new Vector2(0.0f);
-			m_iBitmapID = -1;
-			m_iNumStartParticles = 10;
-			m_fEmitterLife = 0.1f;
-			m_fParticleLife = 1.0f;
-			m_fCreationPeriod = 1.0f;
-			m_fFadeSpeed = 1.0f;
-			m_fParticleGravity = 0.0f;
+			NumStartParticles = 10;
+			EmitterLife = 0.1f;
+			ParticleLife = 1.0f;
+			CreationPeriod = 1.0f;
+			FadeSpeed = 1.0f;
+			ParticleGravity = 0.0f;
 			m_strBmpFileName = new Filename();
 		}
 
@@ -234,13 +209,13 @@ namespace ParticleBuddy
 
 			rParticle.Rotation = g_Random.NextFloat(MinStartRotation, MaxStartRotation);
 			rParticle.Spin = g_Random.NextFloat(MinSpin, MaxSpin);
-			rParticle.Lifespan = m_fParticleLife;
+			rParticle.Lifespan = ParticleLife;
 			rParticle.Size = ParticleSize;
 			rParticle.Scale = g_Random.NextFloat(MinScale, MaxScale);
 			rParticle.Alpha = m_Color.A;
 		}
 
-		public bool SetFilename(string strBitmapFile, IRenderer rRenderer)
+		public bool SetFilename(string strBitmapFile, Renderer rRenderer)
 		{
 			//grab the filename
 			m_strBmpFileName.SetRelFilename(strBitmapFile);
@@ -248,11 +223,8 @@ namespace ParticleBuddy
 			//try to load the file into the particle effect
 			if (null != rRenderer)
 			{
-				m_iBitmapID = rRenderer.LoadBitmap(m_strBmpFileName);
-				if (-1 == m_iBitmapID)
-				{
-					return false;
-				}
+				Bitmap = rRenderer.Content.Load<Texture2D>(m_strBmpFileName.ToString());
+				Debug.Assert(null != Bitmap);
 			}
 
 			return true;
@@ -271,15 +243,14 @@ namespace ParticleBuddy
 			//Debug.Assert(m_fMinSpin == rInst.m_fMinSpin);
 			//Debug.Assert(m_fMinStartRotation == rInst.m_fMinStartRotation);
 			//Debug.Assert(m_fMaxStartRotation == rInst.m_fMaxStartRotation);
-			Debug.Assert(m_iBitmapID == rInst.m_iBitmapID);
-			Debug.Assert(m_iNumStartParticles == rInst.m_iNumStartParticles);
-			Debug.Assert(m_fEmitterLife == rInst.m_fEmitterLife);
-			Debug.Assert(m_fParticleLife == rInst.m_fParticleLife);
-			Debug.Assert(m_fCreationPeriod == rInst.m_fCreationPeriod);
+			Debug.Assert(NumStartParticles == rInst.NumStartParticles);
+			Debug.Assert(EmitterLife == rInst.EmitterLife);
+			Debug.Assert(ParticleLife == rInst.ParticleLife);
+			Debug.Assert(CreationPeriod == rInst.CreationPeriod);
 			Debug.Assert(m_Color == rInst.m_Color);
-			Debug.Assert(m_fFadeSpeed == rInst.m_fFadeSpeed);
+			Debug.Assert(FadeSpeed == rInst.FadeSpeed);
 			//Debug.Assert(m_fParticleGravity == rInst.m_fParticleGravity);
-			Debug.Assert(m_strBmpFileName.Filename == rInst.m_strBmpFileName.Filename);
+			Debug.Assert(m_strBmpFileName.File == rInst.m_strBmpFileName.File);
 
 			return true;
 		}
@@ -288,12 +259,10 @@ namespace ParticleBuddy
 
 		#region File IO
 
-#if WINDOWS
-
-		public bool ReadSerializedFile(CFilename strFilename, IRenderer rRenderer)
+		public bool ReadSerializedFile(Filename strFilename, Renderer rRenderer)
 		{
 			//Open the file.
-			FileStream stream = File.Open(strFilename.Filename, FileMode.Open, FileAccess.Read);
+			FileStream stream = File.Open(strFilename.File, FileMode.Open, FileAccess.Read);
 			XmlDocument xmlDoc = new XmlDocument();
 			xmlDoc.Load(stream);
 			XmlNode rootNode = xmlDoc.DocumentElement;
@@ -325,7 +294,7 @@ namespace ParticleBuddy
 			return true;
 		}
 
-		public bool ReadXML(XmlNode rXMLNode, IRenderer rRenderer)
+		public bool ReadXML(XmlNode rXMLNode, Renderer rRenderer)
 		{
 			//should have an attribute Type
 			XmlNamedNodeMap mapAttributes = rXMLNode.Attributes;
@@ -378,15 +347,15 @@ namespace ParticleBuddy
 					}
 					else if (strName == "FadeSpeed")
 					{
-						m_fFadeSpeed = Convert.ToSingle(strValue);
+						FadeSpeed = Convert.ToSingle(strValue);
 					}
 					else if (strName == "MaxVelocity")
 					{
-						MaxParticleVelocity = CStringUtils.ReadVectorFromString(strValue);
+						MaxParticleVelocity = strValue.ToVector2();
 					}
 					else if (strName == "MinVelocity")
 					{
-						MinParticleVelocity = CStringUtils.ReadVectorFromString(strValue);
+						MinParticleVelocity = strValue.ToVector2();
 					}
 					else if (strName == "ParticleSize")
 					{
@@ -394,39 +363,39 @@ namespace ParticleBuddy
 					}
 					else if (strName == "Scale")
 					{
-						Scale = CStringUtils.ReadVectorFromString(strValue);
+						Scale = strValue.ToVector2();
 					}
 					else if (strName == "Spin")
 					{
-						Spin = CStringUtils.ReadVectorFromString(strValue);
+						Spin = strValue.ToVector2();
 						MinSpin = MathHelper.ToRadians(Spin.X);
 						MaxSpin = MathHelper.ToRadians(Spin.Y);
 					}
 					else if (strName == "StartRotation")
 					{
-						StartRotation = CStringUtils.ReadVectorFromString(strValue);
+						StartRotation = strValue.ToVector2();
 						MinStartRotation = MathHelper.ToRadians(StartRotation.X);
 						MaxStartRotation = MathHelper.ToRadians(StartRotation.Y);
 					}
 					else if (strName == "NumStartParticles")
 					{
-						m_iNumStartParticles = Convert.ToInt32(strValue);
+						NumStartParticles = Convert.ToInt32(strValue);
 					}
 					else if (strName == "EmitterLife")
 					{
-						m_fEmitterLife = Convert.ToSingle(strValue);
+						EmitterLife = Convert.ToSingle(strValue);
 					}
 					else if (strName == "ParticleLife")
 					{
-						m_fParticleLife = Convert.ToSingle(strValue);
+						ParticleLife = Convert.ToSingle(strValue);
 					}
 					else if (strName == "CreationPeriod")
 					{
-						m_fCreationPeriod = Convert.ToSingle(strValue);
+						CreationPeriod = Convert.ToSingle(strValue);
 					}
 					else if (strName == "ParticleGrav")
 					{
-						m_fParticleGravity = Convert.ToSingle(strValue);
+						ParticleGravity = Convert.ToSingle(strValue);
 					}
 					else if (strName == "BmpFileName")
 					{
@@ -498,15 +467,15 @@ namespace ParticleBuddy
 			rXMLFile.WriteEndElement();
 
 			rXMLFile.WriteStartElement("FadeSpeed");
-			rXMLFile.WriteString(m_fFadeSpeed.ToString());
+			rXMLFile.WriteString(FadeSpeed.ToString());
 			rXMLFile.WriteEndElement();
 
 			rXMLFile.WriteStartElement("MaxVelocity");
-			rXMLFile.WriteString(CStringUtils.StringFromVector(MaxParticleVelocity));
+			rXMLFile.WriteString(MaxParticleVelocity.StringFromVector());
 			rXMLFile.WriteEndElement();
 
 			rXMLFile.WriteStartElement("MinVelocity");
-			rXMLFile.WriteString(CStringUtils.StringFromVector(MinParticleVelocity));
+			rXMLFile.WriteString(MinParticleVelocity.StringFromVector());
 			rXMLFile.WriteEndElement();
 
 			rXMLFile.WriteStartElement("ParticleSize");
@@ -514,37 +483,37 @@ namespace ParticleBuddy
 			rXMLFile.WriteEndElement();
 
 			rXMLFile.WriteStartElement("Scale");
-			rXMLFile.WriteString(CStringUtils.StringFromVector(Scale));
+			rXMLFile.WriteString(Scale.StringFromVector());
 			rXMLFile.WriteEndElement();
 
 			rXMLFile.WriteStartElement("StartRotation");
 			Vector2 tempVector = new Vector2(MathHelper.ToDegrees(MinStartRotation), MathHelper.ToDegrees(MaxStartRotation));
-			rXMLFile.WriteString(CStringUtils.StringFromVector(tempVector));
+			rXMLFile.WriteString(tempVector.StringFromVector());
 			rXMLFile.WriteEndElement();
 
 			rXMLFile.WriteStartElement("Spin");
 			tempVector = new Vector2(MathHelper.ToDegrees(MinSpin), MathHelper.ToDegrees(MaxSpin));
-			rXMLFile.WriteString(CStringUtils.StringFromVector(tempVector));
+			rXMLFile.WriteString(tempVector.StringFromVector());
 			rXMLFile.WriteEndElement();
 
 			rXMLFile.WriteStartElement("NumStartParticles");
-			rXMLFile.WriteString(m_iNumStartParticles.ToString());
+			rXMLFile.WriteString(NumStartParticles.ToString());
 			rXMLFile.WriteEndElement();
 
 			rXMLFile.WriteStartElement("EmitterLife");
-			rXMLFile.WriteString(m_fEmitterLife.ToString());
+			rXMLFile.WriteString(EmitterLife.ToString());
 			rXMLFile.WriteEndElement();
 
 			rXMLFile.WriteStartElement("ParticleLife");
-			rXMLFile.WriteString(m_fParticleLife.ToString());
+			rXMLFile.WriteString(ParticleLife.ToString());
 			rXMLFile.WriteEndElement();
 
 			rXMLFile.WriteStartElement("CreationPeriod");
-			rXMLFile.WriteString(m_fCreationPeriod.ToString());
+			rXMLFile.WriteString(CreationPeriod.ToString());
 			rXMLFile.WriteEndElement();
 
 			rXMLFile.WriteStartElement("ParticleGrav");
-			rXMLFile.WriteString(m_fParticleGravity.ToString());
+			rXMLFile.WriteString(ParticleGravity.ToString());
 			rXMLFile.WriteEndElement();
 
 			rXMLFile.WriteStartElement("BmpFileName");
@@ -554,16 +523,14 @@ namespace ParticleBuddy
 			rXMLFile.WriteEndElement(); //Item
 		}
 
-#endif
-
-		public bool ReadSerializedFile(ContentManager rXmlContent, string strResource, IRenderer rRenderer)
+		public bool ReadSerializedFile(ContentManager rXmlContent, string strResource, Renderer rRenderer)
 		{
 			//load the resource
 			ParticleXML myDude = rXmlContent.Load<ParticleXML>(strResource);
 			return ReadSerializedObject(myDude, rRenderer);
 		}
 
-		public bool ReadSerializedObject(ParticleXML myParticle, IRenderer rRenderer)
+		public bool ReadSerializedObject(ParticleXML myParticle, Renderer rRenderer)
 		{
 			//copy data from the serialized object
 
@@ -571,7 +538,7 @@ namespace ParticleBuddy
 			m_Color.G = myParticle.G;
 			m_Color.B = myParticle.B;
 			m_Color.A = myParticle.Alpha;
-			m_fFadeSpeed = myParticle.FadeSpeed;
+			FadeSpeed = myParticle.FadeSpeed;
 
 			MaxParticleVelocity = myParticle.MaxVelocity;
 			MinParticleVelocity = myParticle.MinVelocity;
@@ -591,11 +558,11 @@ namespace ParticleBuddy
 			MaxSpin = MathHelper.ToRadians(myParticle.Spin.Y);
 			Debug.Assert(MinSpin <= MaxSpin);
 
-			m_iNumStartParticles = myParticle.NumStartParticles;
-			m_fEmitterLife = myParticle.EmitterLife;
-			m_fParticleLife = myParticle.ParticleLife;
-			m_fCreationPeriod = myParticle.CreationPeriod;
-			m_fParticleGravity = myParticle.ParticleGrav;
+			NumStartParticles = myParticle.NumStartParticles;
+			EmitterLife = myParticle.EmitterLife;
+			ParticleLife = myParticle.ParticleLife;
+			CreationPeriod = myParticle.CreationPeriod;
+			ParticleGravity = myParticle.ParticleGrav;
 			SetFilename(myParticle.BmpFileName, rRenderer);
 
 			return true;

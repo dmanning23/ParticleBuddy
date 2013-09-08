@@ -5,7 +5,19 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParticleBuddy.Windows", "Pa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameTimer.Windows", "..\externals\GameTimer\Windows\GameTimer.Windows.csproj", "{6B6D4188-5C03-4E16-923B-96FDBC85B91A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Matrix2Lib.Windows", "..\externals\Matrix2\Matrix2Lib\Matrix2Lib.Windows.csproj", "{A35EEA46-8B16-401F-ACBC-1C8361ACAE8D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lidgren.Network.Windows", "..\externals\MonoGame\ThirdParty\Lidgren.Network\Lidgren.Network.Windows.csproj", "{AE483C29-042E-4226-BA52-D247CE7676DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoGame.Framework.WindowsGL", "..\externals\MonoGame\MonoGame.Framework\MonoGame.Framework.WindowsGL.csproj", "{7DE47032-A904-4C29-BD22-2D235E8D91BA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MatrixExtensions.Windows", "..\externals\MatrixExtensions\Windows\MatrixExtensions.Windows.csproj", "{E2C50D0B-A1C1-4F67-92CB-BE0E587A3CE6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Filename.Windows", "..\externals\Filename\Windows\Filename.Windows.csproj", "{2A84DFE8-75E0-4774-BAAF-00629ED44405}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RandomExtensions.Windows", "..\externals\RandomExtensions\Windows\RandomExtensions.Windows.csproj", "{F0BBA30F-66E1-4E2F-BDF6-E17FF317C34E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RenderBuddy.Windows", "..\externals\RenderBuddy\Windows\RenderBuddy.Windows.csproj", "{5C9D6145-A763-4B79-8541-0C44C6DEE72D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vector2Extensions.Windows", "..\externals\Vector2Extensions\Windows\Vector2Extensions.Windows.csproj", "{2C5ACADA-D15A-4193-BA0A-D36A362075F4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,6 +25,18 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2A84DFE8-75E0-4774-BAAF-00629ED44405}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{2A84DFE8-75E0-4774-BAAF-00629ED44405}.Debug|x86.Build.0 = Debug|Any CPU
+		{2A84DFE8-75E0-4774-BAAF-00629ED44405}.Release|x86.ActiveCfg = Release|Any CPU
+		{2A84DFE8-75E0-4774-BAAF-00629ED44405}.Release|x86.Build.0 = Release|Any CPU
+		{2C5ACADA-D15A-4193-BA0A-D36A362075F4}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{2C5ACADA-D15A-4193-BA0A-D36A362075F4}.Debug|x86.Build.0 = Debug|Any CPU
+		{2C5ACADA-D15A-4193-BA0A-D36A362075F4}.Release|x86.ActiveCfg = Release|Any CPU
+		{2C5ACADA-D15A-4193-BA0A-D36A362075F4}.Release|x86.Build.0 = Release|Any CPU
+		{5C9D6145-A763-4B79-8541-0C44C6DEE72D}.Debug|x86.ActiveCfg = Debug|x86
+		{5C9D6145-A763-4B79-8541-0C44C6DEE72D}.Debug|x86.Build.0 = Debug|x86
+		{5C9D6145-A763-4B79-8541-0C44C6DEE72D}.Release|x86.ActiveCfg = Release|x86
+		{5C9D6145-A763-4B79-8541-0C44C6DEE72D}.Release|x86.Build.0 = Release|x86
 		{679A3FB5-9B58-44D7-B4E4-A0C3B6F641A7}.Debug|x86.ActiveCfg = Debug|x86
 		{679A3FB5-9B58-44D7-B4E4-A0C3B6F641A7}.Debug|x86.Build.0 = Debug|x86
 		{679A3FB5-9B58-44D7-B4E4-A0C3B6F641A7}.Release|x86.ActiveCfg = Release|x86
@@ -21,10 +45,22 @@ Global
 		{6B6D4188-5C03-4E16-923B-96FDBC85B91A}.Debug|x86.Build.0 = Debug|x86
 		{6B6D4188-5C03-4E16-923B-96FDBC85B91A}.Release|x86.ActiveCfg = Release|x86
 		{6B6D4188-5C03-4E16-923B-96FDBC85B91A}.Release|x86.Build.0 = Release|x86
-		{A35EEA46-8B16-401F-ACBC-1C8361ACAE8D}.Debug|x86.ActiveCfg = Debug|x86
-		{A35EEA46-8B16-401F-ACBC-1C8361ACAE8D}.Debug|x86.Build.0 = Debug|x86
-		{A35EEA46-8B16-401F-ACBC-1C8361ACAE8D}.Release|x86.ActiveCfg = Release|x86
-		{A35EEA46-8B16-401F-ACBC-1C8361ACAE8D}.Release|x86.Build.0 = Release|x86
+		{7DE47032-A904-4C29-BD22-2D235E8D91BA}.Debug|x86.ActiveCfg = Debug|x86
+		{7DE47032-A904-4C29-BD22-2D235E8D91BA}.Debug|x86.Build.0 = Debug|x86
+		{7DE47032-A904-4C29-BD22-2D235E8D91BA}.Release|x86.ActiveCfg = Release|x86
+		{7DE47032-A904-4C29-BD22-2D235E8D91BA}.Release|x86.Build.0 = Release|x86
+		{AE483C29-042E-4226-BA52-D247CE7676DA}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{AE483C29-042E-4226-BA52-D247CE7676DA}.Debug|x86.Build.0 = Debug|Any CPU
+		{AE483C29-042E-4226-BA52-D247CE7676DA}.Release|x86.ActiveCfg = Release|Any CPU
+		{AE483C29-042E-4226-BA52-D247CE7676DA}.Release|x86.Build.0 = Release|Any CPU
+		{E2C50D0B-A1C1-4F67-92CB-BE0E587A3CE6}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E2C50D0B-A1C1-4F67-92CB-BE0E587A3CE6}.Debug|x86.Build.0 = Debug|Any CPU
+		{E2C50D0B-A1C1-4F67-92CB-BE0E587A3CE6}.Release|x86.ActiveCfg = Release|Any CPU
+		{E2C50D0B-A1C1-4F67-92CB-BE0E587A3CE6}.Release|x86.Build.0 = Release|Any CPU
+		{F0BBA30F-66E1-4E2F-BDF6-E17FF317C34E}.Debug|x86.ActiveCfg = Debug|x86
+		{F0BBA30F-66E1-4E2F-BDF6-E17FF317C34E}.Debug|x86.Build.0 = Debug|x86
+		{F0BBA30F-66E1-4E2F-BDF6-E17FF317C34E}.Release|x86.ActiveCfg = Release|x86
+		{F0BBA30F-66E1-4E2F-BDF6-E17FF317C34E}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = ParticleBuddy.Windows.csproj

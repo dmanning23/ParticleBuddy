@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using GameTimer;
+using RenderBuddy;
 
 namespace ParticleBuddy
 {
@@ -49,7 +50,7 @@ namespace ParticleBuddy
 				Offset,
 				myPosition, 
 				myColor, 
-				bFlip),
+				bFlip,
 				CameraScale);
 
 			//save the emitter
@@ -81,7 +82,7 @@ namespace ParticleBuddy
 			}
 		}
 
-		public void Render(IRenderer rRenderer)
+		public void Render(Renderer rRenderer)
 		{
 			//render all the current emitters
 			for (int i = 0; i < m_listEmitters.Count; i++)

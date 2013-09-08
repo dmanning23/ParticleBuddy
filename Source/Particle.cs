@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using GameTimer;
 using MatrixExtensions;
+using RenderBuddy;
 
 namespace ParticleBuddy
 {
@@ -135,14 +136,14 @@ namespace ParticleBuddy
 			m_Velocity.Y += rTemplate.ParticleGravity * myClock.TimeDelta;
 		}
 
-		public void Render(IRenderer myRenderer, Emitter rEmitter)
+		public void Render(Renderer myRenderer, Emitter rEmitter)
 		{
 			//get the upper left/lower right positions
 			Vector2 vUpperLeft = new Vector2(Size / -2.0f, Size / -2.0f);
 
 			//create rotation matrix
-			Matrix2 myMatrix = Matrix2.Orientation(Rotation);
-			vUpperLeft = myMatrix * vUpperLeft;
+			Matrix myMatrix = MatrixExt.Orientation(Rotation);
+			vUpperLeft = myMatrix.Mutliply(vUpperLeft);
 
 			//get the rotated position
 			vUpperLeft = Position + vUpperLeft;
@@ -154,7 +155,7 @@ namespace ParticleBuddy
 			//get teh correct rectangle to send to the renderer
 			Rectangle myRect = new Rectangle((int)vUpperLeft.X, (int)vUpperLeft.Y, (int)Size, (int)Size);
 
-			myRenderer.Draw(rEmitter.Template.ImageID, myRect, myColor, Rotation, rEmitter.Flip);
+			myRenderer.Draw(rEmitter.Template.Bitmap, myRect, myColor, Rotation, rEmitter.Flip);
 		}
 
 		#endregion //Methods

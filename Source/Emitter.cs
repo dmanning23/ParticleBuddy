@@ -2,6 +2,7 @@
 using System.Linq;
 using Microsoft.Xna.Framework;
 using GameTimer;
+using RenderBuddy;
 
 namespace ParticleBuddy
 {
@@ -187,7 +188,7 @@ namespace ParticleBuddy
 			}
 		}
 
-		public void Render(IRenderer myRenderer)
+		public void Render(Renderer myRenderer)
 		{
 			//draw all the particles
 			Queue<Particle>.Enumerator iter = m_listParticles.GetEnumerator();
