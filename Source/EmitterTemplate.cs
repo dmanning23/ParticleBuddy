@@ -259,7 +259,7 @@ namespace ParticleBuddy
 
 		#region File IO
 
-		public bool ReadSerializedFile(Filename strFilename, Renderer rRenderer)
+		public bool ReadXmlFile(Filename strFilename, Renderer rRenderer)
 		{
 			//Open the file.
 			FileStream stream = File.Open(strFilename.File, FileMode.Open, FileAccess.Read);
@@ -278,7 +278,7 @@ namespace ParticleBuddy
 				}
 
 				//make sure to read from the the next node
-				if (!ReadXML(rootNode.FirstChild, rRenderer))
+				if (!ReadXmlObject(rootNode.FirstChild, rRenderer))
 				{
 					return false;
 				}
@@ -294,7 +294,7 @@ namespace ParticleBuddy
 			return true;
 		}
 
-		public bool ReadXML(XmlNode rXMLNode, Renderer rRenderer)
+		public bool ReadXmlObject(XmlNode rXMLNode, Renderer rRenderer)
 		{
 			//should have an attribute Type
 			XmlNamedNodeMap mapAttributes = rXMLNode.Attributes;
@@ -416,7 +416,7 @@ namespace ParticleBuddy
 		/// Open an xml file and dump model data to it
 		/// </summary>
 		/// <param name="strFileName">name of the file to dump to</param>
-		public void WriteXMLFormat(string strFileName)
+		public void WriteXmlFile(string strFileName)
 		{
 			//open the file, create it if it doesnt exist yet
 			XmlTextWriter rFile = new XmlTextWriter(strFileName, null);
@@ -425,7 +425,7 @@ namespace ParticleBuddy
 			rFile.IndentChar = '\t';
 
 			rFile.WriteStartDocument();
-			WriteXML(rFile, true);
+			WriteXmlObject(rFile, true);
 			rFile.WriteEndDocument();
 
 			// Close the file.
@@ -437,7 +437,7 @@ namespace ParticleBuddy
 		/// write out particle emitter template to XML file
 		/// </summary>
 		/// <param name="rXMLFile"></param>
-		public void WriteXML(XmlTextWriter rXMLFile, bool bStartElement)
+		public void WriteXmlObject(XmlTextWriter rXMLFile, bool bStartElement)
 		{
 			if (bStartElement)
 			{
