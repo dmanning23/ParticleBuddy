@@ -82,7 +82,7 @@ namespace ParticleBuddy
 			}
 		}
 
-		public void Render(Renderer rRenderer)
+		public void Render(IRenderer rRenderer)
 		{
 			//render all the current emitters
 			for (int i = 0; i < m_listEmitters.Count; i++)

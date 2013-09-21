@@ -136,7 +136,7 @@ namespace ParticleBuddy
 			m_Velocity.Y += rTemplate.ParticleGravity * myClock.TimeDelta;
 		}
 
-		public void Render(Renderer myRenderer, Emitter rEmitter)
+		public void Render(IRenderer myRenderer, Emitter rEmitter)
 		{
 			//get the upper left/lower right positions
 			Vector2 vUpperLeft = new Vector2(Size / -2.0f, Size / -2.0f);

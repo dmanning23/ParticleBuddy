@@ -188,7 +188,7 @@ namespace ParticleBuddy
 			}
 		}
 
-		public void Render(Renderer myRenderer)
+		public void Render(IRenderer myRenderer)
 		{
 			//draw all the particles
 			Queue<Particle>.Enumerator iter = m_listParticles.GetEnumerator();

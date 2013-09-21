@@ -27,7 +27,7 @@ namespace ParticleBuddy
 		private Color m_Color;
 
 		//The id of the bitmap that this particle uses.
-		public Texture2D Bitmap { get; private set; }
+		public ITexture Bitmap { get; private set; }
 
 		//the filename of the bitmap of this particle
 		private Filename m_strBmpFileName;
@@ -215,7 +215,7 @@ namespace ParticleBuddy
 			rParticle.Alpha = m_Color.A;
 		}
 
-		public bool SetFilename(string strBitmapFile, Renderer rRenderer)
+		public bool SetFilename(string strBitmapFile, IRenderer rRenderer)
 		{
 			//grab the filename
 			m_strBmpFileName.SetRelFilename(strBitmapFile);
@@ -223,7 +223,7 @@ namespace ParticleBuddy
 			//try to load the file into the particle effect
 			if (null != rRenderer)
 			{
-				Bitmap = rRenderer.Content.Load<Texture2D>(m_strBmpFileName.ToString());
+				Bitmap = rRenderer.LoadImage(m_strBmpFileName.ToString());
 				Debug.Assert(null != Bitmap);
 			}
 
@@ -259,7 +259,7 @@ namespace ParticleBuddy
 
 		#region File IO
 
-		public bool ReadXmlFile(Filename strFilename, Renderer rRenderer)
+		public bool ReadXmlFile(Filename strFilename, IRenderer rRenderer)
 		{
 			//Open the file.
 			FileStream stream = File.Open(strFilename.File, FileMode.Open, FileAccess.Read);
@@ -294,7 +294,7 @@ namespace ParticleBuddy
 			return true;
 		}
 
-		public bool ReadXmlObject(XmlNode rXMLNode, Renderer rRenderer)
+		public bool ReadXmlObject(XmlNode rXMLNode, IRenderer rRenderer)
 		{
 			//should have an attribute Type
 			XmlNamedNodeMap mapAttributes = rXMLNode.Attributes;
@@ -523,14 +523,14 @@ namespace ParticleBuddy
 			rXMLFile.WriteEndElement(); //Item
 		}
 
-		public bool ReadSerializedFile(ContentManager rXmlContent, string strResource, Renderer rRenderer)
+		public bool ReadSerializedFile(ContentManager rXmlContent, string strResource, IRenderer rRenderer)
 		{
 			//load the resource
 			ParticleXML myDude = rXmlContent.Load<ParticleXML>(strResource);
 			return ReadSerializedObject(myDude, rRenderer);
 		}
 
-		public bool ReadSerializedObject(ParticleXML myParticle, Renderer rRenderer)
+		public bool ReadSerializedObject(ParticleXML myParticle, IRenderer rRenderer)
 		{
 			//copy data from the serialized object
 
