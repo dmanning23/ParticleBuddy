@@ -19,3 +19,9 @@
 [submodule "externals/Vector2Extensions"]
 	path = externals/Vector2Extensions
 	url = git@github.com:dmanning23/Vector2Extensions.git
+[submodule "externals/CameraBuddy"]
+	path = externals/CameraBuddy
+	url = git@github.com:dmanning23/CameraBuddy.git
+[submodule "externals/BasicPrimitiveBuddy"]
+	path = externals/BasicPrimitiveBuddy
+	url = git@github.com:dmanning23/BasicPrimitiveBuddy.git
