@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -6,10 +6,8 @@
     <ProductVersion>10.0.0</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{679A3FB5-9B58-44D7-B4E4-A0C3B6F641A7}</ProjectGuid>
-    <ProjectTypeGuids>{9B831FEF-F496-498F-9FE8-180DA5CB4258};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <RootNamespace>ParticleBuddy.Windows</RootNamespace>
-    <MonoGamePlatform>WindowsGL</MonoGamePlatform>
     <AssemblyName>ParticleBuddy.Windows</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -31,6 +29,22 @@
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>x86</PlatformTarget>
     <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <OutputPath>bin\Release\</OutputPath>
+    <Optimize>true</Optimize>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -63,37 +77,37 @@
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\externals\GameTimer\Windows\GameTimer.Windows.csproj">
+    <ProjectReference Include="..\..\GameTimer\Windows\GameTimer.Windows.csproj">
       <Project>{6B6D4188-5C03-4E16-923B-96FDBC85B91A}</Project>
       <Name>GameTimer.Windows</Name>
     </ProjectReference>
-    <ProjectReference Include="..\externals\MatrixExtensions\Windows\MatrixExtensions.Windows.csproj">
+    <ProjectReference Include="..\..\MatrixExtensions\Windows\MatrixExtensions.Windows.csproj">
       <Project>{E2C50D0B-A1C1-4F67-92CB-BE0E587A3CE6}</Project>
       <Name>MatrixExtensions.Windows</Name>
     </ProjectReference>
-    <ProjectReference Include="..\externals\Filename\Windows\Filename.Windows.csproj">
+    <ProjectReference Include="..\..\Filename\Windows\Filename.Windows.csproj">
       <Project>{2A84DFE8-75E0-4774-BAAF-00629ED44405}</Project>
       <Name>Filename.Windows</Name>
     </ProjectReference>
-    <ProjectReference Include="..\externals\RandomExtensions\Windows\RandomExtensions.Windows.csproj">
-      <Project>{F0BBA30F-66E1-4E2F-BDF6-E17FF317C34E}</Project>
+    <ProjectReference Include="..\..\RandomExtensions\Windows\RandomExtensions.Windows.csproj">
+      <Project>{f0bba30f-66e1-4e2f-bdf6-e17ff317c34e}</Project>
       <Name>RandomExtensions.Windows</Name>
     </ProjectReference>
-    <ProjectReference Include="..\externals\MonoGame\ThirdParty\Lidgren.Network\Lidgren.Network.Windows.csproj">
+    <ProjectReference Include="..\..\Vector2Extensions\Windows\Vector2Extensions.Windows.csproj">
+      <Project>{2c5acada-d15a-4193-ba0a-d36a362075f4}</Project>
+      <Name>Vector2Extensions.Windows</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\MonoGame\ThirdParty\Lidgren.Network\Lidgren.Network.Windows.csproj">
       <Project>{AE483C29-042E-4226-BA52-D247CE7676DA}</Project>
       <Name>Lidgren.Network.Windows</Name>
     </ProjectReference>
-    <ProjectReference Include="..\externals\MonoGame\MonoGame.Framework\MonoGame.Framework.WindowsGL.csproj">
+    <ProjectReference Include="..\..\MonoGame\MonoGame.Framework\MonoGame.Framework.WindowsGL.csproj">
       <Project>{7DE47032-A904-4C29-BD22-2D235E8D91BA}</Project>
       <Name>MonoGame.Framework.WindowsGL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\externals\RenderBuddy\Windows\RenderBuddy.Windows.csproj">
+    <ProjectReference Include="..\..\RenderBuddy\Windows\RenderBuddy.Windows.csproj">
       <Project>{5C9D6145-A763-4B79-8541-0C44C6DEE72D}</Project>
       <Name>RenderBuddy.Windows</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\externals\Vector2Extensions\Windows\Vector2Extensions.Windows.csproj">
-      <Project>{2C5ACADA-D15A-4193-BA0A-D36A362075F4}</Project>
-      <Name>Vector2Extensions.Windows</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>
