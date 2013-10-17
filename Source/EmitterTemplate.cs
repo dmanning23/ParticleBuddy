@@ -308,7 +308,7 @@ namespace ParticleBuddy
 				string strValue = mapAttributes.Item(i).Value;
 				if ("Type" == strName)
 				{
-					if (strValue != "SPFSettings.ParticleXML")
+					if (strValue != "ParticleBuddy.ParticleXML")
 					{
 						Debug.Assert(false);
 						return false;
@@ -451,7 +451,7 @@ namespace ParticleBuddy
 			{
 				rXMLFile.WriteStartElement("Item");
 			}
-			rXMLFile.WriteAttributeString("Type", "SPFSettings.ParticleXML");
+			rXMLFile.WriteAttributeString("Type", "ParticleBuddy.ParticleXML");
 
 			rXMLFile.WriteStartElement("R");
 			rXMLFile.WriteString(m_Color.R.ToString());
