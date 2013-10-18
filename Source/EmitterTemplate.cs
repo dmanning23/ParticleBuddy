@@ -1,13 +1,12 @@
-﻿using System;
+﻿using FilenameBuddy;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
+using RandomExtensions;
+using RenderBuddy;
+using System;
 using System.Diagnostics;
 using System.IO;
 using System.Xml;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Content;
-using FilenameBuddy;
-using RandomExtensions;
-using RenderBuddy;
 using Vector2Extensions;
 
 namespace ParticleBuddy

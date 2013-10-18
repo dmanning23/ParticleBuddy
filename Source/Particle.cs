@@ -1,8 +1,8 @@
-﻿using System.Diagnostics;
-using Microsoft.Xna.Framework;
-using GameTimer;
+﻿using GameTimer;
 using MatrixExtensions;
+using Microsoft.Xna.Framework;
 using RenderBuddy;
+using System.Diagnostics;
 
 namespace ParticleBuddy
 {

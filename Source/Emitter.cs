@@ -1,8 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using GameTimer;
 using Microsoft.Xna.Framework;
-using GameTimer;
 using RenderBuddy;
+using System.Collections.Generic;
 
 namespace ParticleBuddy
 {
