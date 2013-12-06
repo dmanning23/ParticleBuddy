@@ -258,13 +258,10 @@ namespace ParticleBuddy
 
 		#region File IO
 
-		public bool ReadXmlFile(string strFilename, IRenderer rRenderer)
+		public bool ReadXmlFile(Filename strFilename, IRenderer rRenderer)
 		{
-			Filename myFile = new Filename();
-			myFile.SetRelFilename(strFilename);
-
 			//Open the file.
-			FileStream stream = File.Open(myFile.File, FileMode.Open, FileAccess.Read);
+			FileStream stream = File.Open(strFilename.File, FileMode.Open, FileAccess.Read);
 			XmlDocument xmlDoc = new XmlDocument();
 			xmlDoc.Load(stream);
 			XmlNode rootNode = xmlDoc.DocumentElement;
