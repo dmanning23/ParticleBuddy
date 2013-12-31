@@ -143,7 +143,7 @@ namespace ParticleBuddy
 
 			//create rotation matrix
 			Matrix myMatrix = MatrixExt.Orientation(Rotation);
-			vUpperLeft = myMatrix.Mutliply(vUpperLeft);
+			vUpperLeft = myMatrix.Multiply(vUpperLeft);
 
 			//get the rotated position
 			vUpperLeft = Position + vUpperLeft;
