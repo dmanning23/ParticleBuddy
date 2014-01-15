@@ -214,13 +214,16 @@ namespace ParticleBuddy
 			rParticle.Alpha = m_Color.A;
 		}
 
-		public bool SetFilename(string strBitmapFile, IRenderer rRenderer)
+		public bool SetFilename(Filename strBitmapFile, IRenderer rRenderer)
 		{
 			//grab the filename
-			m_strBmpFileName.SetRelFilename(strBitmapFile);
+			if (null != strBitmapFile)
+			{
+				m_strBmpFileName = strBitmapFile;
+			}
 
 			//try to load the file into the particle effect
-			if (null != rRenderer)
+			if ((null != rRenderer) && !String.IsNullOrEmpty(m_strBmpFileName.File))
 			{
 				Bitmap = rRenderer.LoadImage(m_strBmpFileName.ToString());
 				Debug.Assert(null != Bitmap);
@@ -398,7 +401,7 @@ namespace ParticleBuddy
 					}
 					else if (strName == "BmpFileName")
 					{
-						SetFilename(strValue, rRenderer);
+						SetFilename((String.IsNullOrEmpty(strValue) ? null : new Filename(strValue)), rRenderer);
 					}
 					else
 					{
@@ -562,7 +565,7 @@ namespace ParticleBuddy
 			ParticleLife = myParticle.ParticleLife;
 			CreationPeriod = myParticle.CreationPeriod;
 			ParticleGravity = myParticle.ParticleGrav;
-			SetFilename(myParticle.BmpFileName, rRenderer);
+			SetFilename((String.IsNullOrEmpty(myParticle.BmpFileName) ? null : new Filename(myParticle.BmpFileName)), rRenderer);
 
 			return true;
 		}
