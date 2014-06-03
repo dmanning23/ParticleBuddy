@@ -5,12 +5,17 @@ using System.Collections.Generic;
 
 namespace ParticleBuddy
 {
+	/// <summary>
+	/// The main interface for interacting with particle effects
+	/// </summary>
 	public class ParticleEngine
 	{
 		#region Members
 
-		//list of current emitters
-		List<Emitter> m_listEmitters;
+		/// <summary>
+		/// list of current emitters
+		/// </summary>
+		private List<Emitter> Emitters { get; set; }
 
 		/// <summary>
 		/// How zoomed in/out the camera is
@@ -21,59 +26,83 @@ namespace ParticleBuddy
 
 		#region Methods
 
+		/// <summary>
+		/// Constructor!
+		/// </summary>
 		public ParticleEngine()
 		{
-			m_listEmitters = new List<Emitter>();
+			Emitters = new List<Emitter>();
 			CameraScale = 1.0f;
 		}
 
+		/// <summary>
+		/// Clean out the particle engine
+		/// </summary>
 		public void Flush()
 		{
 			//flush out all the emitters
-			m_listEmitters.Clear();
+			Emitters.Clear();
 		}
 
+		/// <summary>
+		/// Add a particle effect to the game
+		/// </summary>
+		/// <param name="rTemplate"></param>
+		/// <param name="velocity"></param>
+		/// <param name="position"></param>
+		/// <param name="offset"></param>
+		/// <param name="myColor"></param>
+		/// <param name="bFlip"></param>
+		/// <param name="myPosition"></param>
+		/// <param name="myRotation"></param>
+		/// <returns></returns>
 		public Emitter PlayParticleEffect(
 			EmitterTemplate rTemplate, 
-			Vector2 Velocity,
-			Vector2 Position,
-			Vector2 Offset,
-			PositionDelegate myPosition,
+			Vector2 velocity,
+			Vector2 position,
+			Vector2 offset,
 			Color myColor,
-			bool bFlip)
+			bool bFlip,
+			PositionDelegate myPosition = null,
+			RotationDelegate myRotation = null)
 		{
 			//spawn a particle emitter
 			Emitter myEmitter = new Emitter(
-				rTemplate, 
-				Velocity, 
-				Position, 
-				Offset,
+				rTemplate,
+				velocity,
+				position,
+				offset,
 				myPosition, 
+				myRotation,
 				myColor, 
 				bFlip,
 				CameraScale);
 
 			//save the emitter
-			m_listEmitters.Add(myEmitter);
+			Emitters.Add(myEmitter);
 
 			return myEmitter;
 		}
 
+		/// <summary>
+		/// Called every frame to update the positions of emitter & particles
+		/// </summary>
+		/// <param name="rClock"></param>
 		public void Update(GameClock rClock)
 		{
 			//update all the current emitters
-			for (int i = 0; i < m_listEmitters.Count; i++)
+			for (int i = 0; i < Emitters.Count; i++)
 			{
-				m_listEmitters[i].Update(rClock, CameraScale);
+				Emitters[i].Update(rClock, CameraScale);
 			}
 
 			//remove any expired emitters
 			int iIndex = 0;
-			while (iIndex < m_listEmitters.Count)
+			while (iIndex < Emitters.Count)
 			{
-				if (m_listEmitters[iIndex].IsDead())
+				if (Emitters[iIndex].IsDead())
 				{
-					m_listEmitters.RemoveAt(iIndex);
+					Emitters.RemoveAt(iIndex);
 				}
 				else
 				{
@@ -82,12 +111,16 @@ namespace ParticleBuddy
 			}
 		}
 
+		/// <summary>
+		/// Render all the particles.
+		/// </summary>
+		/// <param name="rRenderer"></param>
 		public void Render(IRenderer rRenderer)
 		{
 			//render all the current emitters
-			for (int i = 0; i < m_listEmitters.Count; i++)
+			for (int i = 0; i < Emitters.Count; i++)
 			{
-				m_listEmitters[i].Render(rRenderer);
+				Emitters[i].Render(rRenderer);
 			}
 		}
 

@@ -61,6 +61,9 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\Source\RotationDelegate.cs">
+      <Link>RotationDelegate.cs</Link>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="..\Source\Emitter.cs">
       <Link>Emitter.cs</Link>

@@ -10,28 +10,44 @@ namespace ParticleBuddy
 	{
 		#region Members
 
-		//Position and orientation of the particle.
+		/// <summary>
+		/// Position and orientation of the particle.
+		/// </summary>
 		public Vector2 Position { get; set; }
 
-		//Velocity of this particle
+		/// <summary>
+		/// Velocity of this particle
+		/// </summary>
 		private Vector2 m_Velocity;
 
-		//the rotation of the particle
+		/// <summary>
+		/// the rotation of the particle
+		/// </summary>
 		public float Rotation { get; set; }
 
-		//how fast this particle is spinning, the angle in radians
+		/// <summary>
+		/// how fast this particle is spinning, the angle in radians
+		/// </summary>
 		public float Spin { get; set; }
 
-		//How long this particle has left to live
+		/// <summary>
+		/// How long this particle has left to live
+		/// </summary>
 		public float Lifespan { get; set; }
 
-		//The size of the square in meters that defines this particle (length of one side)
+		/// <summary>
+		/// The size of the square in meters that defines this particle (length of one side)
+		/// </summary>
 		public float Size { get; set; }
 
-		//how fast this particle is scaling
+		/// <summary>
+		/// how fast this particle is scaling
+		/// </summary>
 		public float Scale { get; set; }
 
-		//The alpha value of this particular particle
+		/// <summary>
+		/// The alpha value of this particular particle
+		/// </summary>
 		private float m_fAlpha;
 
 		#endregion //Members

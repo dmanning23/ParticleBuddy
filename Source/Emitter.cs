@@ -9,110 +9,109 @@ namespace ParticleBuddy
 	{
 		#region Members
 
-		//Stopwatch used to time particle creation
-		private GameClock m_CreationTimer;
-
-		//Stopwatch used to time the life of this emitter
-		private CountdownTimer m_EmitterTimer;
-
 		/// <summary>
 		/// A callback method to get the position of this emitter.
 		/// null to figure out our own dang position
 		/// </summary>
-		private PositionDelegate _positionDelegate;
+		private readonly PositionDelegate _positionDelegate;
 
-		//The emitter stuff for this emitter, points to the array of emitter... stuffs
-		private EmitterTemplate m_rTemplate;
-
-		//the direction that particles are shot at
-		private Vector2 m_Velocity;
-
-		//the position of this emitter
-		private Vector2 m_Position;
-
-		private Vector2 m_Offset;
-
-		//The color of this emitter
-		private Color m_Color;
-
-		//the list of particles
-		private Queue<Particle> m_listParticles;
-
-		//list of dead particles
-		static private Queue<Particle> g_Warehouse;
-		
 		/// <summary>
-		/// whether or not the particle emitter is flipped
+		/// A callback method to get the rotation of new particles.
+		/// null to use the rotation from the emitter template.
 		/// </summary>
-		private bool m_bFlip;
+		private readonly RotationDelegate _rotationDelegate;
+
+		/// <summary>
+		/// the direction that particles are shot at
+		/// </summary>
+		private readonly Vector2 _velocity;
+
+		/// <summary>
+		/// the position of this emitter
+		/// </summary>
+		private Vector2 _position;
+
+		private readonly Vector2 _offset;
+
+		/// <summary>
+		/// The color of this emitter
+		/// </summary>
+		private readonly Color _color;
+
+		/// <summary>
+		/// the list of particles
+		/// </summary>
+		private readonly Queue<Particle> _listParticles;
 
 		#endregion //Members
 
 		#region Properties
 
+		/// <summary>
+		/// Stopwatch used to time particle creation
+		/// </summary>
+		public GameClock CreationTimer { get; private set; }
+
 		public Color MyColor
 		{
-			get { return m_Color; }
+			get { return _color; }
 		}
 
-		public EmitterTemplate Template
-		{
-			get { return m_rTemplate; }
-		}
+		/// <summary>
+		/// The emitter stuff for this emitter, points to the array of emitter... stuffs
+		/// </summary>
+		public EmitterTemplate Template { get ;private set; }
 
-		public CountdownTimer EmitterTimer
-		{
-			get { return m_EmitterTimer; }
-		}
+		/// <summary>
+		/// Stopwatch used to time the life of this emitter
+		/// </summary>
+		public CountdownTimer EmitterTimer { get; private set; }
 
-		public bool Flip
-		{
-			get { return m_bFlip; }
-		}
+		/// <summary>
+		/// whether or not the particle emitter is flipped
+		/// </summary>
+		public bool Flip { get; private set; }
 
 		#endregion //Properties
 
 		#region Methods
 
-		static Emitter()
+		public Emitter(EmitterTemplate rTemplate, Vector2 velocity, Vector2 position, Vector2 offset, PositionDelegate myPosition, RotationDelegate myRotation, Color myColor, bool bFlip, float fScale)
 		{
-			g_Warehouse = new Queue<Particle>();
-		}
-
-		public Emitter(EmitterTemplate rTemplate, Vector2 Velocity, Vector2 Position, Vector2 Offset, PositionDelegate myPosition, Color myColor, bool bFlip, float fScale)
-		{
-			m_rTemplate = rTemplate;
-			m_Velocity = Velocity;
-			m_Position = Position;
-			m_Offset = Offset;
+			Template = rTemplate;
+			_velocity = velocity;
+			_position = position;
+			_offset = offset;
 			_positionDelegate = myPosition;
 			if (null != _positionDelegate)
 			{
-				m_Position = _positionDelegate();
+				_position = _positionDelegate();
 			}
+
+			_rotationDelegate = myRotation;
 
 			//if the emitter is flipped, siwtch the offset
 			if (bFlip)
 			{
-				m_Offset.X = -m_Offset.X;
+				_offset.X = -_offset.X;
 			}
 
 			//add the offset to the position
-			m_Position += (m_Offset * fScale);
+			_position += (_offset * fScale);
 
-			m_Color = myColor;
-			m_bFlip = bFlip;
+			_color = myColor;
+			Flip = bFlip;
 
-			m_CreationTimer = new GameClock();
-			m_EmitterTimer = new CountdownTimer();
-			m_listParticles = new Queue<Particle>();
+			CreationTimer = new GameClock();
+			EmitterTimer = new CountdownTimer();
+			_listParticles = new Queue<Particle>();
 
 			//start the timer
-			m_EmitterTimer.Start(rTemplate.EmitterLife);
-			m_CreationTimer.Start();
+			EmitterTimer.Start(rTemplate.EmitterLife);
+			CreationTimer.Start();
 
 			//create the correct number of start particles
-			for (int i = 0; i < m_rTemplate.NumStartParticles; i++)
+			for (int i = 0; i < Template.NumStartParticles; i++)
 			{
 				AddParticle();
 			}
@@ -120,25 +119,23 @@ namespace ParticleBuddy
 
 		protected void AddParticle()
 		{
-			Particle myParticle;
-			if (0 != g_Warehouse.Count)
-			{
-				myParticle = g_Warehouse.Dequeue();
-			}
-			else
-			{
-				myParticle = new Particle();
-			}
+			Particle myParticle = new Particle();
 
 			//set position and all the template particle parameters
-			myParticle.Position = m_Position;
+			myParticle.Position = _position;
 
 			//set all the random stuff for particle
-			m_rTemplate.SetParticle(myParticle);
-			myParticle.Velocity += this.m_Velocity;
+			Template.SetParticle(myParticle);
+			myParticle.Velocity += _velocity;
+
+			//are we using a custom rotation?
+			if (null != _rotationDelegate)
+			{
+				myParticle.Rotation += _rotationDelegate();
+			}
 
 			//is the emitter flipped?
-			if (m_bFlip)
+			if (Flip)
 			{
 				myParticle.Spin *= -1.0f;
 				myParticle.VelocityX *= -1.0f;
@@ -146,43 +143,42 @@ namespace ParticleBuddy
 				//myParticle.Rotation = MathHelper.Pi - myParticle.Rotation;
 			}
 
-			m_listParticles.Enqueue(myParticle);
+			_listParticles.Enqueue(myParticle);
 		}
 
 		public void Update(GameClock myClock, float fScale)
 		{
 			//update the emitter clock
-			m_EmitterTimer.Update(myClock);
-			m_CreationTimer.Update(myClock);
+			EmitterTimer.Update(myClock);
+			CreationTimer.Update(myClock);
 
 			//update position from attached bone?
 			if (null != _positionDelegate)
 			{
-				m_Position = _positionDelegate();
-				m_Position += (m_Offset * fScale);
+				_position = _positionDelegate();
+				_position += (_offset * fScale);
 			}
 
 			//update all the particles
-			Queue<Particle>.Enumerator iter = m_listParticles.GetEnumerator();
-			while (iter.MoveNext())
+			foreach (var iter in _listParticles)
 			{
-				iter.Current.Update(myClock, m_rTemplate);
+				iter.Update(myClock, Template);
 			}
 
 			//do any particles need to be removed?
-			while ((m_listParticles.Count > 0) && m_listParticles.Peek().IsDead())
+			while ((_listParticles.Count > 0) && _listParticles.Peek().IsDead())
 			{
-				g_Warehouse.Enqueue(m_listParticles.Dequeue());
+				_listParticles.Dequeue();
 			}
 
 			//dont add any particles if the emitter is expired
-			if (0.0f < m_EmitterTimer.RemainingTime())
+			if (0.0f < EmitterTimer.RemainingTime())
 			{
 				//do any particles need to be added?
-				while (m_CreationTimer.CurrentTime >= m_rTemplate.CreationPeriod)
+				while (CreationTimer.CurrentTime >= Template.CreationPeriod)
 				{
 					AddParticle();
-					m_CreationTimer.SubtractTime(m_rTemplate.CreationPeriod);
+					CreationTimer.SubtractTime(Template.CreationPeriod);
 				}
 			}
 		}
@@ -190,33 +186,18 @@ namespace ParticleBuddy
 		public void Render(IRenderer myRenderer)
 		{
 			//draw all the particles
-			Queue<Particle>.Enumerator iter = m_listParticles.GetEnumerator();
-			while (iter.MoveNext())
+			foreach (var iter in _listParticles)
 			{
-				if (!iter.Current.IsDead())
+				if (!iter.IsDead())
 				{
-					iter.Current.Render(myRenderer, this);
+					iter.Render(myRenderer, this);
 				}
-			}
-		}
-
-		public void Flush()
-		{
-			//dump all the particle objects
-			while ((m_listParticles.Count > 0) && (g_Warehouse.Count < 1000))
-			{
-				g_Warehouse.Enqueue(m_listParticles.Dequeue());
-			}
-
-			if (m_listParticles.Count > 0)
-			{
-				m_listParticles.Clear();
 			}
 		}
 
 		public bool IsDead()
 		{
-			return ((0.0f >= m_EmitterTimer.RemainingTime()) && (0 >= m_listParticles.Count));
+			return ((0.0f >= EmitterTimer.RemainingTime()) && (0 >= _listParticles.Count));
 		}
 
 		#endregion //Methods
