@@ -110,6 +110,9 @@
     <Compile Include="..\Source\PositionDelegate.cs">
       <Link>PositionDelegate.cs</Link>
     </Compile>
+    <Compile Include="..\Source\RotationDelegate.cs">
+      <Link>RotationDelegate.cs</Link>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
