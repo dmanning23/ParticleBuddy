@@ -66,6 +66,11 @@ namespace ParticleBuddy
 			PositionDelegate myPosition = null,
 			RotationDelegate myRotation = null)
 		{
+			if (null == rTemplate.Bitmap)
+			{
+				return null;
+			}
+
 			//spawn a particle emitter
 			Emitter myEmitter = new Emitter(
 				rTemplate,

@@ -1,4 +1,5 @@
 ﻿using GameTimer;
+using MatrixExtensions;
 using Microsoft.Xna.Framework;
 using RenderBuddy;
 using System.Collections.Generic;
@@ -126,12 +127,21 @@ namespace ParticleBuddy
 
 			//set all the random stuff for particle
 			Template.SetParticle(myParticle);
-			myParticle.Velocity += _velocity;
+			
 
 			//are we using a custom rotation?
 			if (null != _rotationDelegate)
 			{
+				//Set the rotaion of this particle
 				myParticle.Rotation += _rotationDelegate();
+
+				//Rotate the velocity we shoot the particle
+				Matrix rotation = MatrixExt.Orientation( _rotationDelegate());
+				myParticle.Velocity += MatrixExt.Multiply(rotation, _velocity);
+			}
+			else
+			{
+				myParticle.Velocity += _velocity;
 			}
 
 			//is the emitter flipped?
