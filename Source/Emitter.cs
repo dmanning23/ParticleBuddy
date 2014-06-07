@@ -107,9 +107,19 @@ namespace ParticleBuddy
 			EmitterTimer = new CountdownTimer();
 			_listParticles = new Queue<Particle>();
 
-			//start the timer
-			EmitterTimer.Start(rTemplate.EmitterLife);
+			//start the creation timer
 			CreationTimer.Start();
+
+			//does this emitter expire?
+			if (rTemplate.EmitterLife >= 0.0f)
+			{
+				EmitterTimer.Start(rTemplate.EmitterLife);
+			}
+			else
+			{
+				EmitterTimer.Start(1.0f);
+			}
+			
 
 			//create the correct number of start particles
 			for (int i = 0; i < Template.NumStartParticles; i++)
@@ -127,7 +137,6 @@ namespace ParticleBuddy
 
 			//set all the random stuff for particle
 			Template.SetParticle(myParticle);
-			
 
 			//are we using a custom rotation?
 			if (null != _rotationDelegate)
@@ -159,7 +168,10 @@ namespace ParticleBuddy
 		public void Update(GameClock myClock, float fScale)
 		{
 			//update the emitter clock
-			EmitterTimer.Update(myClock);
+			if (rTemplate.EmitterLife >= 0.0f)
+			{
+				EmitterTimer.Update(myClock);
+			}
 			CreationTimer.Update(myClock);
 
 			//update position from attached bone?
