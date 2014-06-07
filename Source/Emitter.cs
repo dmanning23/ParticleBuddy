@@ -168,7 +168,7 @@ namespace ParticleBuddy
 		public void Update(GameClock myClock, float fScale)
 		{
 			//update the emitter clock
-			if (rTemplate.EmitterLife >= 0.0f)
+			if (Template.EmitterLife >= 0.0f)
 			{
 				EmitterTimer.Update(myClock);
 			}
