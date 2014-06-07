@@ -168,10 +168,10 @@ namespace ParticleBuddy
 			Color myColor = rEmitter.MyColor;
 			myColor.A = Alpha;
 
-			//get teh correct rectangle to send to the renderer
-			Rectangle myRect = new Rectangle((int)vUpperLeft.X, (int)vUpperLeft.Y, (int)Size, (int)Size);
+			//get the correct amount to scale the image
+			float scale = Size / rEmitter.Template.Bitmap.Width;
 
-			myRenderer.Draw(rEmitter.Template.Bitmap, myRect, myColor, Rotation, rEmitter.Flip);
+			myRenderer.Draw(rEmitter.Template.Bitmap, vUpperLeft, myColor, Rotation, rEmitter.Flip, scale);
 		}
 
 		#endregion //Methods
