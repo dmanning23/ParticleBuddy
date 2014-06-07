@@ -8,6 +8,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Xml;
 using Vector2Extensions;
+using GameTimer;
 
 namespace ParticleBuddy
 {
@@ -197,7 +198,7 @@ namespace ParticleBuddy
 			m_strBmpFileName = new Filename();
 		}
 
-		public void SetParticle(Particle rParticle)
+		public void SetParticle(Particle rParticle, GameClock timer)
 		{
 			//set all the particle parameters
 
@@ -205,6 +206,8 @@ namespace ParticleBuddy
 			rParticle.SetVelocity(
 				g_Random.NextFloat(MinParticleVelocity.X, MaxParticleVelocity.X),
 				g_Random.NextFloat(MaxParticleVelocity.Y, MinParticleVelocity.Y));
+
+			rParticle.Position += rParticle.Velocity * timer.TimeDelta;
 
 			rParticle.Rotation = g_Random.NextFloat(MinStartRotation, MaxStartRotation);
 			rParticle.Spin = g_Random.NextFloat(MinSpin, MaxSpin);

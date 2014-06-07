@@ -32,6 +32,11 @@ namespace ParticleBuddy
 		/// </summary>
 		private Vector2 _position;
 
+		/// <summary>
+		/// A callback method to rotate the offset.  Should be owner rotation
+		/// </summary>
+		private readonly RotationDelegate _ownerRotation;
+
 		private readonly Vector2 _offset;
 
 		/// <summary>
@@ -77,12 +82,22 @@ namespace ParticleBuddy
 
 		#region Methods
 
-		public Emitter(EmitterTemplate rTemplate, Vector2 velocity, Vector2 position, Vector2 offset, PositionDelegate myPosition, RotationDelegate myRotation, Color myColor, bool bFlip, float fScale)
+		public Emitter(EmitterTemplate rTemplate, 
+			Vector2 velocity, 
+			Vector2 position, 
+			Vector2 offset, 
+			PositionDelegate myPosition, 
+			RotationDelegate myRotation, 
+			Color myColor, 
+			bool bFlip, 
+			float fScale,
+			RotationDelegate ownerRotation)
 		{
 			Template = rTemplate;
 			_velocity = velocity;
 			_position = position;
 			_offset = offset;
+			_color = myColor;
 			_positionDelegate = myPosition;
 			if (null != _positionDelegate)
 			{
@@ -90,18 +105,11 @@ namespace ParticleBuddy
 			}
 
 			_rotationDelegate = myRotation;
-
-			//if the emitter is flipped, siwtch the offset
-			if (bFlip)
-			{
-				_offset.X = -_offset.X;
-			}
+			_ownerRotation = ownerRotation;
+			Flip = bFlip;
 
 			//add the offset to the position
-			_position += (_offset * fScale);
-
-			_color = myColor;
-			Flip = bFlip;
+			_position += (GetOffset() * fScale);
 
 			CreationTimer = new GameClock();
 			EmitterTimer = new CountdownTimer();
@@ -119,7 +127,6 @@ namespace ParticleBuddy
 			{
 				EmitterTimer.Start(1.0f);
 			}
-			
 
 			//create the correct number of start particles
 			for (int i = 0; i < Template.NumStartParticles; i++)
@@ -136,7 +143,7 @@ namespace ParticleBuddy
 			myParticle.Position = _position;
 
 			//set all the random stuff for particle
-			Template.SetParticle(myParticle);
+			Template.SetParticle(myParticle, CreationTimer);
 
 			//are we using a custom rotation?
 			if (null != _rotationDelegate)
@@ -157,7 +164,7 @@ namespace ParticleBuddy
 			if (Flip)
 			{
 				myParticle.Spin *= -1.0f;
-				myParticle.VelocityX *= -1.0f;
+				//myParticle.VelocityX *= -1.0f;
 				//myParticle.Rotation = Helper.ClampAngle(myParticle.Rotation);
 				//myParticle.Rotation = MathHelper.Pi - myParticle.Rotation;
 			}
@@ -178,7 +185,7 @@ namespace ParticleBuddy
 			if (null != _positionDelegate)
 			{
 				_position = _positionDelegate();
-				_position += (_offset * fScale);
+				_position += (GetOffset() * fScale);
 			}
 
 			//update all the particles
@@ -220,6 +227,24 @@ namespace ParticleBuddy
 		public bool IsDead()
 		{
 			return ((0.0f >= EmitterTimer.RemainingTime()) && (0 >= _listParticles.Count));
+		}
+
+		private Vector2 GetOffset()
+		{
+			Vector2 finalOffset = Vector2.Zero;
+			if (Vector2.Zero != _offset)
+			{
+				Matrix rot = MatrixExt.Orientation(_ownerRotation());
+				finalOffset = MatrixExt.Multiply(rot, _offset);
+
+				//if the emitter is flipped, siwtch the offset
+				if (Flip)
+				{
+					finalOffset.X = -finalOffset.X;
+				}
+			}
+
+			return finalOffset;
 		}
 
 		#endregion //Methods

@@ -64,7 +64,8 @@ namespace ParticleBuddy
 			Color myColor,
 			bool bFlip,
 			PositionDelegate myPosition = null,
-			RotationDelegate myRotation = null)
+			RotationDelegate myRotation = null,
+			RotationDelegate ownerRotation = null)
 		{
 			if (null == rTemplate.Bitmap)
 			{
@@ -81,7 +82,8 @@ namespace ParticleBuddy
 				myRotation,
 				myColor, 
 				bFlip,
-				CameraScale);
+				CameraScale,
+				ownerRotation);
 
 			//save the emitter
 			Emitters.Add(myEmitter);
