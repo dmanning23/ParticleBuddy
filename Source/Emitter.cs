@@ -155,6 +155,11 @@ namespace ParticleBuddy
 				Matrix rotation = MatrixExt.Orientation( _rotationDelegate());
 				myParticle.Velocity += MatrixExt.Multiply(rotation, _velocity);
 			}
+			else if (null != _ownerRotation)
+			{
+				//Set the rotaion of this particle
+				myParticle.Rotation += _ownerRotation();
+			}
 			else
 			{
 				myParticle.Velocity += _velocity;
