@@ -239,8 +239,23 @@ namespace ParticleBuddy
 			Vector2 finalOffset = Vector2.Zero;
 			if (Vector2.Zero != _offset)
 			{
-				Matrix rot = MatrixExt.Orientation(_ownerRotation());
-				finalOffset = MatrixExt.Multiply(rot, _offset);
+				//get the rotation
+				float rotation = 0.0f;
+				
+				//add the owner rotation
+				if (null != _ownerRotation)
+				{
+					rotation += _ownerRotation();
+				}
+
+				//get the bone rotation
+				if (null != _rotationDelegate)
+				{
+					rotation += _rotationDelegate();
+				}
+
+				Matrix rotMatrix = MatrixExt.Orientation(rotation);
+				finalOffset = MatrixExt.Multiply(rotMatrix, _offset);
 
 				//if the emitter is flipped, siwtch the offset
 				if (Flip)
