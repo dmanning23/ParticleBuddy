@@ -172,6 +172,7 @@ namespace ParticleBuddy
 				//myParticle.VelocityX *= -1.0f;
 				//myParticle.Rotation = Helper.ClampAngle(myParticle.Rotation);
 				//myParticle.Rotation = MathHelper.Pi - myParticle.Rotation;
+				myParticle.Rotation += MathHelper.Pi;
 			}
 
 			_listParticles.Enqueue(myParticle);
@@ -236,7 +237,7 @@ namespace ParticleBuddy
 
 		private Vector2 GetOffset()
 		{
-			Vector2 finalOffset = Vector2.Zero;
+			Vector2 finalOffset = _offset;
 			if (Vector2.Zero != _offset)
 			{
 				//get the rotation
@@ -255,12 +256,15 @@ namespace ParticleBuddy
 				}
 
 				Matrix rotMatrix = MatrixExt.Orientation(rotation);
-				finalOffset = MatrixExt.Multiply(rotMatrix, _offset);
+				finalOffset = MatrixExt.Multiply(rotMatrix, finalOffset);
 
 				//if the emitter is flipped, siwtch the offset
 				if (Flip)
 				{
-					finalOffset.X = -finalOffset.X;
+					if (null == _rotationDelegate)
+					{
+						finalOffset.X = -finalOffset.X;
+					}
 				}
 			}
 
