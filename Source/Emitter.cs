@@ -152,16 +152,24 @@ namespace ParticleBuddy
 				myParticle.Rotation += _rotationDelegate();
 
 				//Rotate the velocity we shoot the particle
-				Matrix rotation = MatrixExt.Orientation( _rotationDelegate());
-				myParticle.Velocity += MatrixExt.Multiply(rotation, _velocity);
+				float rotation = _rotationDelegate();
+				//if (Flip)
+				//{
+				//	rotation += MathHelper.Pi;
+				//}
+				Matrix rotMatrix = MatrixExt.Orientation(rotation);
+				myParticle.Velocity += MatrixExt.Multiply(rotMatrix, _velocity);
 			}
 			else if (null != _ownerRotation)
 			{
 				//Set the rotaion of this particle
 				myParticle.Rotation += _ownerRotation();
+				myParticle.Velocity += _velocity;
 			}
-			
-			myParticle.Velocity += _velocity;
+			else
+			{
+				myParticle.Velocity += _velocity;
+			}
 
 			//is the emitter flipped?
 			if (Flip)
@@ -241,16 +249,15 @@ namespace ParticleBuddy
 				//get the rotation
 				float rotation = 0.0f;
 				
-				//add the owner rotation
-				if (null != _ownerRotation)
-				{
-					rotation += _ownerRotation();
-				}
-
 				//get the bone rotation
 				if (null != _rotationDelegate)
 				{
 					rotation += _rotationDelegate();
+				}
+				else if (null != _ownerRotation)
+				{
+					//add the owner rotation
+					rotation += _ownerRotation();
 				}
 
 				Matrix rotMatrix = MatrixExt.Orientation(rotation);
