@@ -160,10 +160,8 @@ namespace ParticleBuddy
 				//Set the rotaion of this particle
 				myParticle.Rotation += _ownerRotation();
 			}
-			else
-			{
-				myParticle.Velocity += _velocity;
-			}
+			
+			myParticle.Velocity += _velocity;
 
 			//is the emitter flipped?
 			if (Flip)
