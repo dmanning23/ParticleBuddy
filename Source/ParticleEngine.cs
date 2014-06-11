@@ -1,4 +1,5 @@
-﻿using GameTimer;
+﻿using System.Threading.Tasks;
+using GameTimer;
 using Microsoft.Xna.Framework;
 using RenderBuddy;
 using System.Collections.Generic;
@@ -97,11 +98,15 @@ namespace ParticleBuddy
 		/// <param name="rClock"></param>
 		public void Update(GameClock rClock)
 		{
+            List<Task> taskList = new List<Task>();
 			//update all the current emitters
 			for (int i = 0; i < Emitters.Count; i++)
 			{
-				Emitters[i].Update(rClock, CameraScale);
+                taskList.Add(Task.Factory.StartNew(() => { Emitters[i].Update(rClock, CameraScale); }));
 			}
+
+            //wait for all the updates to finish
+            Task.WaitAll(taskList.ToArray());
 
 			//remove any expired emitters
 			int iIndex = 0;
