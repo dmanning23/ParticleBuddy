@@ -98,15 +98,16 @@ namespace ParticleBuddy
 		/// <param name="rClock"></param>
 		public void Update(GameClock rClock)
 		{
-            List<Task> taskList = new List<Task>();
+			//List<Task> tasks = new List<Task>();
+
 			//update all the current emitters
 			for (int i = 0; i < Emitters.Count; i++)
 			{
-                taskList.Add(Task.Factory.StartNew(() => { Emitters[i].Update(rClock, CameraScale); }));
+				Emitters[i].Update(rClock, CameraScale);
+				//tasks.Add(Task.Run(() => { Emitters[i].Update(rClock, CameraScale); }));
 			}
 
-            //wait for all the updates to finish
-            Task.WaitAll(taskList.ToArray());
+			//Task.WaitAll(tasks.ToArray());
 
 			//remove any expired emitters
 			int iIndex = 0;

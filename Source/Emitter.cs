@@ -25,7 +25,7 @@ namespace ParticleBuddy
 		/// <summary>
 		/// the direction that particles are shot at
 		/// </summary>
-		private readonly Vector2 _velocity;
+		private Vector2 _velocity;
 
 		/// <summary>
 		/// the position of this emitter
@@ -77,6 +77,30 @@ namespace ParticleBuddy
 		/// whether or not the particle emitter is flipped
 		/// </summary>
 		public bool Flip { get; private set; }
+
+		public Vector2 Velocity
+		{
+			get
+			{
+				return _velocity;
+			}
+			set
+			{
+				_velocity = value;
+			}
+		}
+
+		public Vector2 Position
+		{
+			get
+			{
+				return _position;
+			}
+			set
+			{
+				_position = value;
+			}
+		}
 
 		#endregion //Properties
 

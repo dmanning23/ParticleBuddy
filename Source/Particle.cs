@@ -165,7 +165,11 @@ namespace ParticleBuddy
 			vUpperLeft = Position + vUpperLeft;
 
 			//get the correct color
-			Color myColor = rEmitter.MyColor;
+			Color myColor = rEmitter.Template.ParticleColor;
+			if (Color.White != rEmitter.MyColor)
+			{
+				myColor = rEmitter.MyColor;
+			}
 			myColor.A = Alpha;
 
 			//get the correct amount to scale the image
