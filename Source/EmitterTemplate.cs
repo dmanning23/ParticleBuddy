@@ -29,9 +29,6 @@ namespace ParticleBuddy
 		//The id of the bitmap that this particle uses.
 		public ITexture Bitmap { get; private set; }
 
-		//the filename of the bitmap of this particle
-		private Filename m_strBmpFileName;
-
 		//min/max scale of a particle
 		private Vector2 m_Scale;
 
@@ -147,10 +144,7 @@ namespace ParticleBuddy
 			set { m_StartRotation.Y = value; }
 		}
 
-		public Filename Filename
-		{
-			get { return m_strBmpFileName; }
-		}
+		public Filename Filename { get; set; }
 
 		public byte R
 		{
@@ -195,7 +189,12 @@ namespace ParticleBuddy
 			CreationPeriod = 1.0f;
 			FadeSpeed = 1.0f;
 			ParticleGravity = 0.0f;
-			m_strBmpFileName = new Filename();
+			Filename = new Filename();
+		}
+
+		public EmitterTemplate(Filename strFilename, IRenderer renderer)
+		{
+			ReadXmlFile(strFilename, renderer);
 		}
 
 		public void SetParticle(Particle rParticle, GameClock timer)
@@ -222,13 +221,13 @@ namespace ParticleBuddy
 			//grab the filename
 			if (null != strBitmapFile)
 			{
-				m_strBmpFileName = strBitmapFile;
+				Filename = strBitmapFile;
 			}
 
 			//try to load the file into the particle effect
-			if ((null != rRenderer) && !String.IsNullOrEmpty(m_strBmpFileName.File))
+			if ((null != rRenderer) && !String.IsNullOrEmpty(Filename.File))
 			{
-				Bitmap = rRenderer.LoadImage(m_strBmpFileName.ToString());
+				Bitmap = rRenderer.LoadImage(Filename.ToString());
 				Debug.Assert(null != Bitmap);
 			}
 
@@ -255,7 +254,7 @@ namespace ParticleBuddy
 			Debug.Assert(m_Color == rInst.m_Color);
 			Debug.Assert(FadeSpeed == rInst.FadeSpeed);
 			//Debug.Assert(m_fParticleGravity == rInst.m_fParticleGravity);
-			Debug.Assert(m_strBmpFileName.File == rInst.m_strBmpFileName.File);
+			Debug.Assert(Filename.File == rInst.Filename.File);
 
 			return true;
 		}
@@ -522,7 +521,7 @@ namespace ParticleBuddy
 			rXMLFile.WriteEndElement();
 
 			rXMLFile.WriteStartElement("BmpFileName");
-			rXMLFile.WriteString(m_strBmpFileName.GetRelFilename());
+			rXMLFile.WriteString(Filename.GetRelFilename());
 			rXMLFile.WriteEndElement();
 
 			rXMLFile.WriteEndElement(); //Item
