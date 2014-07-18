@@ -100,14 +100,20 @@ namespace ParticleBuddy
 		{
 			//List<Task> tasks = new List<Task>();
 
+			////update all the current emitters
+			//for (int i = 0; i < Emitters.Count; i++)
+			//{
+			//	int copy = i;
+			//	tasks.Add(Task.Factory.StartNew(() => { Emitters[copy].Update(rClock, CameraScale); }));
+			//}
+
+			//Task.WaitAll(tasks.ToArray());
+
 			//update all the current emitters
 			for (int i = 0; i < Emitters.Count; i++)
 			{
 				Emitters[i].Update(rClock, CameraScale);
-				//tasks.Add(Task.Run(() => { Emitters[i].Update(rClock, CameraScale); }));
 			}
-
-			//Task.WaitAll(tasks.ToArray());
 
 			//remove any expired emitters
 			int iIndex = 0;
