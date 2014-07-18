@@ -333,82 +333,102 @@ namespace ParticleBuddy
 					string strName = childNode.Name;
 					string strValue = childNode.InnerText;
 
-					if (strName == "R")
+					switch (strName)
 					{
-						m_Color.R = Convert.ToByte(strValue);
-					}
-					else if (strName == "G")
-					{
-						m_Color.G = Convert.ToByte(strValue);
-					}
-					else if (strName == "B")
-					{
-						m_Color.B = Convert.ToByte(strValue);
-					}
-					else if (strName == "Alpha")
-					{
-						m_Color.A = Convert.ToByte(strValue);
-					}
-					else if (strName == "FadeSpeed")
-					{
-						FadeSpeed = Convert.ToSingle(strValue);
-					}
-					else if (strName == "MaxVelocity")
-					{
-						MaxParticleVelocity = strValue.ToVector2();
-					}
-					else if (strName == "MinVelocity")
-					{
-						MinParticleVelocity = strValue.ToVector2();
-					}
-					else if (strName == "ParticleSize")
-					{
-						ParticleSize = Convert.ToSingle(strValue);
-					}
-					else if (strName == "Scale")
-					{
-						Scale = strValue.ToVector2();
-					}
-					else if (strName == "Spin")
-					{
-						Spin = strValue.ToVector2();
-						MinSpin = MathHelper.ToRadians(Spin.X);
-						MaxSpin = MathHelper.ToRadians(Spin.Y);
-					}
-					else if (strName == "StartRotation")
-					{
-						StartRotation = strValue.ToVector2();
-						MinStartRotation = MathHelper.ToRadians(StartRotation.X);
-						MaxStartRotation = MathHelper.ToRadians(StartRotation.Y);
-					}
-					else if (strName == "NumStartParticles")
-					{
-						NumStartParticles = Convert.ToInt32(strValue);
-					}
-					else if (strName == "EmitterLife")
-					{
-						EmitterLife = Convert.ToSingle(strValue);
-					}
-					else if (strName == "ParticleLife")
-					{
-						ParticleLife = Convert.ToSingle(strValue);
-					}
-					else if (strName == "CreationPeriod")
-					{
-						CreationPeriod = Convert.ToSingle(strValue);
-					}
-					else if (strName == "ParticleGrav")
-					{
-						ParticleGravity = Convert.ToSingle(strValue);
-					}
-					else if (strName == "BmpFileName")
-					{
-						SetFilename((String.IsNullOrEmpty(strValue) ? null : new Filename(strValue)), rRenderer);
-					}
-					else
-					{
-						Debug.Assert(false);
-						return false;
+						case "R":
+						{
+							m_Color.R = Convert.ToByte(strValue);
+						}
+						break;
+						case "G":
+						{
+							m_Color.G = Convert.ToByte(strValue);
+						}
+						break;
+						case "B":
+						{
+							m_Color.B = Convert.ToByte(strValue);
+						}
+						break;
+						case "Alpha":
+						{
+							m_Color.A = Convert.ToByte(strValue);
+						}
+						break;
+						case "FadeSpeed":
+						{
+							FadeSpeed = Convert.ToSingle(strValue);
+						}
+						break;
+						case "MaxVelocity":
+						{
+							MaxParticleVelocity = strValue.ToVector2();
+						}
+						break;
+						case "MinVelocity":
+						{
+							MinParticleVelocity = strValue.ToVector2();
+						}
+						break;
+						case "ParticleSize":
+						{
+							ParticleSize = Convert.ToSingle(strValue);
+						}
+						break;
+						case "Scale":
+						{
+							Scale = strValue.ToVector2();
+						}
+						break;
+						case "Spin":
+						{
+							Spin = strValue.ToVector2();
+							MinSpin = MathHelper.ToRadians(Spin.X);
+							MaxSpin = MathHelper.ToRadians(Spin.Y);
+						}
+						break;
+						case "StartRotation":
+						{
+							StartRotation = strValue.ToVector2();
+							MinStartRotation = MathHelper.ToRadians(StartRotation.X);
+							MaxStartRotation = MathHelper.ToRadians(StartRotation.Y);
+						}
+						break;
+						case "NumStartParticles":
+						{
+							NumStartParticles = Convert.ToInt32(strValue);
+						}
+						break;
+						case "EmitterLife":
+						{
+							EmitterLife = Convert.ToSingle(strValue);
+						}
+						break;
+						case "ParticleLife":
+						{
+							ParticleLife = Convert.ToSingle(strValue);
+						}
+						break;
+						case "CreationPeriod":
+						{
+							CreationPeriod = Convert.ToSingle(strValue);
+						}
+						break;
+						case "ParticleGrav":
+						{
+							ParticleGravity = Convert.ToSingle(strValue);
+						}
+						break;
+						case "BmpFileName":
+						{
+							SetFilename((String.IsNullOrEmpty(strValue) ? null : new Filename(strValue)), rRenderer);
+						}
+						break;
+						default:
+						{
+							Debug.Assert(false);
+							return false;
+						}
 					}
 				}
 			}
