@@ -300,6 +300,7 @@ namespace ParticleBuddy
 
 		public bool ReadXmlObject(XmlNode rXMLNode, IRenderer rRenderer)
 		{
+#if DEBUG
 			//should have an attribute Type
 			XmlNamedNodeMap mapAttributes = rXMLNode.Attributes;
 			for (int i = 0; i < mapAttributes.Count; i++)
@@ -321,6 +322,7 @@ namespace ParticleBuddy
 					return false;
 				}
 			}
+#endif
 
 			//Read in child nodes
 			if (rXMLNode.HasChildNodes)
