@@ -107,5 +107,9 @@
       <Project>{493A4B6F-98CE-4000-8A0C-4A4726299061}</Project>
       <Name>Ouya.Console.Api</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\XmlBuddy\Ouya\XmlBuddy.Ouya.csproj">
+      <Project>{D48251D6-C283-4FAC-A4BB-F8EB809E0B59}</Project>
+      <Name>XmlBuddy.Ouya</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>
