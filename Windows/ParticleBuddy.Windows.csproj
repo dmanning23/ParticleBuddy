@@ -63,6 +63,9 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\Source\ParticleXML.cs">
+      <Link>ParticleXML.cs</Link>
+    </Compile>
     <Compile Include="..\Source\RotationDelegate.cs">
       <Link>RotationDelegate.cs</Link>
     </Compile>
@@ -78,9 +81,6 @@
     </Compile>
     <Compile Include="..\Source\ParticleEngine.cs">
       <Link>ParticleEngine.cs</Link>
-    </Compile>
-    <Compile Include="..\Source\ParticleXML.cs">
-      <Link>ParticleXML.cs</Link>
     </Compile>
     <Compile Include="..\Source\PositionDelegate.cs">
       <Link>PositionDelegate.cs</Link>
@@ -114,6 +114,10 @@
     <ProjectReference Include="..\..\RenderBuddy\Windows\RenderBuddy.Windows.csproj">
       <Project>{5C9D6145-A763-4B79-8541-0C44C6DEE72D}</Project>
       <Name>RenderBuddy.Windows</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\XmlBuddy\Windows\XmlBuddy.Windows.csproj">
+      <Project>{58b118ee-bd5d-4a5d-8ead-8c039dae553a}</Project>
+      <Name>XmlBuddy.Windows</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
