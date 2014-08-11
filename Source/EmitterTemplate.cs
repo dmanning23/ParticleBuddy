@@ -50,6 +50,11 @@ namespace ParticleBuddy
 		/// </summary>
 		private Vector2 m_Spin;
 
+		/// <summary>
+		/// used to wrap g_Random in threadsfaety
+		/// </summary>
+		private static readonly object _lock = new object();
+
 		#endregion //Members
 
 		#region Properties
@@ -204,21 +209,24 @@ namespace ParticleBuddy
 
 		public void SetParticle(Particle rParticle, GameClock timer)
 		{
-			//set all the particle parameters
+			lock (_lock)
+			{
+				//set all the particle parameters
 
-			//send Y maxvelocity as min because y axis is flipped
-			rParticle.SetVelocity(
-				g_Random.NextFloat(MinParticleVelocity.X, MaxParticleVelocity.X),
-				g_Random.NextFloat(MaxParticleVelocity.Y, MinParticleVelocity.Y));
+				//send Y maxvelocity as min because y axis is flipped
+				rParticle.SetVelocity(
+					g_Random.NextFloat(MinParticleVelocity.X, MaxParticleVelocity.X),
+					g_Random.NextFloat(MaxParticleVelocity.Y, MinParticleVelocity.Y));
 
-			rParticle.Position += rParticle.Velocity * timer.TimeDelta;
+				rParticle.Position += rParticle.Velocity * timer.TimeDelta;
 
-			rParticle.Rotation = g_Random.NextFloat(MinStartRotation, MaxStartRotation);
-			rParticle.Spin = g_Random.NextFloat(MinSpin, MaxSpin);
-			rParticle.Lifespan = ParticleLife;
-			rParticle.Size = ParticleSize;
-			rParticle.Scale = g_Random.NextFloat(MinScale, MaxScale);
-			rParticle.Alpha = m_Color.A;
+				rParticle.Rotation = g_Random.NextFloat(MinStartRotation, MaxStartRotation);
+				rParticle.Spin = g_Random.NextFloat(MinSpin, MaxSpin);
+				rParticle.Lifespan = ParticleLife;
+				rParticle.Size = ParticleSize;
+				rParticle.Scale = g_Random.NextFloat(MinScale, MaxScale);
+				rParticle.Alpha = m_Color.A;
+			}
 		}
 
 		public bool Compare(EmitterTemplate rInst)

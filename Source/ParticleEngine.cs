@@ -23,6 +23,8 @@ namespace ParticleBuddy
 		/// </summary>
 		public float CameraScale { get; set; }
 
+		private readonly object _lock = new object();
+
 		#endregion //Members
 
 		#region Methods
@@ -41,8 +43,11 @@ namespace ParticleBuddy
 		/// </summary>
 		public void Flush()
 		{
-			//flush out all the emitters
-			Emitters.Clear();
+			lock (_lock)
+			{
+				//flush out all the emitters
+				Emitters.Clear();
+			}
 		}
 
 		/// <summary>
@@ -86,8 +91,11 @@ namespace ParticleBuddy
 				CameraScale,
 				ownerRotation);
 
-			//save the emitter
-			Emitters.Add(myEmitter);
+			lock (_lock)
+			{
+				//save the emitter
+				Emitters.Add(myEmitter);
+			}
 
 			return myEmitter;
 		}
@@ -98,34 +106,37 @@ namespace ParticleBuddy
 		/// <param name="rClock"></param>
 		public void Update(GameClock rClock)
 		{
-			//List<Task> tasks = new List<Task>();
-
-			////update all the current emitters
-			//for (int i = 0; i < Emitters.Count; i++)
-			//{
-			//	int copy = i;
-			//	tasks.Add(Task.Factory.StartNew(() => { Emitters[copy].Update(rClock, CameraScale); }));
-			//}
-
-			//Task.WaitAll(tasks.ToArray());
+			List<Task> tasks = new List<Task>();
 
 			//update all the current emitters
 			for (int i = 0; i < Emitters.Count; i++)
 			{
-				Emitters[i].Update(rClock, CameraScale);
+				int copy = i;
+				tasks.Add(Task.Factory.StartNew(() => { Emitters[copy].Update(rClock, CameraScale); }));
 			}
 
-			//remove any expired emitters
-			int iIndex = 0;
-			while (iIndex < Emitters.Count)
+			Task.WaitAll(tasks.ToArray());
+
+			////update all the current emitters
+			//for (int i = 0; i < Emitters.Count; i++)
+			//{
+			//	Emitters[i].Update(rClock, CameraScale);
+			//}
+
+			lock (_lock)
 			{
-				if (Emitters[iIndex].IsDead())
+				//remove any expired emitters
+				int iIndex = 0;
+				while (iIndex < Emitters.Count)
 				{
-					Emitters.RemoveAt(iIndex);
-				}
-				else
-				{
-					++iIndex;
+					if (Emitters[iIndex].IsDead())
+					{
+						Emitters.RemoveAt(iIndex);
+					}
+					else
+					{
+						++iIndex;
+					}
 				}
 			}
 		}
