@@ -1,18 +1,12 @@
 ﻿using FilenameBuddy;
+using GameTimer;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
 using RandomExtensions;
 using RenderBuddy;
 using System;
 using System.Diagnostics;
-using System.IO;
-using System.Xml;
 using Vector2Extensions;
-using GameTimer;
 using XmlBuddy;
-#if OUYA
-using Ouya.Console.Api;
-#endif
 
 namespace ParticleBuddy
 {

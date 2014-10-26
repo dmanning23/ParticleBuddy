@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -79,10 +79,6 @@
       <Project>{D30C7E1A-CD13-4E46-903E-72FAAD937745}</Project>
       <Name>FilenameBuddy.Android</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\MonoGame\MonoGame.Framework\MonoGame.Framework.Ouya.csproj">
-      <Project>{8BEA875D-66D2-4A5F-B137-83D262A3851D}</Project>
-      <Name>MonoGame.Framework.Ouya</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\GameTimer\Ouya\GameTimer.Ouya.csproj">
       <Project>{B5C54D08-EA4C-479B-8A25-09643724056A}</Project>
       <Name>GameTimer.Ouya</Name>
@@ -103,13 +99,13 @@
       <Project>{2E31A986-E147-4000-A5E3-28309C9DC601}</Project>
       <Name>MatrixExtensions.Ouya</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\ouya-csharp\Ouya.Console.Api\Ouya.Console.Api.csproj">
-      <Project>{493A4B6F-98CE-4000-8A0C-4A4726299061}</Project>
-      <Name>Ouya.Console.Api</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\XmlBuddy\Ouya\XmlBuddy.Ouya.csproj">
       <Project>{D48251D6-C283-4FAC-A4BB-F8EB809E0B59}</Project>
       <Name>XmlBuddy.Ouya</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\MonoGame\MonoGame.Framework\MonoGame.Framework.Ouya.csproj">
+      <Project>{8BEA875D-66D2-4A5F-B137-83D262A3851D}</Project>
+      <Name>MonoGame.Framework.Ouya</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>
