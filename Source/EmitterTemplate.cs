@@ -434,7 +434,7 @@ namespace ParticleBuddy
 			//try to load the file into the particle effect
 			if ((null != renderer) && !String.IsNullOrEmpty(BitmapFilename.File))
 			{
-				Bitmap = renderer.LoadImage(BitmapFilename.ToString());
+				Bitmap = renderer.LoadImage(BitmapFilename);
 				Debug.Assert(null != Bitmap);
 			}
 		}
