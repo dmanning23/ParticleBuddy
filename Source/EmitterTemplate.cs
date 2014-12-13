@@ -167,6 +167,24 @@ namespace ParticleBuddy
 			set { m_Color.A = value; }
 		}
 
+		public byte R
+		{
+			get { return m_Color.R; }
+			set { m_Color.R = value; }
+		}
+
+		public byte G
+		{
+			get { return m_Color.G; }
+			set { m_Color.G = value; }
+		}
+
+		public byte B
+		{
+			get { return m_Color.B; }
+			set { m_Color.B = value; }
+		}
+
 		#endregion //Properties
 
 		#region Methods
