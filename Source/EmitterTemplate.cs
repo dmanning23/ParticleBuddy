@@ -5,6 +5,7 @@ using RandomExtensions;
 using RenderBuddy;
 using System;
 using System.Diagnostics;
+using System.Xml;
 using Vector2Extensions;
 using XmlBuddy;
 
@@ -270,14 +271,25 @@ namespace ParticleBuddy
 
 		#region File IO
 
-		public override void ParseXmlNode(System.Xml.XmlNode xmlNode)
+		public override void ParseXmlNode(XmlNode node)
 		{
 			//what is in this node?
-			string strName = xmlNode.Name;
-			string strValue = xmlNode.InnerText;
+			string strName = node.Name;
+			string strValue = node.InnerText;
 
 			switch (strName)
 			{
+				case "Item":
+				{
+					//Leave this in for reading legacy file structure
+					ReadChildNodes(node, ParseXmlNode);
+				}
+				break;
+				case "Type":
+				{
+					//ignore this attribute
+				}
+				break;
 				case "R":
 				{
 					m_Color.R = Convert.ToByte(strValue);
