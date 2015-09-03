@@ -175,7 +175,7 @@ namespace ParticleBuddy
 			//get the correct amount to scale the image
 			float scale = Size / rEmitter.Template.Bitmap.Width;
 
-			myRenderer.Draw(rEmitter.Template.Bitmap, vUpperLeft, myColor, Rotation, rEmitter.Flip, scale);
+			myRenderer.Draw(rEmitter.Template.Bitmap, vUpperLeft, myColor, Color.White, Rotation, rEmitter.Flip, scale);
 		}
 
 		#endregion //Methods
