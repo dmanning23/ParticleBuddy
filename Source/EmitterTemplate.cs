@@ -23,7 +23,7 @@ namespace ParticleBuddy
 		/// <summary>
 		/// The id of the bitmap that this particle uses.
 		/// </summary>
-		public ITexture Bitmap { get; private set; }
+		public TextureInfo Bitmap { get; private set; }
 
 		/// <summary>
 		/// Color of the particle emitter
@@ -386,7 +386,12 @@ namespace ParticleBuddy
 			}
 		}
 
-		public override void WriteXmlNodes(System.Xml.XmlTextWriter xmlFile)
+#if NETFX_CORE
+		public override void WriteXmlNodes()
+		{
+		}
+#else
+		public override void WriteXmlNodes(XmlTextWriter xmlFile)
 		{
 			xmlFile.WriteStartElement("R");
 			xmlFile.WriteString(m_Color.R.ToString());
@@ -458,6 +463,7 @@ namespace ParticleBuddy
 			xmlFile.WriteString(BitmapFilename.GetRelFilename());
 			xmlFile.WriteEndElement();
 		}
+#endif
 
 		public void LoadContent(IRenderer renderer)
 		{
@@ -469,6 +475,6 @@ namespace ParticleBuddy
 			}
 		}
 
-		#endregion //File IO
+#endregion //File IO
 	}
 }
