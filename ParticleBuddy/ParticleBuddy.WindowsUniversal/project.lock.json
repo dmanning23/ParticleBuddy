@@ -3,24 +3,6 @@
   "version": 2,
   "targets": {
     "UAP,Version=v10.0": {
-      "CameraBuddy/1.0.1": {
-        "type": "package",
-        "dependencies": {
-          "GameTimer": "1.0.0",
-          "MatrixExtensions": "1.0.1",
-          "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
-          "MonoGame.Framework.WindowsUniversal": "3.5.0",
-          "RandomExtensions.dmanning23": "1.0.0",
-          "ResolutionBuddy": "1.0.0",
-          "Vector2Extensions": "1.0.1"
-        },
-        "compile": {
-          "lib/uap10.0/CameraBuddy.WindowsUniversal.dll": {}
-        },
-        "runtime": {
-          "lib/uap10.0/CameraBuddy.WindowsUniversal.dll": {}
-        }
-      },
       "FilenameBuddy/1.0.2": {
         "type": "package",
         "dependencies": {
@@ -377,46 +359,6 @@
         },
         "runtime": {
           "lib/uap10.0/RandomExtensions.WindowsUniversal.dll": {}
-        }
-      },
-      "RenderBuddy/1.0.0": {
-        "type": "package",
-        "dependencies": {
-          "CameraBuddy": "1.0.0",
-          "FilenameBuddy": "1.0.2",
-          "GameTimer": "1.0.0",
-          "MatrixExtensions": "1.0.1",
-          "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
-          "MonoGame.Framework.WindowsUniversal": "3.5.0",
-          "PrimitiveBuddy": "1.0.0",
-          "RandomExtensions.dmanning23": "1.0.0",
-          "ResolutionBuddy": "1.0.0",
-          "Vector2Extensions": "1.0.1"
-        },
-        "compile": {
-          "lib/uap10.0/RenderBuddy.WindowsUniversal.dll": {}
-        },
-        "runtime": {
-          "lib/uap10.0/RenderBuddy.WindowsUniversal.dll": {}
-        }
-      },
-      "ResolutionBuddy/1.0.2": {
-        "type": "package",
-        "dependencies": {
-          "MatrixExtensions": "1.0.0",
-          "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
-          "MonoGame.Framework.WindowsUniversal": "3.5.0",
-          "RandomExtensions.dmanning23": "1.0.0",
-          "SharpDX": "[3.0.0]",
-          "SharpDX.Direct2D1": "[3.0.0]",
-          "SharpDX.Direct3D11": "[3.0.0]",
-          "Vector2Extensions": "1.0.1"
-        },
-        "compile": {
-          "lib/uap10.0/ResolutionBuddy.WindowsUniversal.dll": {}
-        },
-        "runtime": {
-          "lib/uap10.0/ResolutionBuddy.WindowsUniversal.dll": {}
         }
       },
       "SharpDX/3.0.0": {
@@ -2099,24 +2041,6 @@
       }
     },
     "UAP,Version=v10.0/win10-arm": {
-      "CameraBuddy/1.0.1": {
-        "type": "package",
-        "dependencies": {
-          "GameTimer": "1.0.0",
-          "MatrixExtensions": "1.0.1",
-          "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
-          "MonoGame.Framework.WindowsUniversal": "3.5.0",
-          "RandomExtensions.dmanning23": "1.0.0",
-          "ResolutionBuddy": "1.0.0",
-          "Vector2Extensions": "1.0.1"
-        },
-        "compile": {
-          "lib/uap10.0/CameraBuddy.WindowsUniversal.dll": {}
-        },
-        "runtime": {
-          "lib/uap10.0/CameraBuddy.WindowsUniversal.dll": {}
-        }
-      },
       "FilenameBuddy/1.0.2": {
         "type": "package",
         "dependencies": {
@@ -2422,46 +2346,6 @@
         },
         "runtime": {
           "lib/uap10.0/RandomExtensions.WindowsUniversal.dll": {}
-        }
-      },
-      "RenderBuddy/1.0.0": {
-        "type": "package",
-        "dependencies": {
-          "CameraBuddy": "1.0.0",
-          "FilenameBuddy": "1.0.2",
-          "GameTimer": "1.0.0",
-          "MatrixExtensions": "1.0.1",
-          "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
-          "MonoGame.Framework.WindowsUniversal": "3.5.0",
-          "PrimitiveBuddy": "1.0.0",
-          "RandomExtensions.dmanning23": "1.0.0",
-          "ResolutionBuddy": "1.0.0",
-          "Vector2Extensions": "1.0.1"
-        },
-        "compile": {
-          "lib/uap10.0/RenderBuddy.WindowsUniversal.dll": {}
-        },
-        "runtime": {
-          "lib/uap10.0/RenderBuddy.WindowsUniversal.dll": {}
-        }
-      },
-      "ResolutionBuddy/1.0.2": {
-        "type": "package",
-        "dependencies": {
-          "MatrixExtensions": "1.0.0",
-          "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
-          "MonoGame.Framework.WindowsUniversal": "3.5.0",
-          "RandomExtensions.dmanning23": "1.0.0",
-          "SharpDX": "[3.0.0]",
-          "SharpDX.Direct2D1": "[3.0.0]",
-          "SharpDX.Direct3D11": "[3.0.0]",
-          "Vector2Extensions": "1.0.1"
-        },
-        "compile": {
-          "lib/uap10.0/ResolutionBuddy.WindowsUniversal.dll": {}
-        },
-        "runtime": {
-          "lib/uap10.0/ResolutionBuddy.WindowsUniversal.dll": {}
         }
       },
       "runtime.any.System.Private.DataContractSerialization/4.1.0": {
@@ -4061,24 +3945,6 @@
       }
     },
     "UAP,Version=v10.0/win10-arm-aot": {
-      "CameraBuddy/1.0.1": {
-        "type": "package",
-        "dependencies": {
-          "GameTimer": "1.0.0",
-          "MatrixExtensions": "1.0.1",
-          "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
-          "MonoGame.Framework.WindowsUniversal": "3.5.0",
-          "RandomExtensions.dmanning23": "1.0.0",
-          "ResolutionBuddy": "1.0.0",
-          "Vector2Extensions": "1.0.1"
-        },
-        "compile": {
-          "lib/uap10.0/CameraBuddy.WindowsUniversal.dll": {}
-        },
-        "runtime": {
-          "lib/uap10.0/CameraBuddy.WindowsUniversal.dll": {}
-        }
-      },
       "FilenameBuddy/1.0.2": {
         "type": "package",
         "dependencies": {
@@ -4382,46 +4248,6 @@
         },
         "runtime": {
           "lib/uap10.0/RandomExtensions.WindowsUniversal.dll": {}
-        }
-      },
-      "RenderBuddy/1.0.0": {
-        "type": "package",
-        "dependencies": {
-          "CameraBuddy": "1.0.0",
-          "FilenameBuddy": "1.0.2",
-          "GameTimer": "1.0.0",
-          "MatrixExtensions": "1.0.1",
-          "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
-          "MonoGame.Framework.WindowsUniversal": "3.5.0",
-          "PrimitiveBuddy": "1.0.0",
-          "RandomExtensions.dmanning23": "1.0.0",
-          "ResolutionBuddy": "1.0.0",
-          "Vector2Extensions": "1.0.1"
-        },
-        "compile": {
-          "lib/uap10.0/RenderBuddy.WindowsUniversal.dll": {}
-        },
-        "runtime": {
-          "lib/uap10.0/RenderBuddy.WindowsUniversal.dll": {}
-        }
-      },
-      "ResolutionBuddy/1.0.2": {
-        "type": "package",
-        "dependencies": {
-          "MatrixExtensions": "1.0.0",
-          "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
-          "MonoGame.Framework.WindowsUniversal": "3.5.0",
-          "RandomExtensions.dmanning23": "1.0.0",
-          "SharpDX": "[3.0.0]",
-          "SharpDX.Direct2D1": "[3.0.0]",
-          "SharpDX.Direct3D11": "[3.0.0]",
-          "Vector2Extensions": "1.0.1"
-        },
-        "compile": {
-          "lib/uap10.0/ResolutionBuddy.WindowsUniversal.dll": {}
-        },
-        "runtime": {
-          "lib/uap10.0/ResolutionBuddy.WindowsUniversal.dll": {}
         }
       },
       "runtime.aot.System.Private.DataContractSerialization/4.1.0": {
@@ -5980,24 +5806,6 @@
       }
     },
     "UAP,Version=v10.0/win10-x64": {
-      "CameraBuddy/1.0.1": {
-        "type": "package",
-        "dependencies": {
-          "GameTimer": "1.0.0",
-          "MatrixExtensions": "1.0.1",
-          "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
-          "MonoGame.Framework.WindowsUniversal": "3.5.0",
-          "RandomExtensions.dmanning23": "1.0.0",
-          "ResolutionBuddy": "1.0.0",
-          "Vector2Extensions": "1.0.1"
-        },
-        "compile": {
-          "lib/uap10.0/CameraBuddy.WindowsUniversal.dll": {}
-        },
-        "runtime": {
-          "lib/uap10.0/CameraBuddy.WindowsUniversal.dll": {}
-        }
-      },
       "FilenameBuddy/1.0.2": {
         "type": "package",
         "dependencies": {
@@ -6309,46 +6117,6 @@
         },
         "runtime": {
           "lib/uap10.0/RandomExtensions.WindowsUniversal.dll": {}
-        }
-      },
-      "RenderBuddy/1.0.0": {
-        "type": "package",
-        "dependencies": {
-          "CameraBuddy": "1.0.0",
-          "FilenameBuddy": "1.0.2",
-          "GameTimer": "1.0.0",
-          "MatrixExtensions": "1.0.1",
-          "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
-          "MonoGame.Framework.WindowsUniversal": "3.5.0",
-          "PrimitiveBuddy": "1.0.0",
-          "RandomExtensions.dmanning23": "1.0.0",
-          "ResolutionBuddy": "1.0.0",
-          "Vector2Extensions": "1.0.1"
-        },
-        "compile": {
-          "lib/uap10.0/RenderBuddy.WindowsUniversal.dll": {}
-        },
-        "runtime": {
-          "lib/uap10.0/RenderBuddy.WindowsUniversal.dll": {}
-        }
-      },
-      "ResolutionBuddy/1.0.2": {
-        "type": "package",
-        "dependencies": {
-          "MatrixExtensions": "1.0.0",
-          "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
-          "MonoGame.Framework.WindowsUniversal": "3.5.0",
-          "RandomExtensions.dmanning23": "1.0.0",
-          "SharpDX": "[3.0.0]",
-          "SharpDX.Direct2D1": "[3.0.0]",
-          "SharpDX.Direct3D11": "[3.0.0]",
-          "Vector2Extensions": "1.0.1"
-        },
-        "compile": {
-          "lib/uap10.0/ResolutionBuddy.WindowsUniversal.dll": {}
-        },
-        "runtime": {
-          "lib/uap10.0/ResolutionBuddy.WindowsUniversal.dll": {}
         }
       },
       "runtime.any.System.Private.DataContractSerialization/4.1.0": {
@@ -7951,24 +7719,6 @@
       }
     },
     "UAP,Version=v10.0/win10-x64-aot": {
-      "CameraBuddy/1.0.1": {
-        "type": "package",
-        "dependencies": {
-          "GameTimer": "1.0.0",
-          "MatrixExtensions": "1.0.1",
-          "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
-          "MonoGame.Framework.WindowsUniversal": "3.5.0",
-          "RandomExtensions.dmanning23": "1.0.0",
-          "ResolutionBuddy": "1.0.0",
-          "Vector2Extensions": "1.0.1"
-        },
-        "compile": {
-          "lib/uap10.0/CameraBuddy.WindowsUniversal.dll": {}
-        },
-        "runtime": {
-          "lib/uap10.0/CameraBuddy.WindowsUniversal.dll": {}
-        }
-      },
       "FilenameBuddy/1.0.2": {
         "type": "package",
         "dependencies": {
@@ -8272,46 +8022,6 @@
         },
         "runtime": {
           "lib/uap10.0/RandomExtensions.WindowsUniversal.dll": {}
-        }
-      },
-      "RenderBuddy/1.0.0": {
-        "type": "package",
-        "dependencies": {
-          "CameraBuddy": "1.0.0",
-          "FilenameBuddy": "1.0.2",
-          "GameTimer": "1.0.0",
-          "MatrixExtensions": "1.0.1",
-          "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
-          "MonoGame.Framework.WindowsUniversal": "3.5.0",
-          "PrimitiveBuddy": "1.0.0",
-          "RandomExtensions.dmanning23": "1.0.0",
-          "ResolutionBuddy": "1.0.0",
-          "Vector2Extensions": "1.0.1"
-        },
-        "compile": {
-          "lib/uap10.0/RenderBuddy.WindowsUniversal.dll": {}
-        },
-        "runtime": {
-          "lib/uap10.0/RenderBuddy.WindowsUniversal.dll": {}
-        }
-      },
-      "ResolutionBuddy/1.0.2": {
-        "type": "package",
-        "dependencies": {
-          "MatrixExtensions": "1.0.0",
-          "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
-          "MonoGame.Framework.WindowsUniversal": "3.5.0",
-          "RandomExtensions.dmanning23": "1.0.0",
-          "SharpDX": "[3.0.0]",
-          "SharpDX.Direct2D1": "[3.0.0]",
-          "SharpDX.Direct3D11": "[3.0.0]",
-          "Vector2Extensions": "1.0.1"
-        },
-        "compile": {
-          "lib/uap10.0/ResolutionBuddy.WindowsUniversal.dll": {}
-        },
-        "runtime": {
-          "lib/uap10.0/ResolutionBuddy.WindowsUniversal.dll": {}
         }
       },
       "runtime.aot.System.Private.DataContractSerialization/4.1.0": {
@@ -9870,24 +9580,6 @@
       }
     },
     "UAP,Version=v10.0/win10-x86": {
-      "CameraBuddy/1.0.1": {
-        "type": "package",
-        "dependencies": {
-          "GameTimer": "1.0.0",
-          "MatrixExtensions": "1.0.1",
-          "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
-          "MonoGame.Framework.WindowsUniversal": "3.5.0",
-          "RandomExtensions.dmanning23": "1.0.0",
-          "ResolutionBuddy": "1.0.0",
-          "Vector2Extensions": "1.0.1"
-        },
-        "compile": {
-          "lib/uap10.0/CameraBuddy.WindowsUniversal.dll": {}
-        },
-        "runtime": {
-          "lib/uap10.0/CameraBuddy.WindowsUniversal.dll": {}
-        }
-      },
       "FilenameBuddy/1.0.2": {
         "type": "package",
         "dependencies": {
@@ -10199,46 +9891,6 @@
         },
         "runtime": {
           "lib/uap10.0/RandomExtensions.WindowsUniversal.dll": {}
-        }
-      },
-      "RenderBuddy/1.0.0": {
-        "type": "package",
-        "dependencies": {
-          "CameraBuddy": "1.0.0",
-          "FilenameBuddy": "1.0.2",
-          "GameTimer": "1.0.0",
-          "MatrixExtensions": "1.0.1",
-          "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
-          "MonoGame.Framework.WindowsUniversal": "3.5.0",
-          "PrimitiveBuddy": "1.0.0",
-          "RandomExtensions.dmanning23": "1.0.0",
-          "ResolutionBuddy": "1.0.0",
-          "Vector2Extensions": "1.0.1"
-        },
-        "compile": {
-          "lib/uap10.0/RenderBuddy.WindowsUniversal.dll": {}
-        },
-        "runtime": {
-          "lib/uap10.0/RenderBuddy.WindowsUniversal.dll": {}
-        }
-      },
-      "ResolutionBuddy/1.0.2": {
-        "type": "package",
-        "dependencies": {
-          "MatrixExtensions": "1.0.0",
-          "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
-          "MonoGame.Framework.WindowsUniversal": "3.5.0",
-          "RandomExtensions.dmanning23": "1.0.0",
-          "SharpDX": "[3.0.0]",
-          "SharpDX.Direct2D1": "[3.0.0]",
-          "SharpDX.Direct3D11": "[3.0.0]",
-          "Vector2Extensions": "1.0.1"
-        },
-        "compile": {
-          "lib/uap10.0/ResolutionBuddy.WindowsUniversal.dll": {}
-        },
-        "runtime": {
-          "lib/uap10.0/ResolutionBuddy.WindowsUniversal.dll": {}
         }
       },
       "runtime.any.System.Private.DataContractSerialization/4.1.0": {
@@ -11841,24 +11493,6 @@
       }
     },
     "UAP,Version=v10.0/win10-x86-aot": {
-      "CameraBuddy/1.0.1": {
-        "type": "package",
-        "dependencies": {
-          "GameTimer": "1.0.0",
-          "MatrixExtensions": "1.0.1",
-          "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
-          "MonoGame.Framework.WindowsUniversal": "3.5.0",
-          "RandomExtensions.dmanning23": "1.0.0",
-          "ResolutionBuddy": "1.0.0",
-          "Vector2Extensions": "1.0.1"
-        },
-        "compile": {
-          "lib/uap10.0/CameraBuddy.WindowsUniversal.dll": {}
-        },
-        "runtime": {
-          "lib/uap10.0/CameraBuddy.WindowsUniversal.dll": {}
-        }
-      },
       "FilenameBuddy/1.0.2": {
         "type": "package",
         "dependencies": {
@@ -12162,46 +11796,6 @@
         },
         "runtime": {
           "lib/uap10.0/RandomExtensions.WindowsUniversal.dll": {}
-        }
-      },
-      "RenderBuddy/1.0.0": {
-        "type": "package",
-        "dependencies": {
-          "CameraBuddy": "1.0.0",
-          "FilenameBuddy": "1.0.2",
-          "GameTimer": "1.0.0",
-          "MatrixExtensions": "1.0.1",
-          "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
-          "MonoGame.Framework.WindowsUniversal": "3.5.0",
-          "PrimitiveBuddy": "1.0.0",
-          "RandomExtensions.dmanning23": "1.0.0",
-          "ResolutionBuddy": "1.0.0",
-          "Vector2Extensions": "1.0.1"
-        },
-        "compile": {
-          "lib/uap10.0/RenderBuddy.WindowsUniversal.dll": {}
-        },
-        "runtime": {
-          "lib/uap10.0/RenderBuddy.WindowsUniversal.dll": {}
-        }
-      },
-      "ResolutionBuddy/1.0.2": {
-        "type": "package",
-        "dependencies": {
-          "MatrixExtensions": "1.0.0",
-          "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
-          "MonoGame.Framework.WindowsUniversal": "3.5.0",
-          "RandomExtensions.dmanning23": "1.0.0",
-          "SharpDX": "[3.0.0]",
-          "SharpDX.Direct2D1": "[3.0.0]",
-          "SharpDX.Direct3D11": "[3.0.0]",
-          "Vector2Extensions": "1.0.1"
-        },
-        "compile": {
-          "lib/uap10.0/ResolutionBuddy.WindowsUniversal.dll": {}
-        },
-        "runtime": {
-          "lib/uap10.0/ResolutionBuddy.WindowsUniversal.dll": {}
         }
       },
       "runtime.aot.System.Private.DataContractSerialization/4.1.0": {
@@ -13761,22 +13355,6 @@
     }
   },
   "libraries": {
-    "CameraBuddy/1.0.1": {
-      "sha512": "vOvFvh566tfVB/JgeENxW7jHd/308SrSuxv4Gsy51Rlv10GB5EPZ7piYZTPrVVLfBwpoZlvK/BxKwuinsEjcrA==",
-      "type": "package",
-      "files": [
-        "CameraBuddy.1.0.1.nupkg.sha512",
-        "CameraBuddy.nuspec",
-        "lib/MonoAndroid10/CameraBuddy.Android.dll",
-        "lib/MonoAndroid10/CameraBuddy.Android.pdb",
-        "lib/Xamarin.iOS10/CameraBuddy.iOS.dll",
-        "lib/Xamarin.iOS10/CameraBuddy.iOS.pdb",
-        "lib/net451/CameraBuddy.DesktopGL.dll",
-        "lib/net451/CameraBuddy.DesktopGL.pdb",
-        "lib/uap10.0/CameraBuddy.WindowsUniversal.dll",
-        "lib/uap10.0/CameraBuddy.WindowsUniversal.pdb"
-      ]
-    },
     "FilenameBuddy/1.0.2": {
       "sha512": "LIi0aT1JeQx0UveBSXk+hf2oLdH0b9y4GfM7kbO6uLJoGOpRQhxOCPFitDHc8ewFmdR2yX7fCnyq+tOLwd0Kdg==",
       "type": "package",
@@ -14459,38 +14037,6 @@
         "lib/net452/RandomExtensions.DesktopGL.pdb",
         "lib/uap10.0/RandomExtensions.WindowsUniversal.dll",
         "lib/uap10.0/RandomExtensions.WindowsUniversal.pdb"
-      ]
-    },
-    "RenderBuddy/1.0.0": {
-      "sha512": "8hp45x5pjUJ0+UFCn1jd1qMxaUK9i53CMfNfWBV1MkyeMbOL9/UzM4ZGWpXvjCsWHPfkLXCoRk7NfOwNVc/1Ow==",
-      "type": "package",
-      "files": [
-        "RenderBuddy.1.0.0.nupkg.sha512",
-        "RenderBuddy.nuspec",
-        "lib/MonoAndroid10/RenderBuddy.Android.dll",
-        "lib/MonoAndroid10/RenderBuddy.Android.pdb",
-        "lib/Xamarin.iOS10/RenderBuddy.iOS.dll",
-        "lib/Xamarin.iOS10/RenderBuddy.iOS.pdb",
-        "lib/net451/RenderBuddy.DesktopGL.dll",
-        "lib/net451/RenderBuddy.DesktopGL.pdb",
-        "lib/uap10.0/RenderBuddy.WindowsUniversal.dll",
-        "lib/uap10.0/RenderBuddy.WindowsUniversal.pdb"
-      ]
-    },
-    "ResolutionBuddy/1.0.2": {
-      "sha512": "xyRgyyxMiCW8n5SwlH2PSa2BxGyD1X28P5fuw9lzMlrsacSuLoHu8hCrJEBT5w9+0YCJp9qSnRZVC9MKRXpATg==",
-      "type": "package",
-      "files": [
-        "ResolutionBuddy.1.0.2.nupkg.sha512",
-        "ResolutionBuddy.nuspec",
-        "lib/MonoAndroid10/ResolutionBuddy.Android.dll",
-        "lib/MonoAndroid10/ResolutionBuddy.Android.pdb",
-        "lib/Xamarin.iOS10/ResolutionBuddy.iOS.dll",
-        "lib/Xamarin.iOS10/ResolutionBuddy.iOS.pdb",
-        "lib/net451/ResolutionBuddy.DesktopGL.dll",
-        "lib/net451/ResolutionBuddy.DesktopGL.pdb",
-        "lib/uap10.0/ResolutionBuddy.WindowsUniversal.dll",
-        "lib/uap10.0/ResolutionBuddy.WindowsUniversal.pdb"
       ]
     },
     "runtime.any.System.Private.DataContractSerialization/4.1.0": {
@@ -17258,7 +16804,6 @@
   },
   "projectFileDependencyGroups": {
     "": [
-      "CameraBuddy >= 1.0.1",
       "FilenameBuddy >= 1.0.2",
       "GameTimer >= 1.0.1",
       "MatrixExtensions >= 1.0.1",
@@ -17266,8 +16811,6 @@
       "MonoGame.Framework.WindowsUniversal >= 3.5.1.1679",
       "PrimitiveBuddy >= 1.0.0",
       "RandomExtensions.dmanning23 >= 1.0.2",
-      "RenderBuddy >= 1.0.0",
-      "ResolutionBuddy >= 1.0.2",
       "Vector2Extensions >= 1.0.1",
       "XmlBuddy >= 1.0.4"
     ],

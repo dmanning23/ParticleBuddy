@@ -35,10 +35,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CameraBuddy.Android, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\CameraBuddy.1.0.1\lib\MonoAndroid10\CameraBuddy.Android.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="FilenameBuddy.Android, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\FilenameBuddy.1.0.2\lib\MonoAndroid10\FilenameBuddy.Android.dll</HintPath>
       <Private>True</Private>
@@ -63,14 +59,6 @@
     </Reference>
     <Reference Include="RandomExtensions.Android, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\RandomExtensions.dmanning23.1.0.2\lib\MonoAndroid10\RandomExtensions.Android.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="RenderBuddy.Android, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\RenderBuddy.1.0.0\lib\MonoAndroid10\RenderBuddy.Android.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="ResolutionBuddy.Android, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ResolutionBuddy.1.0.2\lib\MonoAndroid10\ResolutionBuddy.Android.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />

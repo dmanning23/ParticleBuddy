@@ -1,7 +1,7 @@
 ﻿using GameTimer;
 using MatrixExtensions;
 using Microsoft.Xna.Framework;
-using RenderBuddy;
+using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 
 namespace ParticleBuddy
@@ -112,16 +112,16 @@ namespace ParticleBuddy
 			Vector2 offset, 
 			PositionDelegate myPosition, 
 			RotationDelegate myRotation, 
-			Color myColor, 
-			bool bFlip, 
-			float fScale,
+			Color color, 
+			bool isFlipped, 
+			float scale,
 			RotationDelegate ownerRotation)
 		{
 			Template = rTemplate;
 			_velocity = velocity;
 			_position = position;
 			_offset = offset;
-			_color = myColor;
+			_color = color;
 			_positionDelegate = myPosition;
 			if (null != _positionDelegate)
 			{
@@ -130,10 +130,10 @@ namespace ParticleBuddy
 
 			_rotationDelegate = myRotation;
 			_ownerRotation = ownerRotation;
-			Flip = bFlip;
+			Flip = isFlipped;
 
 			//add the offset to the position
-			_position += (GetOffset() * fScale);
+			_position += (GetOffset() * scale);
 
 			CreationTimer = new GameClock();
 			EmitterTimer = new CountdownTimer();
@@ -208,26 +208,26 @@ namespace ParticleBuddy
 			_listParticles.Enqueue(myParticle);
 		}
 
-		public void Update(GameClock myClock, float fScale)
+		public void Update(GameClock clock, float scale)
 		{
 			//update the emitter clock
 			if (Template.EmitterLife >= 0.0f)
 			{
-				EmitterTimer.Update(myClock);
+				EmitterTimer.Update(clock);
 			}
-			CreationTimer.Update(myClock);
+			CreationTimer.Update(clock);
 
 			//update position from attached bone?
 			if (null != _positionDelegate)
 			{
 				_position = _positionDelegate();
-				_position += (GetOffset() * fScale);
+				_position += (GetOffset() * scale);
 			}
 
 			//update all the particles
 			foreach (var iter in _listParticles)
 			{
-				iter.Update(myClock, Template);
+				iter.Update(clock, Template);
 			}
 
 			//do any particles need to be removed?
@@ -248,14 +248,14 @@ namespace ParticleBuddy
 			}
 		}
 
-		public void Render(IRenderer myRenderer)
+		public void Render(SpriteBatch spritebatch)
 		{
 			//draw all the particles
 			foreach (var iter in _listParticles)
 			{
 				if (!iter.IsDead())
 				{
-					iter.Render(myRenderer, this);
+					iter.Render(spritebatch, this);
 				}
 			}
 		}

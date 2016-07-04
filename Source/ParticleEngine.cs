@@ -1,8 +1,8 @@
-﻿using System.Threading.Tasks;
-using GameTimer;
+﻿using GameTimer;
 using Microsoft.Xna.Framework;
-using RenderBuddy;
+using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace ParticleBuddy
 {
@@ -53,41 +53,41 @@ namespace ParticleBuddy
 		/// <summary>
 		/// Add a particle effect to the game
 		/// </summary>
-		/// <param name="rTemplate"></param>
+		/// <param name="template"></param>
 		/// <param name="velocity"></param>
 		/// <param name="position"></param>
 		/// <param name="offset"></param>
-		/// <param name="myColor"></param>
-		/// <param name="bFlip"></param>
+		/// <param name="color"></param>
+		/// <param name="isFlipped"></param>
 		/// <param name="myPosition"></param>
 		/// <param name="myRotation"></param>
 		/// <returns></returns>
 		public Emitter PlayParticleEffect(
-			EmitterTemplate rTemplate, 
+			EmitterTemplate template,
 			Vector2 velocity,
 			Vector2 position,
 			Vector2 offset,
-			Color myColor,
-			bool bFlip,
+			Color color,
+			bool isFlipped,
 			PositionDelegate myPosition = null,
 			RotationDelegate myRotation = null,
 			RotationDelegate ownerRotation = null)
 		{
-			if (null == rTemplate.Bitmap)
+			if (null == template.Texture)
 			{
 				return null;
 			}
 
 			//spawn a particle emitter
 			Emitter myEmitter = new Emitter(
-				rTemplate,
+				template,
 				velocity,
 				position,
 				offset,
-				myPosition, 
+				myPosition,
 				myRotation,
-				myColor, 
-				bFlip,
+				color,
+				isFlipped,
 				CameraScale,
 				ownerRotation);
 
@@ -104,7 +104,7 @@ namespace ParticleBuddy
 		/// Called every frame to update the positions of emitter & particles
 		/// </summary>
 		/// <param name="rClock"></param>
-		public void Update(GameClock rClock)
+		public void Update(GameClock clock)
 		{
 			List<Task> tasks = new List<Task>();
 
@@ -112,30 +112,24 @@ namespace ParticleBuddy
 			for (int i = 0; i < Emitters.Count; i++)
 			{
 				int copy = i;
-				tasks.Add(Task.Factory.StartNew(() => { Emitters[copy].Update(rClock, CameraScale); }));
+				tasks.Add(Task.Factory.StartNew(() => { Emitters[copy].Update(clock, CameraScale); }));
 			}
 
 			Task.WaitAll(tasks.ToArray());
 
-			////update all the current emitters
-			//for (int i = 0; i < Emitters.Count; i++)
-			//{
-			//	Emitters[i].Update(rClock, CameraScale);
-			//}
-
 			lock (_lock)
 			{
 				//remove any expired emitters
-				int iIndex = 0;
-				while (iIndex < Emitters.Count)
+				int index = 0;
+				while (index < Emitters.Count)
 				{
-					if (Emitters[iIndex].IsDead())
+					if (Emitters[index].IsDead())
 					{
-						Emitters.RemoveAt(iIndex);
+						Emitters.RemoveAt(index);
 					}
 					else
 					{
-						++iIndex;
+						++index;
 					}
 				}
 			}
@@ -144,13 +138,13 @@ namespace ParticleBuddy
 		/// <summary>
 		/// Render all the particles.
 		/// </summary>
-		/// <param name="rRenderer"></param>
-		public void Render(IRenderer rRenderer)
+		/// <param name="spritebatch"></param>
+		public void Render(SpriteBatch spritebatch)
 		{
 			//render all the current emitters
 			for (int i = 0; i < Emitters.Count; i++)
 			{
-				Emitters[i].Render(rRenderer);
+				Emitters[i].Render(spritebatch);
 			}
 		}
 

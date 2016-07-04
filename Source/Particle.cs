@@ -1,7 +1,7 @@
 ﻿using GameTimer;
 using MatrixExtensions;
 using Microsoft.Xna.Framework;
-using RenderBuddy;
+using Microsoft.Xna.Framework.Graphics;
 using System.Diagnostics;
 
 namespace ParticleBuddy
@@ -11,14 +11,44 @@ namespace ParticleBuddy
 		#region Members
 
 		/// <summary>
+		/// Velocity of this particle
+		/// </summary>
+		private Vector2 _velocity;
+
+		/// <summary>
+		/// The alpha value of this particular particle
+		/// </summary>
+		private float _alpha;
+
+		#endregion //Members
+
+		#region Properties
+
+		/// <summary>
 		/// Position and orientation of the particle.
 		/// </summary>
 		public Vector2 Position { get; set; }
 
 		/// <summary>
-		/// Velocity of this particle
+		/// The property converts from float to byte
 		/// </summary>
-		private Vector2 m_Velocity;
+		public byte Alpha
+		{
+			get
+			{
+				return (byte)(_alpha * 255.0f);
+			}
+			set
+			{
+				_alpha = (float)value / 255.0f;
+			}
+		}
+
+		public Vector2 Velocity
+		{
+			get { return _velocity; }
+			set { _velocity = value; }
+		}
 
 		/// <summary>
 		/// the rotation of the particle
@@ -45,42 +75,6 @@ namespace ParticleBuddy
 		/// </summary>
 		public float Scale { get; set; }
 
-		/// <summary>
-		/// The alpha value of this particular particle
-		/// </summary>
-		private float m_fAlpha;
-
-		#endregion //Members
-
-		#region Properties
-
-		/// <summary>
-		/// The property converts from float to byte
-		/// </summary>
-		public byte Alpha
-		{
-			get
-			{
-				return (byte)(m_fAlpha * 255.0f);
-			}
-			set
-			{
-				m_fAlpha = (float)value / 255.0f;
-			}
-		}
-
-		public Vector2 Velocity
-		{
-			get { return m_Velocity; }
-			set { m_Velocity = value; }
-		}
-
-		public float VelocityX
-		{
-			get { return m_Velocity.X; }
-			set { m_Velocity.X = value; }
-		}
-
 		#endregion //Properties
 
 		#region Methods
@@ -94,36 +88,36 @@ namespace ParticleBuddy
 			Lifespan = 0.0f;
 			Size = 0.0f;
 			Scale = 0.0f;
-			m_fAlpha = 1.0f;
+			_alpha = 1.0f;
 		}
 
 		public void SetVelocity(float x, float y)
 		{
-			m_Velocity.X = x;
-			m_Velocity.Y = y;
+			_velocity.X = x;
+			_velocity.Y = y;
 		}
 
 		public bool IsDead()
 		{
-			return ((Lifespan <= 0.0f) || (m_fAlpha <= 0.0f) || (Size <= 0.0f));
+			return ((Lifespan <= 0.0f) || (_alpha <= 0.0f) || (Size <= 0.0f));
 		}
 
-		public void Update(GameClock myClock, EmitterTemplate rTemplate)
+		public void Update(GameClock clock, EmitterTemplate template)
 		{
-			Debug.Assert(myClock.TimeDelta >= 0.0f);
+			Debug.Assert(clock.TimeDelta >= 0.0f);
 
 			//update the particle time
-			Lifespan -= myClock.TimeDelta;
+			Lifespan -= clock.TimeDelta;
 
 			//update the alpha of the particle
-			m_fAlpha -= rTemplate.FadeSpeed * myClock.TimeDelta;
+			_alpha -= template.FadeSpeed * clock.TimeDelta;
 
 #if DEBUG
 			float fOldSize = Size;
 #endif
 
 			//update the size of the particle
-			Size += Scale * myClock.TimeDelta;
+			Size += Scale * clock.TimeDelta;
 
 #if DEBUG
 			if (Scale < 0.0f)
@@ -143,39 +137,48 @@ namespace ParticleBuddy
 			}
 
 			//update the position of the particle
-			Position += Velocity * myClock.TimeDelta;
+			Position += Velocity * clock.TimeDelta;
 
 			//update the rotation of the particle
-			Rotation += Spin * myClock.TimeDelta;
+			Rotation += Spin * clock.TimeDelta;
 		
 			//update the velocity by adding the gravity
-			m_Velocity.Y += rTemplate.ParticleGravity * myClock.TimeDelta;
+			_velocity.Y += template.ParticleGravity * clock.TimeDelta;
 		}
 
-		public void Render(IRenderer myRenderer, Emitter rEmitter)
+		public void Render(SpriteBatch spriteBatch, Emitter emitter)
 		{
 			//get the upper left/lower right positions
-			Vector2 vUpperLeft = new Vector2(Size / -2.0f, Size / -2.0f);
+			Vector2 position = new Vector2(Size / -2.0f, Size / -2.0f);
 
 			//create rotation matrix
 			Matrix myMatrix = MatrixExt.Orientation(Rotation);
-			vUpperLeft = myMatrix.Multiply(vUpperLeft);
+			position = myMatrix.Multiply(position);
 
 			//get the rotated position
-			vUpperLeft = Position + vUpperLeft;
+			position = Position + position;
 
 			//get the correct color
-			Color myColor = rEmitter.Template.ParticleColor;
-			if (Color.White != rEmitter.MyColor)
+			Color myColor = emitter.Template.ParticleColor;
+			if (Color.White != emitter.MyColor)
 			{
-				myColor = rEmitter.MyColor;
+				myColor = emitter.MyColor;
 			}
 			myColor.A = Alpha;
 
 			//get the correct amount to scale the image
-			float scale = Size / rEmitter.Template.Bitmap.Width;
+			float scale = Size / emitter.Template.Texture.Width;
 
-			myRenderer.Draw(rEmitter.Template.Bitmap, vUpperLeft, myColor, Color.White, Rotation, rEmitter.Flip, scale);
+			spriteBatch.Draw(
+				emitter.Template.Texture,
+				position,
+				null,
+				myColor,
+				Rotation,
+				Vector2.Zero,
+				scale,
+				(emitter.Flip ? SpriteEffects.FlipHorizontally : SpriteEffects.None),
+				0.0f);
 		}
 
 		#endregion //Methods
