@@ -106,7 +106,7 @@ namespace ParticleBuddy
 			get { return m_Color; }
 		}
 
-		public Vector2 Spin
+		private Vector2 Spin
 		{
 			get { return m_Spin; }
 			set { m_Spin = value; }
@@ -124,7 +124,7 @@ namespace ParticleBuddy
 			set { m_Spin.Y = value; }
 		}
 
-		public Vector2 Scale
+		private Vector2 Scale
 		{
 			get { return m_Scale; }
 			set { m_Scale = value; }
@@ -142,7 +142,7 @@ namespace ParticleBuddy
 			set { m_Scale.Y = value; }
 		}
 
-		public Vector2 StartRotation
+		private Vector2 StartRotation
 		{
 			get { return m_StartRotation; }
 			set { m_StartRotation = value; }
@@ -162,25 +162,25 @@ namespace ParticleBuddy
 
 		public Filename BitmapFilename { get; set; }
 
-		public byte StartAlpha
+		private byte StartAlpha
 		{
 			get { return m_Color.A; }
 			set { m_Color.A = value; }
 		}
 
-		public byte R
+		private byte R
 		{
 			get { return m_Color.R; }
 			set { m_Color.R = value; }
 		}
 
-		public byte G
+		private byte G
 		{
 			get { return m_Color.G; }
 			set { m_Color.G = value; }
 		}
 
-		public byte B
+		private byte B
 		{
 			get { return m_Color.B; }
 			set { m_Color.B = value; }
