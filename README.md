@@ -7,4 +7,6 @@ To install in your Android/iOS/DesktopGL/UWP MonoGame project, simply add the nu
 
 https://www.nuget.org/packages/ParticleBuddy
 
-Example project incoming to show how to use this package.
+Example project showing how to use this package:
+
+https://github.com/dmanning23/ParticleExample
