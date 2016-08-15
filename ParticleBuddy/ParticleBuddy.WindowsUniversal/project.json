@@ -8,7 +8,7 @@
     "PrimitiveBuddy": "1.0.0",
     "RandomExtensions.dmanning23": "1.0.2",
     "Vector2Extensions": "1.0.1",
-    "XmlBuddy": "1.0.4"
+    "XmlBuddy": "1.0.6"
   },
   "frameworks": {
     "uap10.0": {}

@@ -22,11 +22,6 @@ namespace ParticleBuddy
 		static private Random g_Random = new Random(DateTime.Now.Millisecond);
 
 		/// <summary>
-		/// The id of the bitmap that this particle uses.
-		/// </summary>
-		public Texture2D Texture { get; private set; }
-
-		/// <summary>
 		/// Color of the particle emitter
 		/// </summary>
 		private Color _color;
@@ -55,74 +50,12 @@ namespace ParticleBuddy
 
 		#region Properties
 
-		/// <summary>
-		/// speed to add alpha to particles
-		/// Must be between 0.0 and 1.0
-		/// </summary>
-		public float FadeSpeed { get; set; }
-
-		/// <summary>
-		/// Maximum range of particle velocity
-		/// </summary>
-		public Vector2 MaxParticleVelocity { get; set; }
-		/// <summary>
-		/// Minimum range of particle velocity
-		/// </summary>
-		public Vector2 MinParticleVelocity { get; set; }
-
-		/// <summary>
-		/// start size of a particle
-		/// </summary>
-		public float ParticleSize { get; set; }
-
-		/// <summary>
-		/// The number of particles this emitter starts with
-		/// </summary>
-		public int NumStartParticles { get; set; }
-
-		/// <summary>
-		/// time to live of this emitter
-		/// </summary>
-		public float EmitterLife { get; set; }
-
-		/// <summary>
-		/// time to live of particles
-		/// </summary>
-		public float ParticleLife { get; set; }
-
-		/// <summary>
-		/// time delta to create particles
-		/// This emitter will create a particle whenever this delta expires
-		/// </summary>
-		public float CreationPeriod { get; set; }
-
-		/// <summary>
-		/// gravity applied to the particle's y velocity
-		/// </summary>
-		/// <value>The particle gravity.</value>
-		public float ParticleGravity { get; set; }
-
-		public Color ParticleColor
-		{
-			get { return _color; }
-		}
+		#region private properties
 
 		private Vector2 Spin
 		{
 			get { return _spin; }
 			set { _spin = value; }
-		}
-
-		public float MinSpin
-		{
-			get { return Spin.X; }
-			set { _spin.X = value; }
-		}
-
-		public float MaxSpin
-		{
-			get { return Spin.Y; }
-			set { _spin.Y = value; }
 		}
 
 		private Vector2 Scale
@@ -131,37 +64,11 @@ namespace ParticleBuddy
 			set { _scale = value; }
 		}
 
-		public float MinScale
-		{
-			get { return Scale.X; }
-			set { _scale.X = value; }
-		}
-
-		public float MaxScale
-		{
-			get { return Scale.Y; }
-			set { _scale.Y = value; }
-		}
-
 		private Vector2 StartRotation
 		{
 			get { return _startRotation; }
 			set { _startRotation = value; }
 		}
-
-		public float MinStartRotation
-		{
-			get { return StartRotation.X; }
-			set { _startRotation.X = value; }
-		}
-
-		public float MaxStartRotation
-		{
-			get { return StartRotation.Y; }
-			set { _startRotation.Y = value; }
-		}
-
-		public Filename ImageFile { get; set; }
 
 		private byte StartAlpha
 		{
@@ -187,6 +94,137 @@ namespace ParticleBuddy
 			set { _color.B = value; }
 		}
 
+		#endregion //private properties
+
+		/// <summary>
+		/// speed to add alpha to particles
+		/// Must be between 0.0 and 1.0
+		/// defaults to 1.0f
+		/// </summary>
+		public float FadeSpeed { get; set; }
+
+		/// <summary>
+		/// Maximum range of particle velocity
+		/// Defaults to 100, -100
+		/// </summary>
+		public Vector2 MaxParticleVelocity { get; set; }
+		/// <summary>
+		/// Minimum range of particle velocity
+		/// Defaults to -100, 100
+		/// </summary>
+		public Vector2 MinParticleVelocity { get; set; }
+
+		/// <summary>
+		/// start size of a particle
+		/// Defaults to 128
+		/// </summary>
+		public float ParticleSize { get; set; }
+
+		/// <summary>
+		/// The number of particles this emitter starts with
+		/// defaults to 10
+		/// </summary>
+		public int NumStartParticles { get; set; }
+
+		/// <summary>
+		/// time to live of this emitter
+		/// defaults to .1 second
+		/// </summary>
+		public float EmitterLife { get; set; }
+
+		/// <summary>
+		/// time to live of particles
+		/// Particles are killed when this timer runs out
+		/// defaults to 1 second
+		/// </summary>
+		public float ParticleLife { get; set; }
+
+		/// <summary>
+		/// time delta to create particles
+		/// This emitter will create a particle whenever this delta expires
+		/// deafults to 1 second
+		/// </summary>
+		public float CreationPeriod { get; set; }
+
+		/// <summary>
+		/// gravity applied to the particle's y velocity
+		/// defaults to 0
+		/// </summary>
+		/// <value>The particle gravity.</value>
+		public float ParticleGravity { get; set; }
+
+		public Color ParticleColor
+		{
+			get { return _color; }
+		}
+
+		/// <summary>
+		/// min amount to spin a particle
+		/// defaults to 0
+		/// </summary>
+		public float MinSpin
+		{
+			get { return Spin.X; }
+			set { _spin.X = value; }
+		}
+
+		/// <summary>
+		/// max amount to spin a particle
+		/// defaults to 0
+		/// </summary>
+		public float MaxSpin
+		{
+			get { return Spin.Y; }
+			set { _spin.Y = value; }
+		}
+
+		/// <summary>
+		/// The min amount to scale a particle
+		/// defaults to -100
+		/// </summary>
+		public float MinScale
+		{
+			get { return Scale.X; }
+			set { _scale.X = value; }
+		}
+
+		/// <summary>
+		/// The max amount to scale a particle
+		/// defaults to 100
+		/// </summary>
+		public float MaxScale
+		{
+			get { return Scale.Y; }
+			set { _scale.Y = value; }
+		}
+
+		/// <summary>
+		/// the min amount to start the rotation a particle
+		/// defaults to 0
+		/// </summary>
+		public float MinStartRotation
+		{
+			get { return StartRotation.X; }
+			set { _startRotation.X = value; }
+		}
+
+		/// <summary>
+		/// the max amount to start the rotation a particle
+		/// defaults to 0
+		/// </summary>
+		public float MaxStartRotation
+		{
+			get { return StartRotation.Y; }
+			set { _startRotation.Y = value; }
+		}
+
+		public Filename ImageFile { get; set; }
+
+		/// <summary>
+		/// The id of the bitmap that this particle uses.
+		/// </summary>
+		public Texture2D Texture { get; set; }
+
 		#endregion //Properties
 
 		#region Methods
@@ -194,24 +232,32 @@ namespace ParticleBuddy
 		public EmitterTemplate()
 			: base("ParticleBuddy.EmitterTemplate")
 		{
-			Init();
+			_color = Color.White;
+			MaxParticleVelocity = new Vector2(100.0f, -100.0f);
+			MinParticleVelocity = new Vector2(-100.0f, 100.0f);
+			ParticleSize = 128.0f;
+			Scale = new Vector2(-100.0f, 100.0f);
+			Spin = Vector2.Zero;
+			StartRotation = Vector2.Zero;
+			NumStartParticles = 10;
+			EmitterLife = 0.1f;
+			ParticleLife = 1.0f;
+			CreationPeriod = 1.0f;
+			FadeSpeed = 1.0f;
+			ParticleGravity = 0.0f;
+			ImageFile = new Filename();
 		}
 
 		public EmitterTemplate(Filename file)
 			: base("ParticleBuddy.EmitterTemplate", file)
-		{
-			Init();
-		}
-
-		private void Init()
 		{
 			_color = Color.White;
 			MaxParticleVelocity = new Vector2(100.0f, -100.0f);
 			MinParticleVelocity = new Vector2(-100.0f, 100.0f);
 			ParticleSize = 128.0f;
 			Scale = new Vector2(-100.0f, 100.0f);
-			Spin = new Vector2(0.0f);
-			StartRotation = new Vector2(0.0f);
+			Spin = Vector2.Zero;
+			StartRotation = Vector2.Zero;
 			NumStartParticles = 10;
 			EmitterLife = 0.1f;
 			ParticleLife = 1.0f;
@@ -281,109 +327,109 @@ namespace ParticleBuddy
 			switch (strName)
 			{
 				case "Item":
-				{
-					//Leave this in for reading legacy file structure
-					ReadChildNodes(node, ParseXmlNode);
-				}
-				break;
+					{
+						//Leave this in for reading legacy file structure
+						ReadChildNodes(node, ParseXmlNode);
+					}
+					break;
 				case "Type":
-				{
-					//ignore this attribute
-				}
-				break;
+					{
+						//ignore this attribute
+					}
+					break;
 				case "R":
-				{
-					_color.R = Convert.ToByte(strValue);
-				}
-				break;
+					{
+						_color.R = Convert.ToByte(strValue);
+					}
+					break;
 				case "G":
-				{
-					_color.G = Convert.ToByte(strValue);
-				}
-				break;
+					{
+						_color.G = Convert.ToByte(strValue);
+					}
+					break;
 				case "B":
-				{
-					_color.B = Convert.ToByte(strValue);
-				}
-				break;
+					{
+						_color.B = Convert.ToByte(strValue);
+					}
+					break;
 				case "Alpha":
-				{
-					_color.A = Convert.ToByte(strValue);
-				}
-				break;
+					{
+						_color.A = Convert.ToByte(strValue);
+					}
+					break;
 				case "FadeSpeed":
-				{
-					FadeSpeed = Convert.ToSingle(strValue);
-				}
-				break;
+					{
+						FadeSpeed = Convert.ToSingle(strValue);
+					}
+					break;
 				case "MaxVelocity":
-				{
-					MaxParticleVelocity = strValue.ToVector2();
-				}
-				break;
+					{
+						MaxParticleVelocity = strValue.ToVector2();
+					}
+					break;
 				case "MinVelocity":
-				{
-					MinParticleVelocity = strValue.ToVector2();
-				}
-				break;
+					{
+						MinParticleVelocity = strValue.ToVector2();
+					}
+					break;
 				case "ParticleSize":
-				{
-					ParticleSize = Convert.ToSingle(strValue);
-				}
-				break;
+					{
+						ParticleSize = Convert.ToSingle(strValue);
+					}
+					break;
 				case "Scale":
-				{
-					Scale = strValue.ToVector2();
-				}
-				break;
+					{
+						Scale = strValue.ToVector2();
+					}
+					break;
 				case "Spin":
-				{
-					Spin = strValue.ToVector2();
-					MinSpin = MathHelper.ToRadians(Spin.X);
-					MaxSpin = MathHelper.ToRadians(Spin.Y);
-				}
-				break;
+					{
+						Spin = strValue.ToVector2();
+						MinSpin = MathHelper.ToRadians(Spin.X);
+						MaxSpin = MathHelper.ToRadians(Spin.Y);
+					}
+					break;
 				case "StartRotation":
-				{
-					StartRotation = strValue.ToVector2();
-					MinStartRotation = MathHelper.ToRadians(StartRotation.X);
-					MaxStartRotation = MathHelper.ToRadians(StartRotation.Y);
-				}
-				break;
+					{
+						StartRotation = strValue.ToVector2();
+						MinStartRotation = MathHelper.ToRadians(StartRotation.X);
+						MaxStartRotation = MathHelper.ToRadians(StartRotation.Y);
+					}
+					break;
 				case "NumStartParticles":
-				{
-					NumStartParticles = Convert.ToInt32(strValue);
-				}
-				break;
+					{
+						NumStartParticles = Convert.ToInt32(strValue);
+					}
+					break;
 				case "EmitterLife":
-				{
-					EmitterLife = Convert.ToSingle(strValue);
-				}
-				break;
+					{
+						EmitterLife = Convert.ToSingle(strValue);
+					}
+					break;
 				case "ParticleLife":
-				{
-					ParticleLife = Convert.ToSingle(strValue);
-				}
-				break;
+					{
+						ParticleLife = Convert.ToSingle(strValue);
+					}
+					break;
 				case "CreationPeriod":
-				{
-					CreationPeriod = Convert.ToSingle(strValue);
-				}
-				break;
+					{
+						CreationPeriod = Convert.ToSingle(strValue);
+					}
+					break;
 				case "ParticleGrav":
-				{
-					ParticleGravity = Convert.ToSingle(strValue);
-				}
-				break;
+					{
+						ParticleGravity = Convert.ToSingle(strValue);
+					}
+					break;
 				case "BmpFileName":
-				{
+					{
 						ImageFile = new Filename(strValue);
-				}
-				break;
+					}
+					break;
 				default:
-				{
-					throw new ArgumentException("EmitterTemplate xml node not recognized: " + strName);
-				}
+					{
+						throw new ArgumentException("EmitterTemplate xml node not recognized: " + strName);
+					}
 			}
 		}
 
