@@ -11,7 +11,7 @@
     <AssemblyName>ParticleBuddy.WindowsUniversal</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
-    <TargetPlatformVersion>10.0.10586.0</TargetPlatformVersion>
+    <TargetPlatformVersion>10.0.14393.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.10240.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
@@ -107,30 +107,10 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\Source\Emitter.cs">
-      <Link>Emitter.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Source\EmitterTemplate.cs">
-      <Link>EmitterTemplate.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Source\Particle.cs">
-      <Link>Particle.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Source\ParticleEngine.cs">
-      <Link>ParticleEngine.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Source\ParticleXML.cs">
-      <Link>ParticleXML.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Source\PositionDelegate.cs">
-      <Link>PositionDelegate.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Source\RotationDelegate.cs">
-      <Link>RotationDelegate.cs</Link>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\ParticleBuddy.WindowsUniversal.rd.xml" />
   </ItemGroup>
+  <Import Project="..\ParticleBuddy.SharedProject\ParticleBuddy.SharedProject.projitems" Label="Shared" />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
