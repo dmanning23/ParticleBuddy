@@ -36,7 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="FilenameBuddy.Android, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\FilenameBuddy.1.0.2\lib\MonoAndroid10\FilenameBuddy.Android.dll</HintPath>
+      <HintPath>..\packages\FilenameBuddy.1.0.3\lib\MonoAndroid10\FilenameBuddy.Android.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="GameTimer.Android, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -70,29 +70,11 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="XmlBuddy.Android, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\XmlBuddy.1.0.6\lib\MonoAndroid10\XmlBuddy.Android.dll</HintPath>
+      <HintPath>..\packages\XmlBuddy.1.0.7\lib\MonoAndroid10\XmlBuddy.Android.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\Source\Emitter.cs">
-      <Link>Emitter.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Source\EmitterTemplate.cs">
-      <Link>EmitterTemplate.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Source\Particle.cs">
-      <Link>Particle.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Source\ParticleEngine.cs">
-      <Link>ParticleEngine.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Source\ParticleXML.cs">
-      <Link>ParticleXML.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Source\PositionDelegate.cs">
-      <Link>PositionDelegate.cs</Link>
-    </Compile>
     <Compile Include="..\..\Source\RotationDelegate.cs">
       <Link>RotationDelegate.cs</Link>
     </Compile>
@@ -106,6 +88,7 @@
   <ItemGroup>
     <AndroidResource Include="Resources\Values\Strings.xml" />
   </ItemGroup>
+  <Import Project="..\ParticleBuddy.SharedProject\ParticleBuddy.SharedProject.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

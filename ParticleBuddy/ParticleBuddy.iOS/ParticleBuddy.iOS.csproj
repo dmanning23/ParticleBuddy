@@ -32,7 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="FilenameBuddy.iOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\FilenameBuddy.1.0.2\lib\Xamarin.iOS10\FilenameBuddy.iOS.dll</HintPath>
+      <HintPath>..\packages\FilenameBuddy.1.0.3\lib\Xamarin.iOS10\FilenameBuddy.iOS.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="GameTimer.iOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -64,7 +64,7 @@
     </Reference>
     <Reference Include="Xamarin.iOS" />
     <Reference Include="XmlBuddy.iOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\XmlBuddy.1.0.6\lib\Xamarin.iOS10\XmlBuddy.iOS.dll</HintPath>
+      <HintPath>..\packages\XmlBuddy.1.0.7\lib\Xamarin.iOS10\XmlBuddy.iOS.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
@@ -72,31 +72,11 @@
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\..\Source\Emitter.cs">
-      <Link>Emitter.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Source\EmitterTemplate.cs">
-      <Link>EmitterTemplate.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Source\Particle.cs">
-      <Link>Particle.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Source\ParticleEngine.cs">
-      <Link>ParticleEngine.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Source\ParticleXML.cs">
-      <Link>ParticleXML.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Source\PositionDelegate.cs">
-      <Link>PositionDelegate.cs</Link>
-    </Compile>
-    <Compile Include="..\..\Source\RotationDelegate.cs">
-      <Link>RotationDelegate.cs</Link>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <Import Project="..\ParticleBuddy.SharedProject\ParticleBuddy.SharedProject.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

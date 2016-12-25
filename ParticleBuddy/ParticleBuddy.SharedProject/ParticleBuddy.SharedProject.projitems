@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>1ae42cf0-a9b4-43cd-8bce-79187d09fbb8</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>ParticleBuddy.SharedProject</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Emitter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)EmitterTemplate.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Particle.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ParticleEngine.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ParticleXML.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)PositionDelegate.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)RotationDelegate.cs" />
+  </ItemGroup>
+</Project>
