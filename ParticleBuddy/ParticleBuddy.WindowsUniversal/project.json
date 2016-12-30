@@ -11,7 +11,7 @@
     "System.Xml.XmlDocument": "4.3.0",
     "System.Xml.XPath.XDocument": "4.3.0",
     "Vector2Extensions": "1.0.1",
-    "XmlBuddy": "1.0.7"
+    "XmlBuddy": "1.0.13"
   },
   "frameworks": {
     "uap10.0": {}

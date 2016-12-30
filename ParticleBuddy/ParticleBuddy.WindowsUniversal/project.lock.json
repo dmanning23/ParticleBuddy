@@ -2327,7 +2327,7 @@
           "lib/uap10.0/Vector2Extensions.WindowsUniversal.dll": {}
         }
       },
-      "XmlBuddy/1.0.7": {
+      "XmlBuddy/1.0.13": {
         "type": "package",
         "dependencies": {
           "FilenameBuddy": "1.0.1",
@@ -4778,7 +4778,7 @@
           "lib/uap10.0/Vector2Extensions.WindowsUniversal.dll": {}
         }
       },
-      "XmlBuddy/1.0.7": {
+      "XmlBuddy/1.0.13": {
         "type": "package",
         "dependencies": {
           "FilenameBuddy": "1.0.1",
@@ -7268,7 +7268,7 @@
           "lib/uap10.0/Vector2Extensions.WindowsUniversal.dll": {}
         }
       },
-      "XmlBuddy/1.0.7": {
+      "XmlBuddy/1.0.13": {
         "type": "package",
         "dependencies": {
           "FilenameBuddy": "1.0.1",
@@ -9728,7 +9728,7 @@
           "lib/uap10.0/Vector2Extensions.WindowsUniversal.dll": {}
         }
       },
-      "XmlBuddy/1.0.7": {
+      "XmlBuddy/1.0.13": {
         "type": "package",
         "dependencies": {
           "FilenameBuddy": "1.0.1",
@@ -12227,7 +12227,7 @@
           "lib/uap10.0/Vector2Extensions.WindowsUniversal.dll": {}
         }
       },
-      "XmlBuddy/1.0.7": {
+      "XmlBuddy/1.0.13": {
         "type": "package",
         "dependencies": {
           "FilenameBuddy": "1.0.1",
@@ -14687,7 +14687,7 @@
           "lib/uap10.0/Vector2Extensions.WindowsUniversal.dll": {}
         }
       },
-      "XmlBuddy/1.0.7": {
+      "XmlBuddy/1.0.13": {
         "type": "package",
         "dependencies": {
           "FilenameBuddy": "1.0.1",
@@ -17186,7 +17186,7 @@
           "lib/uap10.0/Vector2Extensions.WindowsUniversal.dll": {}
         }
       },
-      "XmlBuddy/1.0.7": {
+      "XmlBuddy/1.0.13": {
         "type": "package",
         "dependencies": {
           "FilenameBuddy": "1.0.1",
@@ -23946,10 +23946,10 @@
         "lib/uap10.0/Vector2Extensions.WindowsUniversal.pdb"
       ]
     },
-    "XmlBuddy/1.0.7": {
-      "sha512": "Y15E2Vo5hN9aqALxeWW8Z8MaLBlMuZP3jUtaPsV7ZO0HL8Z9g033UvHUXoRNpnr+6bgSyUI6WwuNSuG03e+tow==",
+    "XmlBuddy/1.0.13": {
+      "sha512": "wEeylTI8GR89RuYTFjiX73PK+J0/h490jw42sDuMNPwdAwsdcl9DWisBkyopbdzt8yN+nwYxy73T1SQDkMgrKg==",
       "type": "package",
-      "path": "xmlbuddy/1.0.7",
+      "path": "xmlbuddy/1.0.13",
       "files": [
         "lib/MonoAndroid10/XmlBuddy.Android.dll",
         "lib/MonoAndroid10/XmlBuddy.Android.pdb",
@@ -23959,7 +23959,7 @@
         "lib/net451/XmlBuddy.DesktopGL.pdb",
         "lib/uap10.0/XmlBuddy.WindowsUniversal.dll",
         "lib/uap10.0/XmlBuddy.WindowsUniversal.pdb",
-        "xmlbuddy.1.0.7.nupkg.sha512",
+        "xmlbuddy.1.0.13.nupkg.sha512",
         "xmlbuddy.nuspec"
       ]
     }
@@ -23977,7 +23977,7 @@
       "System.Xml.XPath.XDocument >= 4.3.0",
       "System.Xml.XmlDocument >= 4.3.0",
       "Vector2Extensions >= 1.0.1",
-      "XmlBuddy >= 1.0.7"
+      "XmlBuddy >= 1.0.13"
     ],
     "UAP,Version=v10.0": []
   },

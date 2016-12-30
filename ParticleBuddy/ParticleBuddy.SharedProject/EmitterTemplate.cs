@@ -433,11 +433,7 @@ namespace ParticleBuddy
 			}
 		}
 
-#if NETFX_CORE
-		public override void WriteXmlNodes()
-		{
-		}
-#else
+#if !WINDOWS_UWP
 		public override void WriteXmlNodes(XmlTextWriter xmlFile)
 		{
 			xmlFile.WriteStartElement("R");
@@ -521,6 +517,6 @@ namespace ParticleBuddy
 			}
 		}
 
-#endregion //File IO
+		#endregion //File IO
 	}
 }
