@@ -40,11 +40,6 @@ namespace ParticleBuddy
 		private readonly Vector2 _offset;
 
 		/// <summary>
-		/// The color of this emitter
-		/// </summary>
-		private readonly Color _color;
-
-		/// <summary>
 		/// the list of particles
 		/// </summary>
 		private readonly Queue<Particle> _listParticles;
@@ -58,10 +53,10 @@ namespace ParticleBuddy
 		/// </summary>
 		public GameClock CreationTimer { get; private set; }
 
-		public Color MyColor
-		{
-			get { return _color; }
-		}
+		/// <summary>
+		/// The color of this emitter
+		/// </summary>
+		public Color Color { get; set; }
 
 		/// <summary>
 		/// The emitter stuff for this emitter, points to the array of emitter... stuffs
@@ -77,6 +72,8 @@ namespace ParticleBuddy
 		/// whether or not the particle emitter is flipped
 		/// </summary>
 		public bool Flip { get; private set; }
+
+		public bool Expires { get; private set; }
 
 		public Vector2 Velocity
 		{
@@ -106,7 +103,7 @@ namespace ParticleBuddy
 
 		#region Methods
 
-		public Emitter(EmitterTemplate rTemplate, 
+		public Emitter(EmitterTemplate template, 
 			Vector2 velocity, 
 			Vector2 position, 
 			Vector2 offset, 
@@ -117,11 +114,11 @@ namespace ParticleBuddy
 			float scale,
 			RotationDelegate ownerRotation)
 		{
-			Template = rTemplate;
+			Template = template;
 			_velocity = velocity;
 			_position = position;
 			_offset = offset;
-			_color = color;
+			Color = color;
 			_positionDelegate = myPosition;
 			if (null != _positionDelegate)
 			{
@@ -131,6 +128,7 @@ namespace ParticleBuddy
 			_rotationDelegate = myRotation;
 			_ownerRotation = ownerRotation;
 			Flip = isFlipped;
+			Expires = template.Expires;
 
 			//add the offset to the position
 			_position += (GetOffset() * scale);
@@ -143,9 +141,9 @@ namespace ParticleBuddy
 			CreationTimer.Start();
 
 			//does this emitter expire?
-			if (rTemplate.EmitterLife >= 0.0f)
+			if (template.EmitterLife >= 0.0f)
 			{
-				EmitterTimer.Start(rTemplate.EmitterLife);
+				EmitterTimer.Start(template.EmitterLife);
 			}
 			else
 			{
@@ -237,7 +235,7 @@ namespace ParticleBuddy
 			}
 
 			//dont add any particles if the emitter is expired
-			if (0.0f < EmitterTimer.RemainingTime())
+			if (HasRemainingTime())
 			{
 				//do any particles need to be added?
 				while (CreationTimer.CurrentTime >= Template.CreationPeriod)
@@ -260,9 +258,20 @@ namespace ParticleBuddy
 			}
 		}
 
+		protected bool HasRemainingTime()
+		{
+			return (0.0f < EmitterTimer.RemainingTime()) || !Expires;
+		}
+
 		public bool IsDead()
 		{
-			return ((0.0f >= EmitterTimer.RemainingTime()) && (0 >= _listParticles.Count));
+			return (!HasRemainingTime() && (0 >= _listParticles.Count));
+		}
+
+		public void Stop()
+		{
+			Expires = true;
+			EmitterTimer.Stop();
 		}
 
 		private Vector2 GetOffset()

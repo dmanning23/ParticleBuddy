@@ -133,6 +133,11 @@ namespace ParticleBuddy
 		public float EmitterLife { get; set; }
 
 		/// <summary>
+		/// Set this to false if you want an emitter that lives the life of the particle engine.
+		/// </summary>
+		public bool Expires { get; set; }
+
+		/// <summary>
 		/// time to live of particles
 		/// Particles are killed when this timer runs out
 		/// defaults to 1 second
@@ -241,6 +246,7 @@ namespace ParticleBuddy
 			StartRotation = Vector2.Zero;
 			NumStartParticles = 10;
 			EmitterLife = 0.1f;
+			Expires = true;
 			ParticleLife = 1.0f;
 			CreationPeriod = 1.0f;
 			FadeSpeed = 1.0f;

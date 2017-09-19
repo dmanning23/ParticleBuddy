@@ -159,12 +159,12 @@ namespace ParticleBuddy
 			position = Position + position;
 
 			//get the correct color
-			Color myColor = emitter.Template.ParticleColor;
-			if (Color.White != emitter.MyColor)
+			Color color = emitter.Template.ParticleColor;
+			if (Color.White != emitter.Color)
 			{
-				myColor = emitter.MyColor;
+				color = emitter.Color;
 			}
-			myColor.A = Alpha;
+			color.A = Alpha;
 
 			//get the correct amount to scale the image
 			float scale = Size / emitter.Template.Texture.Width;
@@ -173,7 +173,7 @@ namespace ParticleBuddy
 				emitter.Template.Texture,
 				position,
 				null,
-				myColor,
+				color,
 				Rotation,
 				Vector2.Zero,
 				scale,

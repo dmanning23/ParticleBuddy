@@ -16,7 +16,7 @@ namespace ParticleBuddy
 		/// <summary>
 		/// list of current emitters
 		/// </summary>
-		private List<Emitter> Emitters { get; set; }
+		public List<Emitter> Emitters { get; private set; }
 
 		/// <summary>
 		/// How zoomed in/out the camera is

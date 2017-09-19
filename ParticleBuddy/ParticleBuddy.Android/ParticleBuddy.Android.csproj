@@ -44,7 +44,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="MatrixExtensions.Android, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MatrixExtensions.1.0.1\lib\MonoAndroid10\MatrixExtensions.Android.dll</HintPath>
+      <HintPath>..\packages\MatrixExtensions.1.0.2\lib\MonoAndroid10\MatrixExtensions.Android.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Mono.Android" />
@@ -54,11 +54,11 @@
     </Reference>
     <Reference Include="mscorlib" />
     <Reference Include="PrimitiveBuddy.Android, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\PrimitiveBuddy.1.0.0\lib\MonoAndroid10\PrimitiveBuddy.Android.dll</HintPath>
+      <HintPath>..\packages\PrimitiveBuddy.1.0.3\lib\MonoAndroid10\PrimitiveBuddy.Android.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="RandomExtensions.Android, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\RandomExtensions.dmanning23.1.0.2\lib\MonoAndroid10\RandomExtensions.Android.dll</HintPath>
+      <HintPath>..\packages\RandomExtensions.dmanning23.1.0.3\lib\MonoAndroid10\RandomExtensions.Android.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -66,11 +66,11 @@
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml" />
     <Reference Include="Vector2Extensions.Android, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Vector2Extensions.1.0.1\lib\MonoAndroid10\Vector2Extensions.Android.dll</HintPath>
+      <HintPath>..\packages\Vector2Extensions.1.0.6\lib\MonoAndroid10\Vector2Extensions.Android.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="XmlBuddy.Android, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\XmlBuddy.1.0.13\lib\MonoAndroid10\XmlBuddy.Android.dll</HintPath>
+      <HintPath>..\packages\XmlBuddy.1.0.14\lib\MonoAndroid10\XmlBuddy.Android.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
@@ -84,6 +84,9 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\Values\Strings.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\XmlBuddy.Content.dll" />
   </ItemGroup>
   <Import Project="..\ParticleBuddy.SharedProject\ParticleBuddy.SharedProject.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
