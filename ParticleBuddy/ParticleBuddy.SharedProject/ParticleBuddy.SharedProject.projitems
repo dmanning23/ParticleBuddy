@@ -13,7 +13,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)EmitterTemplate.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Particle.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ParticleEngine.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ParticleXML.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)PositionDelegate.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)RotationDelegate.cs" />
   </ItemGroup>

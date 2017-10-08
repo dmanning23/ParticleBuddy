@@ -260,7 +260,7 @@ namespace ParticleBuddy
 
 		protected bool HasRemainingTime()
 		{
-			return (0.0f < EmitterTimer.RemainingTime()) || !Expires;
+			return (EmitterTimer.HasTimeRemaining) || !Expires;
 		}
 
 		public bool IsDead()

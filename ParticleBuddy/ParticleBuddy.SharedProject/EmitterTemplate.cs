@@ -1,5 +1,6 @@
 ﻿using FilenameBuddy;
 using GameTimer;
+using MathNet.Numerics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -161,6 +162,7 @@ namespace ParticleBuddy
 		public Color ParticleColor
 		{
 			get { return _color; }
+			set { _color = value; }
 		}
 
 		/// <summary>
@@ -234,24 +236,44 @@ namespace ParticleBuddy
 
 		#region Methods
 
-		public EmitterTemplate()
-			: base("ParticleBuddy.EmitterTemplate")
+		public EmitterTemplate() : base("ParticleBuddy.EmitterTemplate")
 		{
-			_color = Color.White;
-			MaxParticleVelocity = new Vector2(100.0f, -100.0f);
-			MinParticleVelocity = new Vector2(-100.0f, 100.0f);
+			FadeSpeed = 1f;
+			MaxParticleVelocity = new Vector2(100f, -100f);
+			MinParticleVelocity = new Vector2(-100f, 100f);
 			ParticleSize = 128.0f;
-			Scale = new Vector2(-100.0f, 100.0f);
-			Spin = Vector2.Zero;
-			StartRotation = Vector2.Zero;
 			NumStartParticles = 10;
 			EmitterLife = 0.1f;
 			Expires = true;
-			ParticleLife = 1.0f;
+			ParticleLife = 1f;
 			CreationPeriod = 1.0f;
-			FadeSpeed = 1.0f;
 			ParticleGravity = 0.0f;
+			ParticleColor = Color.White;
+			Spin = Vector2.Zero;
+			Scale = new Vector2(-100.0f, 100.0f);
+			StartRotation = Vector2.Zero;
 			ImageFile = new Filename();
+			Texture = null;
+		}
+
+		public EmitterTemplate(EmitterTemplate inst) : base("ParticleBuddy.EmitterTemplate")
+		{
+			FadeSpeed = inst.FadeSpeed;
+			MaxParticleVelocity = new Vector2(inst.MaxParticleVelocity.X, inst.MaxParticleVelocity.Y);
+			MinParticleVelocity = new Vector2(inst.MinParticleVelocity.X, inst.MinParticleVelocity.Y);
+			ParticleSize = inst.ParticleSize;
+			NumStartParticles = inst.NumStartParticles;
+			EmitterLife = inst.EmitterLife;
+			Expires = inst.Expires;
+			ParticleLife = inst.ParticleLife;
+			CreationPeriod = inst.CreationPeriod;
+			ParticleGravity = inst.ParticleGravity;
+			ParticleColor = new Color(inst.ParticleColor.ToVector4());
+			Spin = new Vector2(inst.Spin.X, inst.Spin.Y);
+			Scale = new Vector2(inst.Scale.X, inst.Scale.Y);
+			StartRotation = new Vector2(inst.StartRotation.X, inst.StartRotation.Y);
+			ImageFile = new Filename(inst.ImageFile);
+			Texture = inst.Texture;
 		}
 
 		public EmitterTemplate(Filename file)
@@ -295,29 +317,28 @@ namespace ParticleBuddy
 			}
 		}
 
-		public bool Compare(EmitterTemplate rInst)
+		public bool Compare(EmitterTemplate inst)
 		{
-			Debug.Assert(MaxParticleVelocity.X == rInst.MaxParticleVelocity.X);
-			Debug.Assert(MaxParticleVelocity.Y == rInst.MaxParticleVelocity.Y);
-			Debug.Assert(MinParticleVelocity.X == rInst.MinParticleVelocity.X);
-			Debug.Assert(MinParticleVelocity.Y == rInst.MinParticleVelocity.Y);
-			Debug.Assert(ParticleSize == rInst.ParticleSize);
-			Debug.Assert(Scale.X == rInst.Scale.X);
-			Debug.Assert(Scale.Y == rInst.Scale.Y);
-			//Debug.Assert(m_fMaxSpin == rInst.m_fMaxSpin);
-			//Debug.Assert(m_fMinSpin == rInst.m_fMinSpin);
-			//Debug.Assert(m_fMinStartRotation == rInst.m_fMinStartRotation);
-			//Debug.Assert(m_fMaxStartRotation == rInst.m_fMaxStartRotation);
-			Debug.Assert(NumStartParticles == rInst.NumStartParticles);
-			Debug.Assert(EmitterLife == rInst.EmitterLife);
-			Debug.Assert(ParticleLife == rInst.ParticleLife);
-			Debug.Assert(CreationPeriod == rInst.CreationPeriod);
-			Debug.Assert(_color == rInst._color);
-			Debug.Assert(FadeSpeed == rInst.FadeSpeed);
-			//Debug.Assert(m_fParticleGravity == rInst.m_fParticleGravity);
-			Debug.Assert(ImageFile.File == rInst.ImageFile.File);
-
-			return true;
+			return FadeSpeed == inst.FadeSpeed &&
+			MaxParticleVelocity.X.AlmostEqual(inst.MaxParticleVelocity.X) &&
+			MaxParticleVelocity.Y.AlmostEqual(inst.MaxParticleVelocity.Y) &&
+			MinParticleVelocity.X.AlmostEqual(inst.MinParticleVelocity.X) &&
+			MinParticleVelocity.Y.AlmostEqual(inst.MinParticleVelocity.Y) &&
+			ParticleSize == inst.ParticleSize &&
+			NumStartParticles == inst.NumStartParticles &&
+			EmitterLife == inst.EmitterLife &&
+			Expires == inst.Expires &&
+			ParticleLife == inst.ParticleLife &&
+			CreationPeriod == inst.CreationPeriod &&
+			ParticleGravity == inst.ParticleGravity &&
+			ParticleColor == inst.ParticleColor &&
+			Spin.X.AlmostEqual(inst.Spin.X) &&
+			Spin.Y.AlmostEqual(inst.Spin.Y) &&
+			Scale.X.AlmostEqual(inst.Scale.X) &&
+			Scale.Y.AlmostEqual(inst.Scale.Y) &&
+			StartRotation.X.AlmostEqual(inst.StartRotation.X) &&
+			StartRotation.Y.AlmostEqual(inst.StartRotation.Y) &&
+			ImageFile.File == inst.ImageFile.File;
 		}
 
 		#endregion //Methods

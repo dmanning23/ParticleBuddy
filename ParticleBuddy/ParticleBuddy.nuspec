@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
 	<metadata>
 		<id>ParticleBuddy</id>
-		<version>1.0.17</version>
+		<version>1.0.19</version>
 		<title>ParticleBuddy</title>
 		<authors>dmanning23</authors>
 		<owners>dmanning23</owners>
@@ -25,6 +25,7 @@
 				<dependency id="RandomExtensions.dmanning23" version="1.0"/>
 				<dependency id="Vector2Extensions" version="1.0.1"/>
 				<dependency id="XmlBuddy" version="1.0"/>
+        <dependency id="MathNet.Numerics" version="3.20"/>
 			</group>
 
 			<!--Xamarin.iOS Unified-->
@@ -37,6 +38,7 @@
 				<dependency id="RandomExtensions.dmanning23" version="1.0"/>
 				<dependency id="Vector2Extensions" version="1.0.1"/>
 				<dependency id="XmlBuddy" version="1.0"/>
+        <dependency id="MathNet.Numerics" version="3.20"/>
 			</group>
 
 			<!--Win Universal-->
@@ -50,6 +52,7 @@
 				<dependency id="RandomExtensions.dmanning23" version="1.0"/>
 				<dependency id="Vector2Extensions" version="1.0.1"/>
 				<dependency id="XmlBuddy" version="1.0"/>
+        <dependency id="MathNet.Numerics" version="3.20"/>
 			</group>
 
 			<group targetFramework="net451">
@@ -61,6 +64,8 @@
 				<dependency id="RandomExtensions.dmanning23" version="1.0"/>
 				<dependency id="Vector2Extensions" version="1.0.1"/>
 				<dependency id="XmlBuddy" version="1.0"/>
+        <dependency id="MathNet.Numerics" version="3.20"/>
+        <dependency id="System.Runtime.Numerics" version="4.3"/>
 			</group>
 
 		</dependencies>
