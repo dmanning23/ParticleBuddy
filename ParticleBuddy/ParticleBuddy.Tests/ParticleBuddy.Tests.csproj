@@ -30,12 +30,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CameraBuddy.DesktopGL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CameraBuddy.1.0.5\lib\net451\CameraBuddy.DesktopGL.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="FilenameBuddy.DesktopGL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\FilenameBuddy.1.0.6\lib\net452\FilenameBuddy.DesktopGL.dll</HintPath>
+      <HintPath>..\packages\FilenameBuddy.1.0.7\lib\net452\FilenameBuddy.DesktopGL.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="GameTimer.DesktopGL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GameTimer.1.0.3\lib\net452\GameTimer.DesktopGL.dll</HintPath>
+      <HintPath>..\packages\GameTimer.1.0.4\lib\net452\GameTimer.DesktopGL.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="MathNet.Numerics, Version=3.20.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -50,8 +54,8 @@
       <HintPath>..\packages\MonoGame.Framework.DesktopGL.3.5.1.1679\lib\net40\MonoGame.Framework.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="nunit.framework, Version=3.8.1.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
-      <HintPath>..\packages\NUnit.3.8.1\lib\net45\nunit.framework.dll</HintPath>
+    <Reference Include="nunit.framework, Version=3.9.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.3.9.0\lib\net45\nunit.framework.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="NVorbis, Version=0.8.4.0, Culture=neutral, processorArchitecture=MSIL">
@@ -68,6 +72,14 @@
     </Reference>
     <Reference Include="RandomExtensions.DesktopGL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\RandomExtensions.dmanning23.1.0.3\lib\net452\RandomExtensions.DesktopGL.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="RenderBuddy.DesktopGL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RenderBuddy.1.0.22\lib\net451\RenderBuddy.DesktopGL.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ResolutionBuddy.DesktopGL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ResolutionBuddy.1.0.11\lib\net451\ResolutionBuddy.DesktopGL.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Shouldly, Version=2.8.3.0, Culture=neutral, PublicKeyToken=6042cbcb05cbc941, processorArchitecture=MSIL">
@@ -88,7 +100,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="XmlBuddy.DesktopGL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\XmlBuddy.1.0.14\lib\net451\XmlBuddy.DesktopGL.dll</HintPath>
+      <HintPath>..\packages\XmlBuddy.1.0.16\lib\net451\XmlBuddy.DesktopGL.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
@@ -101,6 +113,10 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\AnimationBuddyShader.fx" />
+    <Content Include="Content\XmlBuddy.Content.dll" />
   </ItemGroup>
   <Import Project="..\ParticleBuddy.SharedProject\ParticleBuddy.SharedProject.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

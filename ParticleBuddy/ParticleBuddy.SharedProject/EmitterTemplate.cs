@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using RandomExtensions;
+using RenderBuddy;
 using System;
 using System.Diagnostics;
 using System.Xml;
@@ -534,6 +535,16 @@ namespace ParticleBuddy
 			xmlFile.WriteEndElement();
 		}
 #endif
+
+		public void LoadContent(IRenderer renderer)
+		{
+			//try to load the file into the particle effect
+			if ((null != renderer) && !string.IsNullOrEmpty(ImageFile.File))
+			{
+				var textureInfo = renderer.LoadImage(ImageFile);
+				Texture = textureInfo.Texture;
+			}
+		}
 
 		public void LoadContent(ContentManager content)
 		{
