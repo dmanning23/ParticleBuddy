@@ -1,10 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2024
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParticleBuddy.DesktopGL", "ParticleBuddy.DesktopGL\ParticleBuddy.DesktopGL.csproj", "{FBD62AD7-562B-47B3-AF62-EC019EA3F8BC}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParticleBuddy.iOS", "ParticleBuddy.iOS\ParticleBuddy.iOS.csproj", "{4BD96903-5A87-4EE7-B3F0-8F0C763AB539}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParticleBuddy.WindowsUniversal", "ParticleBuddy.WindowsUniversal\ParticleBuddy.WindowsUniversal.csproj", "{B3D72720-07B5-4500-9A5A-8577DB484677}"
@@ -21,14 +19,16 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "ParticleBuddy.SharedProject
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParticleBuddy.Tests", "ParticleBuddy.Tests\ParticleBuddy.Tests.csproj", "{0E52D7FE-C092-48DB-813D-218194C08059}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParticleBuddy.WindowsDX", "ParticleBuddy.WindowsDX\ParticleBuddy.WindowsDX.csproj", "{692591D6-D88D-451B-A665-65DEDC422073}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		ParticleBuddy.SharedProject\ParticleBuddy.SharedProject.projitems*{0e52d7fe-c092-48db-813d-218194c08059}*SharedItemsImports = 4
 		ParticleBuddy.SharedProject\ParticleBuddy.SharedProject.projitems*{1ae42cf0-a9b4-43cd-8bce-79187d09fbb8}*SharedItemsImports = 13
 		ParticleBuddy.SharedProject\ParticleBuddy.SharedProject.projitems*{436db384-ce7b-4496-9f25-92fe88431971}*SharedItemsImports = 4
 		ParticleBuddy.SharedProject\ParticleBuddy.SharedProject.projitems*{4bd96903-5a87-4ee7-b3f0-8f0c763ab539}*SharedItemsImports = 4
+		ParticleBuddy.SharedProject\ParticleBuddy.SharedProject.projitems*{692591d6-d88d-451b-a665-65dedc422073}*SharedItemsImports = 4
 		ParticleBuddy.SharedProject\ParticleBuddy.SharedProject.projitems*{b3d72720-07b5-4500-9a5a-8577db484677}*SharedItemsImports = 4
-		ParticleBuddy.SharedProject\ParticleBuddy.SharedProject.projitems*{fbd62ad7-562b-47b3-af62-ec019ea3f8bc}*SharedItemsImports = 4
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		AppStore|Any CPU = AppStore|Any CPU
@@ -45,30 +45,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{FBD62AD7-562B-47B3-AF62-EC019EA3F8BC}.AppStore|Any CPU.ActiveCfg = Release|Any CPU
-		{FBD62AD7-562B-47B3-AF62-EC019EA3F8BC}.AppStore|Any CPU.Build.0 = Release|Any CPU
-		{FBD62AD7-562B-47B3-AF62-EC019EA3F8BC}.AppStore|ARM.ActiveCfg = Release|Any CPU
-		{FBD62AD7-562B-47B3-AF62-EC019EA3F8BC}.AppStore|ARM.Build.0 = Release|Any CPU
-		{FBD62AD7-562B-47B3-AF62-EC019EA3F8BC}.AppStore|x64.ActiveCfg = Release|Any CPU
-		{FBD62AD7-562B-47B3-AF62-EC019EA3F8BC}.AppStore|x64.Build.0 = Release|Any CPU
-		{FBD62AD7-562B-47B3-AF62-EC019EA3F8BC}.AppStore|x86.ActiveCfg = Release|Any CPU
-		{FBD62AD7-562B-47B3-AF62-EC019EA3F8BC}.AppStore|x86.Build.0 = Release|Any CPU
-		{FBD62AD7-562B-47B3-AF62-EC019EA3F8BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FBD62AD7-562B-47B3-AF62-EC019EA3F8BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FBD62AD7-562B-47B3-AF62-EC019EA3F8BC}.Debug|ARM.ActiveCfg = Debug|Any CPU
-		{FBD62AD7-562B-47B3-AF62-EC019EA3F8BC}.Debug|ARM.Build.0 = Debug|Any CPU
-		{FBD62AD7-562B-47B3-AF62-EC019EA3F8BC}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{FBD62AD7-562B-47B3-AF62-EC019EA3F8BC}.Debug|x64.Build.0 = Debug|Any CPU
-		{FBD62AD7-562B-47B3-AF62-EC019EA3F8BC}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{FBD62AD7-562B-47B3-AF62-EC019EA3F8BC}.Debug|x86.Build.0 = Debug|Any CPU
-		{FBD62AD7-562B-47B3-AF62-EC019EA3F8BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FBD62AD7-562B-47B3-AF62-EC019EA3F8BC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FBD62AD7-562B-47B3-AF62-EC019EA3F8BC}.Release|ARM.ActiveCfg = Release|Any CPU
-		{FBD62AD7-562B-47B3-AF62-EC019EA3F8BC}.Release|ARM.Build.0 = Release|Any CPU
-		{FBD62AD7-562B-47B3-AF62-EC019EA3F8BC}.Release|x64.ActiveCfg = Release|Any CPU
-		{FBD62AD7-562B-47B3-AF62-EC019EA3F8BC}.Release|x64.Build.0 = Release|Any CPU
-		{FBD62AD7-562B-47B3-AF62-EC019EA3F8BC}.Release|x86.ActiveCfg = Release|Any CPU
-		{FBD62AD7-562B-47B3-AF62-EC019EA3F8BC}.Release|x86.Build.0 = Release|Any CPU
 		{4BD96903-5A87-4EE7-B3F0-8F0C763AB539}.AppStore|Any CPU.ActiveCfg = Release|Any CPU
 		{4BD96903-5A87-4EE7-B3F0-8F0C763AB539}.AppStore|Any CPU.Build.0 = Release|Any CPU
 		{4BD96903-5A87-4EE7-B3F0-8F0C763AB539}.AppStore|ARM.ActiveCfg = Release|Any CPU
@@ -165,9 +141,36 @@ Global
 		{0E52D7FE-C092-48DB-813D-218194C08059}.Release|x64.Build.0 = Release|Any CPU
 		{0E52D7FE-C092-48DB-813D-218194C08059}.Release|x86.ActiveCfg = Release|Any CPU
 		{0E52D7FE-C092-48DB-813D-218194C08059}.Release|x86.Build.0 = Release|Any CPU
+		{692591D6-D88D-451B-A665-65DEDC422073}.AppStore|Any CPU.ActiveCfg = Release|Any CPU
+		{692591D6-D88D-451B-A665-65DEDC422073}.AppStore|Any CPU.Build.0 = Release|Any CPU
+		{692591D6-D88D-451B-A665-65DEDC422073}.AppStore|ARM.ActiveCfg = Release|Any CPU
+		{692591D6-D88D-451B-A665-65DEDC422073}.AppStore|ARM.Build.0 = Release|Any CPU
+		{692591D6-D88D-451B-A665-65DEDC422073}.AppStore|x64.ActiveCfg = Release|Any CPU
+		{692591D6-D88D-451B-A665-65DEDC422073}.AppStore|x64.Build.0 = Release|Any CPU
+		{692591D6-D88D-451B-A665-65DEDC422073}.AppStore|x86.ActiveCfg = Release|Any CPU
+		{692591D6-D88D-451B-A665-65DEDC422073}.AppStore|x86.Build.0 = Release|Any CPU
+		{692591D6-D88D-451B-A665-65DEDC422073}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{692591D6-D88D-451B-A665-65DEDC422073}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{692591D6-D88D-451B-A665-65DEDC422073}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{692591D6-D88D-451B-A665-65DEDC422073}.Debug|ARM.Build.0 = Debug|Any CPU
+		{692591D6-D88D-451B-A665-65DEDC422073}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{692591D6-D88D-451B-A665-65DEDC422073}.Debug|x64.Build.0 = Debug|Any CPU
+		{692591D6-D88D-451B-A665-65DEDC422073}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{692591D6-D88D-451B-A665-65DEDC422073}.Debug|x86.Build.0 = Debug|Any CPU
+		{692591D6-D88D-451B-A665-65DEDC422073}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{692591D6-D88D-451B-A665-65DEDC422073}.Release|Any CPU.Build.0 = Release|Any CPU
+		{692591D6-D88D-451B-A665-65DEDC422073}.Release|ARM.ActiveCfg = Release|Any CPU
+		{692591D6-D88D-451B-A665-65DEDC422073}.Release|ARM.Build.0 = Release|Any CPU
+		{692591D6-D88D-451B-A665-65DEDC422073}.Release|x64.ActiveCfg = Release|Any CPU
+		{692591D6-D88D-451B-A665-65DEDC422073}.Release|x64.Build.0 = Release|Any CPU
+		{692591D6-D88D-451B-A665-65DEDC422073}.Release|x86.ActiveCfg = Release|Any CPU
+		{692591D6-D88D-451B-A665-65DEDC422073}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4D5895A9-2474-4ADA-B95E-1D9FD68643D8}
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = ParticleBuddy.Windows.csproj

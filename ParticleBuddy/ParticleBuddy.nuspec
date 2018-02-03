@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
 	<metadata>
 		<id>ParticleBuddy</id>
-		<version>1.0.24</version>
+		<version>1.0.27</version>
 		<title>ParticleBuddy</title>
 		<authors>dmanning23</authors>
 		<owners>dmanning23</owners>
@@ -56,7 +56,7 @@
 			</group>
 
 			<group targetFramework="net451">
-				<dependency id="MonoGame.Framework.DesktopGL" version="3.5"/>
+				<dependency id="MonoGame.Framework.WindowsDX" version="3.5"/>
 				<dependency id="FilenameBuddy" version="1.0"/>
 				<dependency id="GameTimer" version="1.0"/>
 				<dependency id="MatrixExtensions" version="1.0.1"/>
@@ -84,9 +84,9 @@
 		<file src="ParticleBuddy.WindowsUniversal\bin\Release\ParticleBuddy.WindowsUniversal.pdb" target="lib\uap10.0\ParticleBuddy.WindowsUniversal.pdb" />
 		<file src="ParticleBuddy.WindowsUniversal\bin\Release\ParticleBuddy.WindowsUniversal.dll" target="lib\uap10.0\ParticleBuddy.WindowsUniversal.dll" />
 
-		<!--DesktopGL-->
-		<file src="ParticleBuddy.DesktopGL\bin\Release\ParticleBuddy.DesktopGL.pdb" target="lib\net451\ParticleBuddy.DesktopGL.pdb" />
-		<file src="ParticleBuddy.DesktopGL\bin\Release\ParticleBuddy.DesktopGL.dll" target="lib\net451\ParticleBuddy.DesktopGL.dll" />
+		<!--WindowsDX-->
+		<file src="ParticleBuddy.WindowsDX\bin\Release\ParticleBuddy.WindowsDX.pdb" target="lib\net451\ParticleBuddy.WindowsDX.pdb" />
+		<file src="ParticleBuddy.WindowsDX\bin\Release\ParticleBuddy.WindowsDX.dll" target="lib\net451\ParticleBuddy.WindowsDX.dll" />
 
 	</files>
 </package>
