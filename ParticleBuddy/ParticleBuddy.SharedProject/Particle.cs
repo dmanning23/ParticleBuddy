@@ -2,7 +2,6 @@
 using MatrixExtensions;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System.Diagnostics;
 
 namespace ParticleBuddy
 {
@@ -104,8 +103,6 @@ namespace ParticleBuddy
 
 		public void Update(GameClock clock, EmitterTemplate template)
 		{
-			Debug.Assert(clock.TimeDelta >= 0.0f);
-
 			//update the particle time
 			Lifespan -= clock.TimeDelta;
 
@@ -149,17 +146,17 @@ namespace ParticleBuddy
 		public void Render(SpriteBatch spriteBatch, Emitter emitter)
 		{
 			//get the upper left/lower right positions
-			Vector2 position = new Vector2(Size / -2.0f, Size / -2.0f);
+			var position = new Vector2(Size / -2.0f, Size / -2.0f);
 
 			//create rotation matrix
-			Matrix myMatrix = MatrixExt.Orientation(Rotation);
+			var myMatrix = MatrixExt.Orientation(Rotation);
 			position = myMatrix.Multiply(position);
 
 			//get the rotated position
 			position = Position + position;
 
 			//get the correct color
-			Color color = emitter.Template.ParticleColor;
+			var color = emitter.Template.ParticleColor;
 			if (Color.White != emitter.Color)
 			{
 				color = emitter.Color;
@@ -167,7 +164,7 @@ namespace ParticleBuddy
 			color.A = Alpha;
 
 			//get the correct amount to scale the image
-			float scale = Size / emitter.Template.Texture.Width;
+			var scale = Size / emitter.Template.Texture.Width;
 
 			spriteBatch.Draw(
 				emitter.Template.Texture,

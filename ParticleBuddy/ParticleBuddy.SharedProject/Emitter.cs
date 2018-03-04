@@ -42,7 +42,7 @@ namespace ParticleBuddy
 		/// <summary>
 		/// the list of particles
 		/// </summary>
-		private readonly Queue<Particle> _listParticles;
+		private readonly Queue<Particle> _particles;
 
 		#endregion //Members
 
@@ -135,7 +135,7 @@ namespace ParticleBuddy
 
 			CreationTimer = new GameClock();
 			EmitterTimer = new CountdownTimer();
-			_listParticles = new Queue<Particle>();
+			_particles = new Queue<Particle>();
 
 			//start the creation timer
 			CreationTimer.Start();
@@ -151,7 +151,7 @@ namespace ParticleBuddy
 			}
 
 			//create the correct number of start particles
-			for (int i = 0; i < Template.NumStartParticles; i++)
+			for (var i = 0; i < Template.NumStartParticles; i++)
 			{
 				AddParticle();
 			}
@@ -159,51 +159,51 @@ namespace ParticleBuddy
 
 		protected void AddParticle()
 		{
-			Particle myParticle = new Particle();
+			var particle = new Particle();
 
 			//set position and all the template particle parameters
-			myParticle.Position = _position;
+			particle.Position = _position;
 
 			//set all the random stuff for particle
-			Template.SetParticle(myParticle, CreationTimer);
+			Template.SetParticle(particle, CreationTimer);
 
 			//are we using a custom rotation?
 			if (null != _rotationDelegate)
 			{
 				//Set the rotaion of this particle
-				myParticle.Rotation += _rotationDelegate();
+				particle.Rotation += _rotationDelegate();
 
 				//Rotate the velocity we shoot the particle
-				float rotation = _rotationDelegate();
+				var rotation = _rotationDelegate();
 				//if (Flip)
 				//{
 				//	rotation += MathHelper.Pi;
 				//}
-				Matrix rotMatrix = MatrixExt.Orientation(rotation);
-				myParticle.Velocity += MatrixExt.Multiply(rotMatrix, _velocity);
+				var rotMatrix = MatrixExt.Orientation(rotation);
+				particle.Velocity += MatrixExt.Multiply(rotMatrix, _velocity);
 			}
 			else if (null != _ownerRotation)
 			{
 				//Set the rotaion of this particle
-				myParticle.Rotation += _ownerRotation();
-				myParticle.Velocity += _velocity;
+				particle.Rotation += _ownerRotation();
+				particle.Velocity += _velocity;
 			}
 			else
 			{
-				myParticle.Velocity += _velocity;
+				particle.Velocity += _velocity;
 			}
 
 			//is the emitter flipped?
 			if (Flip)
 			{
-				myParticle.Spin *= -1.0f;
+				particle.Spin *= -1.0f;
 				//myParticle.VelocityX *= -1.0f;
 				//myParticle.Rotation = Helper.ClampAngle(myParticle.Rotation);
 				//myParticle.Rotation = MathHelper.Pi - myParticle.Rotation;
-				myParticle.Rotation += MathHelper.Pi;
+				particle.Rotation += MathHelper.Pi;
 			}
 
-			_listParticles.Enqueue(myParticle);
+			_particles.Enqueue(particle);
 		}
 
 		public void Update(GameClock clock, float scale)
@@ -223,15 +223,15 @@ namespace ParticleBuddy
 			}
 
 			//update all the particles
-			foreach (var iter in _listParticles)
+			foreach (var particle in _particles)
 			{
-				iter.Update(clock, Template);
+				particle.Update(clock, Template);
 			}
 
 			//do any particles need to be removed?
-			while ((_listParticles.Count > 0) && _listParticles.Peek().IsDead())
+			while ((_particles.Count > 0) && _particles.Peek().IsDead())
 			{
-				_listParticles.Dequeue();
+				_particles.Dequeue();
 			}
 
 			//dont add any particles if the emitter is expired
@@ -249,11 +249,11 @@ namespace ParticleBuddy
 		public void Render(SpriteBatch spritebatch)
 		{
 			//draw all the particles
-			foreach (var iter in _listParticles)
+			foreach (var particle in _particles)
 			{
-				if (!iter.IsDead())
+				if (!particle.IsDead())
 				{
-					iter.Render(spritebatch, this);
+					particle.Render(spritebatch, this);
 				}
 			}
 		}
@@ -265,7 +265,7 @@ namespace ParticleBuddy
 
 		public bool IsDead()
 		{
-			return (!HasRemainingTime() && (0 >= _listParticles.Count));
+			return (!HasRemainingTime() && (0 >= _particles.Count));
 		}
 
 		public void Stop()
@@ -276,11 +276,11 @@ namespace ParticleBuddy
 
 		private Vector2 GetOffset()
 		{
-			Vector2 finalOffset = _offset;
+			var finalOffset = _offset;
 			if (Vector2.Zero != _offset)
 			{
 				//get the rotation
-				float rotation = 0.0f;
+				var rotation = 0f;
 				
 				//get the bone rotation
 				if (null != _rotationDelegate)
@@ -293,7 +293,7 @@ namespace ParticleBuddy
 					rotation += _ownerRotation();
 				}
 
-				Matrix rotMatrix = MatrixExt.Orientation(rotation);
+				var rotMatrix = MatrixExt.Orientation(rotation);
 				finalOffset = MatrixExt.Multiply(rotMatrix, finalOffset);
 
 				//if the emitter is flipped, siwtch the offset

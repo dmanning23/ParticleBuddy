@@ -21,7 +21,7 @@ namespace ParticleBuddy
 		/// <summary>
 		/// random number generator for particle effects
 		/// </summary>
-		static private Random g_Random = new Random(DateTime.Now.Millisecond);
+		static private Random _random = new Random(DateTime.Now.Millisecond);
 
 		/// <summary>
 		/// Color of the particle emitter
@@ -239,22 +239,7 @@ namespace ParticleBuddy
 
 		public EmitterTemplate() : base("ParticleBuddy.EmitterTemplate")
 		{
-			FadeSpeed = 1f;
-			MaxParticleVelocity = new Vector2(100f, -100f);
-			MinParticleVelocity = new Vector2(-100f, 100f);
-			ParticleSize = 128.0f;
-			NumStartParticles = 10;
-			EmitterLife = 0.1f;
-			Expires = true;
-			ParticleLife = 1f;
-			CreationPeriod = 1.0f;
-			ParticleGravity = 0.0f;
-			ParticleColor = Color.White;
-			Spin = Vector2.Zero;
-			Scale = new Vector2(-100.0f, 100.0f);
-			StartRotation = Vector2.Zero;
-			ImageFile = new Filename();
-			Texture = null;
+			Init();
 		}
 
 		public EmitterTemplate(EmitterTemplate inst) : base("ParticleBuddy.EmitterTemplate")
@@ -280,41 +265,48 @@ namespace ParticleBuddy
 		public EmitterTemplate(Filename file)
 			: base("ParticleBuddy.EmitterTemplate", file)
 		{
-			_color = Color.White;
-			MaxParticleVelocity = new Vector2(100.0f, -100.0f);
-			MinParticleVelocity = new Vector2(-100.0f, 100.0f);
-			ParticleSize = 128.0f;
-			Scale = new Vector2(-100.0f, 100.0f);
-			Spin = Vector2.Zero;
-			StartRotation = Vector2.Zero;
-			NumStartParticles = 10;
-			EmitterLife = 0.1f;
-			ParticleLife = 1.0f;
-			CreationPeriod = 1.0f;
-			FadeSpeed = 1.0f;
-			ParticleGravity = 0.0f;
-			ImageFile = new Filename();
+			Init();
 		}
 
-		public void SetParticle(Particle rParticle, GameClock timer)
+		private void Init()
+		{
+			FadeSpeed = 1f;
+			MaxParticleVelocity = new Vector2(100f, -100f);
+			MinParticleVelocity = new Vector2(-100f, 100f);
+			ParticleSize = 128.0f;
+			NumStartParticles = 10;
+			EmitterLife = 0.1f;
+			Expires = true;
+			ParticleLife = 1f;
+			CreationPeriod = 1.0f;
+			ParticleGravity = 0.0f;
+			ParticleColor = Color.White;
+			Spin = Vector2.Zero;
+			Scale = new Vector2(-100.0f, 100.0f);
+			StartRotation = Vector2.Zero;
+			ImageFile = new Filename();
+			Texture = null;
+		}
+
+		public void SetParticle(Particle particle, GameClock timer)
 		{
 			lock (_lock)
 			{
 				//set all the particle parameters
 
 				//send Y maxvelocity as min because y axis is flipped
-				rParticle.SetVelocity(
-					g_Random.NextFloat(MinParticleVelocity.X, MaxParticleVelocity.X),
-					g_Random.NextFloat(MaxParticleVelocity.Y, MinParticleVelocity.Y));
+				particle.SetVelocity(
+					_random.NextFloat(MinParticleVelocity.X, MaxParticleVelocity.X),
+					_random.NextFloat(MaxParticleVelocity.Y, MinParticleVelocity.Y));
 
-				rParticle.Position += rParticle.Velocity * timer.TimeDelta;
+				particle.Position += particle.Velocity * timer.TimeDelta;
 
-				rParticle.Rotation = g_Random.NextFloat(MinStartRotation, MaxStartRotation);
-				rParticle.Spin = g_Random.NextFloat(MinSpin, MaxSpin);
-				rParticle.Lifespan = ParticleLife;
-				rParticle.Size = ParticleSize;
-				rParticle.Scale = g_Random.NextFloat(MinScale, MaxScale);
-				rParticle.Alpha = _color.A;
+				particle.Rotation = _random.NextFloat(MinStartRotation, MaxStartRotation);
+				particle.Spin = _random.NextFloat(MinSpin, MaxSpin);
+				particle.Lifespan = ParticleLife;
+				particle.Size = ParticleSize;
+				particle.Scale = _random.NextFloat(MinScale, MaxScale);
+				particle.Alpha = _color.A;
 			}
 		}
 

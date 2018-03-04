@@ -31,7 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CameraBuddy.WindowsDX, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\CameraBuddy.1.0.9\lib\net451\CameraBuddy.WindowsDX.dll</HintPath>
+      <HintPath>..\packages\CameraBuddy.1.0.10\lib\net451\CameraBuddy.WindowsDX.dll</HintPath>
     </Reference>
     <Reference Include="FilenameBuddy.WindowsDX, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\FilenameBuddy.1.0.11\lib\net452\FilenameBuddy.WindowsDX.dll</HintPath>

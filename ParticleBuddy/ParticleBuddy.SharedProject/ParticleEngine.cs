@@ -35,7 +35,7 @@ namespace ParticleBuddy
 		public ParticleEngine()
 		{
 			Emitters = new List<Emitter>();
-			CameraScale = 1.0f;
+			CameraScale = 1f;
 		}
 
 		/// <summary>
@@ -79,7 +79,7 @@ namespace ParticleBuddy
 			}
 
 			//spawn a particle emitter
-			Emitter myEmitter = new Emitter(
+			var myEmitter = new Emitter(
 				template,
 				velocity,
 				position,
@@ -109,9 +109,9 @@ namespace ParticleBuddy
 			List<Task> tasks = new List<Task>();
 
 			//update all the current emitters
-			for (int i = 0; i < Emitters.Count; i++)
+			for (var i = 0; i < Emitters.Count; i++)
 			{
-				int copy = i;
+				var copy = i;
 				tasks.Add(Task.Factory.StartNew(() => { Emitters[copy].Update(clock, CameraScale); }));
 			}
 

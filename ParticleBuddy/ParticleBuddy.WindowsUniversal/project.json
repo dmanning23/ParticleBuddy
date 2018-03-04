@@ -1,6 +1,6 @@
 ﻿{
   "dependencies": {
-    "CameraBuddy": "1.0.9",
+    "CameraBuddy": "1.0.10",
     "FilenameBuddy": "1.0.11",
     "GameTimer": "1.0.8",
     "MathNet.Numerics": "4.1.0",
