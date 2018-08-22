@@ -109,23 +109,8 @@ namespace ParticleBuddy
 			//update the alpha of the particle
 			_alpha -= template.FadeSpeed * clock.TimeDelta;
 
-#if DEBUG
-			float fOldSize = Size;
-#endif
-
 			//update the size of the particle
 			Size += Scale * clock.TimeDelta;
-
-#if DEBUG
-			if (Scale < 0.0f)
-			{
-				Debug.Assert(Size <= fOldSize);
-			}
-			else
-			{
-				Debug.Assert(Size >= fOldSize);
-			}
-#endif
 
 			if (IsDead())
 			{
