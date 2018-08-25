@@ -341,10 +341,10 @@ namespace ParticleBuddy
 		public override void ParseXmlNode(XmlNode node)
 		{
 			//what is in this node?
-			string strName = node.Name;
-			string strValue = node.InnerText;
+			string name = node.Name;
+			string value = node.InnerText;
 
-			switch (strName)
+			switch (name)
 			{
 				case "Item":
 					{
@@ -359,96 +359,99 @@ namespace ParticleBuddy
 					break;
 				case "R":
 					{
-						_color.R = Convert.ToByte(strValue);
+						_color.R = Convert.ToByte(value);
 					}
 					break;
 				case "G":
 					{
-						_color.G = Convert.ToByte(strValue);
+						_color.G = Convert.ToByte(value);
 					}
 					break;
 				case "B":
 					{
-						_color.B = Convert.ToByte(strValue);
+						_color.B = Convert.ToByte(value);
 					}
 					break;
 				case "Alpha":
 					{
-						_color.A = Convert.ToByte(strValue);
+						_color.A = Convert.ToByte(value);
 					}
 					break;
 				case "FadeSpeed":
 					{
-						FadeSpeed = Convert.ToSingle(strValue);
+						FadeSpeed = Convert.ToSingle(value);
 					}
 					break;
 				case "MaxVelocity":
 					{
-						MaxParticleVelocity = strValue.ToVector2();
+						MaxParticleVelocity = value.ToVector2();
 					}
 					break;
 				case "MinVelocity":
 					{
-						MinParticleVelocity = strValue.ToVector2();
+						MinParticleVelocity = value.ToVector2();
 					}
 					break;
 				case "ParticleSize":
 					{
-						ParticleSize = Convert.ToSingle(strValue);
+						ParticleSize = Convert.ToSingle(value);
 					}
 					break;
 				case "Scale":
 					{
-						Scale = strValue.ToVector2();
+						Scale = value.ToVector2();
 					}
 					break;
 				case "Spin":
 					{
-						Spin = strValue.ToVector2();
+						Spin = value.ToVector2();
 						MinSpin = MathHelper.ToRadians(Spin.X);
 						MaxSpin = MathHelper.ToRadians(Spin.Y);
 					}
 					break;
 				case "StartRotation":
 					{
-						StartRotation = strValue.ToVector2();
+						StartRotation = value.ToVector2();
 						MinStartRotation = MathHelper.ToRadians(StartRotation.X);
 						MaxStartRotation = MathHelper.ToRadians(StartRotation.Y);
 					}
 					break;
 				case "NumStartParticles":
 					{
-						NumStartParticles = Convert.ToInt32(strValue);
+						NumStartParticles = Convert.ToInt32(value);
 					}
 					break;
 				case "EmitterLife":
 					{
-						EmitterLife = Convert.ToSingle(strValue);
+						EmitterLife = Convert.ToSingle(value);
 					}
 					break;
 				case "ParticleLife":
 					{
-						ParticleLife = Convert.ToSingle(strValue);
+						ParticleLife = Convert.ToSingle(value);
 					}
 					break;
 				case "CreationPeriod":
 					{
-						CreationPeriod = Convert.ToSingle(strValue);
+						CreationPeriod = Convert.ToSingle(value);
 					}
 					break;
 				case "ParticleGrav":
 					{
-						ParticleGravity = Convert.ToSingle(strValue);
+						ParticleGravity = Convert.ToSingle(value);
 					}
 					break;
 				case "BmpFileName":
 					{
-						ImageFile = new Filename(strValue);
+						if (!string.IsNullOrEmpty(value))
+						{
+							ImageFile = new Filename(value);
+						}
 					}
 					break;
 				default:
 					{
-						throw new ArgumentException("EmitterTemplate xml node not recognized: " + strName);
+						throw new ArgumentException("EmitterTemplate xml node not recognized: " + name);
 					}
 			}
 		}
