@@ -197,9 +197,6 @@ namespace ParticleBuddy
 			if (Flip)
 			{
 				particle.Spin *= -1.0f;
-				//myParticle.VelocityX *= -1.0f;
-				//myParticle.Rotation = Helper.ClampAngle(myParticle.Rotation);
-				//myParticle.Rotation = MathHelper.Pi - myParticle.Rotation;
 				particle.Rotation += MathHelper.Pi;
 			}
 
