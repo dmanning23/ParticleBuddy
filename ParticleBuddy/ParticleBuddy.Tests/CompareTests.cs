@@ -1,15 +1,46 @@
 ﻿using FilenameBuddy;
+using MathNet.Numerics;
 using Microsoft.Xna.Framework;
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Shouldly;
+using System.Diagnostics;
 
 namespace ParticleBuddy.Tests
 {
+	public class TestEmitterTemplate : EmitterTemplate
+	{
+		public TestEmitterTemplate()
+		{
+		}
+
+		public TestEmitterTemplate(EmitterTemplate inst) : base(inst)
+		{
+		}
+
+		public void Compare(TestEmitterTemplate inst)
+		{
+			Debug.Assert(FadeSpeed == inst.FadeSpeed);
+			Debug.Assert(MaxParticleVelocity.X.AlmostEqual(inst.MaxParticleVelocity.X));
+			Debug.Assert(MaxParticleVelocity.Y.AlmostEqual(inst.MaxParticleVelocity.Y));
+			Debug.Assert(MinParticleVelocity.X.AlmostEqual(inst.MinParticleVelocity.X));
+			Debug.Assert(MinParticleVelocity.Y.AlmostEqual(inst.MinParticleVelocity.Y));
+			Debug.Assert(ParticleSize == inst.ParticleSize);
+			Debug.Assert(NumStartParticles == inst.NumStartParticles);
+			Debug.Assert(EmitterLife == inst.EmitterLife);
+			Debug.Assert(Expires == inst.Expires);
+			Debug.Assert(ParticleLife == inst.ParticleLife);
+			Debug.Assert(CreationPeriod == inst.CreationPeriod);
+			Debug.Assert(ParticleGravity == inst.ParticleGravity);
+			Debug.Assert(ParticleColor == inst.ParticleColor);
+			Debug.Assert(Spin.X.AlmostEqual(inst.Spin.X));
+			Debug.Assert(Spin.Y.AlmostEqual(inst.Spin.Y));
+			Debug.Assert(Scale.X.AlmostEqual(inst.Scale.X));
+			Debug.Assert(Scale.Y.AlmostEqual(inst.Scale.Y));
+			Debug.Assert(StartRotation.X.AlmostEqual(inst.StartRotation.X));
+			Debug.Assert(StartRotation.Y.AlmostEqual(inst.StartRotation.Y));
+		}
+	}
+
 	public class CompareTests
 	{
 		#region construction
@@ -31,7 +62,7 @@ namespace ParticleBuddy.Tests
 			float maxStartRotation,
 			string imageFile)
 		{
-			var first = new EmitterTemplate()
+			var first = new TestEmitterTemplate()
 			{
 				FadeSpeed = fadeSpeed,
 				ParticleSize = particleSize,
@@ -84,7 +115,7 @@ namespace ParticleBuddy.Tests
 			float maxStartRotation,
 			string imageFile)
 		{
-			var first = new EmitterTemplate()
+			var first = new TestEmitterTemplate()
 			{
 				FadeSpeed = fadeSpeed,
 				ParticleSize = particleSize,
@@ -103,7 +134,7 @@ namespace ParticleBuddy.Tests
 				ImageFile = new Filename(imageFile)
 			};
 
-			var second = new EmitterTemplate(first);
+			var second = new TestEmitterTemplate(first);
 
 			second.FadeSpeed.ShouldBe(fadeSpeed);
 			second.ParticleSize.ShouldBe(particleSize);
@@ -143,7 +174,7 @@ namespace ParticleBuddy.Tests
 			float maxStartRotation,
 			string imageFile)
 		{
-			var first = new EmitterTemplate()
+			var first = new TestEmitterTemplate()
 			{
 				FadeSpeed = fadeSpeed,
 				ParticleSize = particleSize,
@@ -162,7 +193,7 @@ namespace ParticleBuddy.Tests
 				ImageFile = new Filename(imageFile)
 			};
 
-			var second = new EmitterTemplate()
+			var second = new TestEmitterTemplate()
 			{
 				FadeSpeed = fadeSpeed,
 				ParticleSize = particleSize,
@@ -181,20 +212,20 @@ namespace ParticleBuddy.Tests
 				ImageFile = new Filename(imageFile)
 			};
 
-			second.Compare(first).ShouldBeTrue();
+			second.Compare(first);
 		}
 
 		[Test]
 		public void ComparisonTests_Vectors()
 		{
-			var first = new EmitterTemplate()
+			var first = new TestEmitterTemplate()
 			{
 				MaxParticleVelocity = new Vector2(1000f, 2000f),
 				MinParticleVelocity = new Vector2(3000f, 4000f),
 				ParticleColor = Color.Wheat,
 			};
 
-			var second = new EmitterTemplate(first);
+			var second = new TestEmitterTemplate(first);
 
 			first.MaxParticleVelocity.ShouldBe(second.MaxParticleVelocity);
 			first.MinParticleVelocity.ShouldBe(second.MinParticleVelocity);
@@ -204,16 +235,16 @@ namespace ParticleBuddy.Tests
 		[Test]
 		public void ComparisonTests_Vectors2()
 		{
-			var first = new EmitterTemplate()
+			var first = new TestEmitterTemplate()
 			{
 				MaxParticleVelocity = new Vector2(1000f, 2000f),
 				MinParticleVelocity = new Vector2(3000f, 4000f),
 				ParticleColor = Color.Wheat,
 			};
 
-			var second = new EmitterTemplate(first);
+			var second = new TestEmitterTemplate(first);
 
-			second.Compare(first).ShouldBeTrue();
+			second.Compare(first);
 		}
 
 		#endregion //comparison

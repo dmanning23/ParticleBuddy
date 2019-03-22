@@ -37,19 +37,16 @@
       <HintPath>..\packages\CameraBuddy.2.0.0\lib\Xamarin.iOS10\CameraBuddy.iOS.dll</HintPath>
     </Reference>
     <Reference Include="FilenameBuddy.iOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\FilenameBuddy.2.0.0\lib\Xamarin.iOS10\FilenameBuddy.iOS.dll</HintPath>
+      <HintPath>..\packages\FilenameBuddy.2.0.4\lib\Xamarin.iOS10\FilenameBuddy.iOS.dll</HintPath>
     </Reference>
     <Reference Include="GameTimer.iOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\GameTimer.2.0.0\lib\Xamarin.iOS10\GameTimer.iOS.dll</HintPath>
     </Reference>
-    <Reference Include="MathNet.Numerics, Version=4.6.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MathNet.Numerics.4.6.0\lib\netstandard2.0\MathNet.Numerics.dll</HintPath>
-    </Reference>
     <Reference Include="MatrixExtensions.iOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MatrixExtensions.2.0.0\lib\Xamarin.iOS10\MatrixExtensions.iOS.dll</HintPath>
     </Reference>
-    <Reference Include="MonoGame.Framework, Version=3.7.0.1708, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MonoGame.Framework.iOS.3.7.0.1708\lib\XamariniOS\MonoGame.Framework.dll</HintPath>
+    <Reference Include="MonoGame.Framework, Version=3.7.1.189, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MonoGame.Framework.iOS.3.7.1.189\lib\XamariniOS\MonoGame.Framework.dll</HintPath>
     </Reference>
     <Reference Include="PrimitiveBuddy.iOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\PrimitiveBuddy.2.0.0\lib\Xamarin.iOS10\PrimitiveBuddy.iOS.dll</HintPath>
@@ -58,7 +55,7 @@
       <HintPath>..\packages\RandomExtensions.dmanning23.2.0.0\lib\Xamarin.iOS10\RandomExtensions.iOS.dll</HintPath>
     </Reference>
     <Reference Include="RenderBuddy.iOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\RenderBuddy.2.0.0\lib\Xamarin.iOS10\RenderBuddy.iOS.dll</HintPath>
+      <HintPath>..\packages\RenderBuddy.2.0.1\lib\Xamarin.iOS10\RenderBuddy.iOS.dll</HintPath>
     </Reference>
     <Reference Include="ResolutionBuddy.iOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ResolutionBuddy.2.0.1\lib\Xamarin.iOS10\ResolutionBuddy.iOS.dll</HintPath>
@@ -68,7 +65,7 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="Vector2Extensions.iOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Vector2Extensions.2.0.0\lib\Xamarin.iOS10\Vector2Extensions.iOS.dll</HintPath>
+      <HintPath>..\packages\Vector2Extensions.2.0.1\lib\Xamarin.iOS10\Vector2Extensions.iOS.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.iOS" />
     <Reference Include="XmlBuddy.iOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -86,11 +83,11 @@
   </ItemGroup>
   <Import Project="..\ParticleBuddy.SharedProject\ParticleBuddy.SharedProject.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
-  <Import Project="..\packages\MonoGame.Framework.iOS.3.7.0.1708\build\MonoGame.Framework.iOS.targets" Condition="Exists('..\packages\MonoGame.Framework.iOS.3.7.0.1708\build\MonoGame.Framework.iOS.targets')" />
+  <Import Project="..\packages\MonoGame.Framework.iOS.3.7.1.189\build\MonoGame.Framework.iOS.targets" Condition="Exists('..\packages\MonoGame.Framework.iOS.3.7.1.189\build\MonoGame.Framework.iOS.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\MonoGame.Framework.iOS.3.7.0.1708\build\MonoGame.Framework.iOS.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MonoGame.Framework.iOS.3.7.0.1708\build\MonoGame.Framework.iOS.targets'))" />
+    <Error Condition="!Exists('..\packages\MonoGame.Framework.iOS.3.7.1.189\build\MonoGame.Framework.iOS.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MonoGame.Framework.iOS.3.7.1.189\build\MonoGame.Framework.iOS.targets'))" />
   </Target>
 </Project>

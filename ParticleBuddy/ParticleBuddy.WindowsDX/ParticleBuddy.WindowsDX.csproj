@@ -36,19 +36,16 @@
       <HintPath>..\packages\CameraBuddy.2.0.0\lib\net451\CameraBuddy.WindowsDX.dll</HintPath>
     </Reference>
     <Reference Include="FilenameBuddy.WindowsDX, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\FilenameBuddy.2.0.0\lib\net452\FilenameBuddy.WindowsDX.dll</HintPath>
+      <HintPath>..\packages\FilenameBuddy.2.0.4\lib\net452\FilenameBuddy.WindowsDX.dll</HintPath>
     </Reference>
     <Reference Include="GameTimer.WindowsDX, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\GameTimer.2.0.0\lib\net452\GameTimer.WindowsDX.dll</HintPath>
     </Reference>
-    <Reference Include="MathNet.Numerics, Version=4.6.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MathNet.Numerics.4.6.0\lib\net461\MathNet.Numerics.dll</HintPath>
-    </Reference>
     <Reference Include="MatrixExtensions.WindowsDX, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MatrixExtensions.2.0.0\lib\net451\MatrixExtensions.WindowsDX.dll</HintPath>
     </Reference>
-    <Reference Include="MonoGame.Framework, Version=3.7.0.1708, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MonoGame.Framework.WindowsDX.3.7.0.1708\lib\net45\MonoGame.Framework.dll</HintPath>
+    <Reference Include="MonoGame.Framework, Version=3.7.1.189, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MonoGame.Framework.WindowsDX.3.7.1.189\lib\net45\MonoGame.Framework.dll</HintPath>
     </Reference>
     <Reference Include="PrimitiveBuddy.WindowsDX, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\PrimitiveBuddy.2.0.0\lib\net451\PrimitiveBuddy.WindowsDX.dll</HintPath>
@@ -57,7 +54,7 @@
       <HintPath>..\packages\RandomExtensions.dmanning23.2.0.0\lib\net452\RandomExtensions.WindowsDX.dll</HintPath>
     </Reference>
     <Reference Include="RenderBuddy.WindowsDX, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\RenderBuddy.2.0.0\lib\net451\RenderBuddy.WindowsDX.dll</HintPath>
+      <HintPath>..\packages\RenderBuddy.2.0.1\lib\net451\RenderBuddy.WindowsDX.dll</HintPath>
     </Reference>
     <Reference Include="ResolutionBuddy.WindowsDX, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ResolutionBuddy.2.0.1\lib\net451\ResolutionBuddy.WindowsDX.dll</HintPath>
@@ -100,7 +97,7 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
     <Reference Include="Vector2Extensions.WindowsDX, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Vector2Extensions.2.0.0\lib\net451\Vector2Extensions.WindowsDX.dll</HintPath>
+      <HintPath>..\packages\Vector2Extensions.2.0.1\lib\net451\Vector2Extensions.WindowsDX.dll</HintPath>
     </Reference>
     <Reference Include="XmlBuddy.WindowsDX, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\XmlBuddy.2.0.1\lib\net451\XmlBuddy.WindowsDX.dll</HintPath>
@@ -115,11 +112,11 @@
   </ItemGroup>
   <Import Project="..\ParticleBuddy.SharedProject\ParticleBuddy.SharedProject.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="..\packages\MonoGame.Framework.WindowsDX.3.7.0.1708\build\MonoGame.Framework.WindowsDX.targets" Condition="Exists('..\packages\MonoGame.Framework.WindowsDX.3.7.0.1708\build\MonoGame.Framework.WindowsDX.targets')" />
+  <Import Project="..\packages\MonoGame.Framework.WindowsDX.3.7.1.189\build\MonoGame.Framework.WindowsDX.targets" Condition="Exists('..\packages\MonoGame.Framework.WindowsDX.3.7.1.189\build\MonoGame.Framework.WindowsDX.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\MonoGame.Framework.WindowsDX.3.7.0.1708\build\MonoGame.Framework.WindowsDX.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MonoGame.Framework.WindowsDX.3.7.0.1708\build\MonoGame.Framework.WindowsDX.targets'))" />
+    <Error Condition="!Exists('..\packages\MonoGame.Framework.WindowsDX.3.7.1.189\build\MonoGame.Framework.WindowsDX.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MonoGame.Framework.WindowsDX.3.7.1.189\build\MonoGame.Framework.WindowsDX.targets'))" />
   </Target>
 </Project>

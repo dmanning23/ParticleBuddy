@@ -1,13 +1,11 @@
 ﻿using FilenameBuddy;
 using GameTimer;
-using MathNet.Numerics;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using RandomExtensions;
 using RenderBuddy;
 using System;
-using System.Diagnostics;
 using System.Xml;
 using Vector2Extensions;
 using XmlBuddy;
@@ -54,19 +52,19 @@ namespace ParticleBuddy
 
 		#region private properties
 
-		private Vector2 Spin
+		protected Vector2 Spin
 		{
 			get { return _spin; }
 			set { _spin = value; }
 		}
 
-		private Vector2 Scale
+		protected Vector2 Scale
 		{
 			get { return _scale; }
 			set { _scale = value; }
 		}
 
-		private Vector2 StartRotation
+		protected Vector2 StartRotation
 		{
 			get { return _startRotation; }
 			set { _startRotation = value; }
@@ -76,24 +74,6 @@ namespace ParticleBuddy
 		{
 			get { return _color.A; }
 			set { _color.A = value; }
-		}
-
-		private byte R
-		{
-			get { return _color.R; }
-			set { _color.R = value; }
-		}
-
-		private byte G
-		{
-			get { return _color.G; }
-			set { _color.G = value; }
-		}
-
-		private byte B
-		{
-			get { return _color.B; }
-			set { _color.B = value; }
 		}
 
 		#endregion //private properties
@@ -310,30 +290,6 @@ namespace ParticleBuddy
 			}
 		}
 
-		public bool Compare(EmitterTemplate inst)
-		{
-			return FadeSpeed == inst.FadeSpeed &&
-			MaxParticleVelocity.X.AlmostEqual(inst.MaxParticleVelocity.X) &&
-			MaxParticleVelocity.Y.AlmostEqual(inst.MaxParticleVelocity.Y) &&
-			MinParticleVelocity.X.AlmostEqual(inst.MinParticleVelocity.X) &&
-			MinParticleVelocity.Y.AlmostEqual(inst.MinParticleVelocity.Y) &&
-			ParticleSize == inst.ParticleSize &&
-			NumStartParticles == inst.NumStartParticles &&
-			EmitterLife == inst.EmitterLife &&
-			Expires == inst.Expires &&
-			ParticleLife == inst.ParticleLife &&
-			CreationPeriod == inst.CreationPeriod &&
-			ParticleGravity == inst.ParticleGravity &&
-			ParticleColor == inst.ParticleColor &&
-			Spin.X.AlmostEqual(inst.Spin.X) &&
-			Spin.Y.AlmostEqual(inst.Spin.Y) &&
-			Scale.X.AlmostEqual(inst.Scale.X) &&
-			Scale.Y.AlmostEqual(inst.Scale.Y) &&
-			StartRotation.X.AlmostEqual(inst.StartRotation.X) &&
-			StartRotation.Y.AlmostEqual(inst.StartRotation.Y) &&
-			ImageFile.File == inst.ImageFile.File;
-		}
-
 		#endregion //Methods
 
 		#region File IO
@@ -355,6 +311,11 @@ namespace ParticleBuddy
 				case "Type":
 					{
 						//ignore this attribute
+					}
+					break;
+				case "color":
+					{
+						_color = value.ToColor();
 					}
 					break;
 				case "R":
@@ -459,20 +420,8 @@ namespace ParticleBuddy
 #if !WINDOWS_UWP
 		public override void WriteXmlNodes(XmlTextWriter xmlFile)
 		{
-			xmlFile.WriteStartElement("R");
-			xmlFile.WriteString(_color.R.ToString());
-			xmlFile.WriteEndElement();
-
-			xmlFile.WriteStartElement("G");
-			xmlFile.WriteString(_color.G.ToString());
-			xmlFile.WriteEndElement();
-
-			xmlFile.WriteStartElement("B");
-			xmlFile.WriteString(_color.B.ToString());
-			xmlFile.WriteEndElement();
-
-			xmlFile.WriteStartElement("Alpha");
-			xmlFile.WriteString(_color.A.ToString());
+			xmlFile.WriteStartElement("color");
+			xmlFile.WriteString(_color.StringFromColor());
 			xmlFile.WriteEndElement();
 
 			xmlFile.WriteStartElement("FadeSpeed");
