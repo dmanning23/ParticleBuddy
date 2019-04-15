@@ -36,7 +36,7 @@
       <HintPath>..\packages\CameraBuddy.2.0.0\lib\net451\CameraBuddy.WindowsDX.dll</HintPath>
     </Reference>
     <Reference Include="FilenameBuddy.WindowsDX, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\FilenameBuddy.2.0.4\lib\net452\FilenameBuddy.WindowsDX.dll</HintPath>
+      <HintPath>..\packages\FilenameBuddy.2.0.5\lib\net452\FilenameBuddy.WindowsDX.dll</HintPath>
     </Reference>
     <Reference Include="GameTimer.WindowsDX, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\GameTimer.2.0.0\lib\net452\GameTimer.WindowsDX.dll</HintPath>
@@ -54,7 +54,7 @@
       <HintPath>..\packages\RandomExtensions.dmanning23.2.0.0\lib\net452\RandomExtensions.WindowsDX.dll</HintPath>
     </Reference>
     <Reference Include="RenderBuddy.WindowsDX, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\RenderBuddy.2.0.1\lib\net451\RenderBuddy.WindowsDX.dll</HintPath>
+      <HintPath>..\packages\RenderBuddy.2.0.2\lib\net451\RenderBuddy.WindowsDX.dll</HintPath>
     </Reference>
     <Reference Include="ResolutionBuddy.WindowsDX, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ResolutionBuddy.2.0.1\lib\net451\ResolutionBuddy.WindowsDX.dll</HintPath>

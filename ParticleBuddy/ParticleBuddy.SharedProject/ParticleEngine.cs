@@ -25,6 +25,8 @@ namespace ParticleBuddy
 
 		private readonly object _lock = new object();
 
+		public bool HasEmitters => Emitters.Count > 0;
+
 		#endregion //Members
 
 		#region Methods
