@@ -185,7 +185,14 @@ namespace ParticleBuddy
 			else if (null != _ownerRotation)
 			{
 				//Set the rotaion of this particle
-				particle.Rotation += _ownerRotation();
+				if (Flip)
+				{
+					particle.Rotation += MathHelper.Pi - _ownerRotation();
+				}
+				else
+				{
+					particle.Rotation += _ownerRotation();
+				}
 				particle.Velocity += _velocity;
 			}
 			else
