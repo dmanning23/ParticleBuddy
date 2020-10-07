@@ -14,7 +14,7 @@ namespace ParticleBuddy
 {
 	public class EmitterTemplate : XmlFileBuddy
 	{
-		#region Members
+		#region Properties
 
 		/// <summary>
 		/// random number generator for particle effects
@@ -46,12 +46,6 @@ namespace ParticleBuddy
 		/// </summary>
 		private static readonly object _lock = new object();
 
-		#endregion //Members
-
-		#region Properties
-
-		#region private properties
-
 		protected Vector2 Spin
 		{
 			get { return _spin; }
@@ -75,8 +69,6 @@ namespace ParticleBuddy
 			get { return _color.A; }
 			set { _color.A = value; }
 		}
-
-		#endregion //private properties
 
 		/// <summary>
 		/// speed to add alpha to particles
@@ -206,7 +198,15 @@ namespace ParticleBuddy
 			set { _startRotation.Y = value; }
 		}
 
-		public Filename ImageFile { get; set; }
+		/// <summary>
+		/// Relative filename from the content file
+		/// </summary>
+		public Filename ImageFile { get; set; } = new Filename();
+
+		/// <summary>
+		/// Relative file from the emitter xml
+		/// </summary>
+		public Filename RelativeFile { get; set; } = new Filename();
 
 		/// <summary>
 		/// The id of the bitmap that this particle uses.
@@ -410,6 +410,19 @@ namespace ParticleBuddy
 						}
 					}
 					break;
+				case "RelativeFile":
+					{
+						if (!Filename.HasFilename)
+						{
+							throw new Exception("The Filename of the EmitterTemplate is not set.");
+						}
+
+						if (!string.IsNullOrEmpty(value))
+						{
+							RelativeFile.SetFilenameRelativeToPath(Filename, value);
+						}
+					}
+					break;
 				default:
 					{
 						throw new ArgumentException("EmitterTemplate xml node not recognized: " + name);
@@ -417,7 +430,6 @@ namespace ParticleBuddy
 			}
 		}
 
-#if !WINDOWS_UWP
 		public override void WriteXmlNodes(XmlTextWriter xmlFile)
 		{
 			xmlFile.WriteStartElement("color");
@@ -477,25 +489,52 @@ namespace ParticleBuddy
 			xmlFile.WriteStartElement("BmpFileName");
 			xmlFile.WriteString(ImageFile.GetRelFilename());
 			xmlFile.WriteEndElement();
+
+			if (RelativeFile.HasFilename)
+			{
+				xmlFile.WriteStartElement("RelativeFile");
+				xmlFile.WriteString(RelativeFile.GetFilenameRelativeToPath(Filename));
+				xmlFile.WriteEndElement();
+			}
+			else if (ImageFile.HasFilename)
+			{
+				xmlFile.WriteStartElement("BmpFileName");
+				xmlFile.WriteString(ImageFile.GetRelFilename());
+				xmlFile.WriteEndElement();
+			}
 		}
-#endif
 
 		public void LoadContent(IRenderer renderer)
 		{
 			//try to load the file into the particle effect
-			if ((null != renderer) && !string.IsNullOrEmpty(ImageFile.File))
+			if (null != renderer)
 			{
-				var textureInfo = renderer.LoadImage(ImageFile);
-				Texture = textureInfo.Texture;
+				if (RelativeFile.HasFilename)
+				{
+					var textureInfo = renderer.LoadImage(RelativeFile);
+					Texture = textureInfo.Texture;
+				}
+				else if (ImageFile.HasFilename)
+				{
+					var textureInfo = renderer.LoadImage(ImageFile);
+					Texture = textureInfo.Texture;
+				}
 			}
 		}
 
 		public void LoadContent(ContentManager content)
 		{
 			//try to load the file into the particle effect
-			if ((null != content) && !string.IsNullOrEmpty(ImageFile.File))
+			if (null != content)
 			{
-				Texture = content.Load<Texture2D>(ImageFile.GetPathFileNoExt());
+				if (RelativeFile.HasFilename)
+				{
+					Texture = content.Load<Texture2D>(RelativeFile.GetPathFileNoExt());
+				}
+				else if (ImageFile.HasFilename)
+				{
+					Texture = content.Load<Texture2D>(ImageFile.GetPathFileNoExt());
+				}
 			}
 		}
 

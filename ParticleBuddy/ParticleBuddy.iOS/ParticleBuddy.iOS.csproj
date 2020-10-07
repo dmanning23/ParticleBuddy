@@ -34,13 +34,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CameraBuddy.iOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\CameraBuddy.2.0.6\lib\Xamarin.iOS10\CameraBuddy.iOS.dll</HintPath>
+      <HintPath>..\packages\CameraBuddy.2.0.9\lib\Xamarin.iOS10\CameraBuddy.iOS.dll</HintPath>
     </Reference>
     <Reference Include="FilenameBuddy.iOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\FilenameBuddy.2.0.8\lib\Xamarin.iOS10\FilenameBuddy.iOS.dll</HintPath>
     </Reference>
     <Reference Include="GameTimer.iOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\GameTimer.2.0.0\lib\Xamarin.iOS10\GameTimer.iOS.dll</HintPath>
+      <HintPath>..\packages\GameTimer.2.1.0\lib\Xamarin.iOS10\GameTimer.iOS.dll</HintPath>
     </Reference>
     <Reference Include="MatrixExtensions.iOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MatrixExtensions.2.0.0\lib\Xamarin.iOS10\MatrixExtensions.iOS.dll</HintPath>
@@ -49,16 +49,16 @@
       <HintPath>..\packages\MonoGame.Framework.iOS.3.7.1.189\lib\XamariniOS\MonoGame.Framework.dll</HintPath>
     </Reference>
     <Reference Include="PrimitiveBuddy.iOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\PrimitiveBuddy.2.0.0\lib\Xamarin.iOS10\PrimitiveBuddy.iOS.dll</HintPath>
+      <HintPath>..\packages\PrimitiveBuddy.2.0.1\lib\Xamarin.iOS10\PrimitiveBuddy.iOS.dll</HintPath>
     </Reference>
     <Reference Include="RandomExtensions.iOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\RandomExtensions.dmanning23.2.0.0\lib\Xamarin.iOS10\RandomExtensions.iOS.dll</HintPath>
     </Reference>
     <Reference Include="RenderBuddy.iOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\RenderBuddy.2.0.8\lib\Xamarin.iOS10\RenderBuddy.iOS.dll</HintPath>
+      <HintPath>..\packages\RenderBuddy.2.0.10\lib\Xamarin.iOS10\RenderBuddy.iOS.dll</HintPath>
     </Reference>
     <Reference Include="ResolutionBuddy.iOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ResolutionBuddy.2.0.1\lib\Xamarin.iOS10\ResolutionBuddy.iOS.dll</HintPath>
+      <HintPath>..\packages\ResolutionBuddy.2.0.4\lib\Xamarin.iOS10\ResolutionBuddy.iOS.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Numerics" />
