@@ -486,10 +486,6 @@ namespace ParticleBuddy
 			xmlFile.WriteString(ParticleGravity.ToString());
 			xmlFile.WriteEndElement();
 
-			xmlFile.WriteStartElement("BmpFileName");
-			xmlFile.WriteString(ImageFile.GetRelFilename());
-			xmlFile.WriteEndElement();
-
 			if (RelativeFile.HasFilename)
 			{
 				xmlFile.WriteStartElement("RelativeFile");
