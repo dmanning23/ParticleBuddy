@@ -125,7 +125,7 @@ namespace ParticleBuddy
 			Rotation += Spin * clock.TimeDelta;
 		
 			//update the velocity by adding the gravity
-			_velocity.Y += template.ParticleGravity * clock.TimeDelta;
+			_velocity += template.Gravity * clock.TimeDelta;
 		}
 
 		public void Render(SpriteBatch spriteBatch, Emitter emitter)

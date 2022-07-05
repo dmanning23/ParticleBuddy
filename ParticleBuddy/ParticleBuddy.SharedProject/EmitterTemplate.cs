@@ -125,12 +125,24 @@ namespace ParticleBuddy
 		/// </summary>
 		public float CreationPeriod { get; set; }
 
+		public Vector2 Gravity { get; set; }
+
 		/// <summary>
 		/// gravity applied to the particle's y velocity
 		/// defaults to 0
 		/// </summary>
 		/// <value>The particle gravity.</value>
-		public float ParticleGravity { get; set; }
+		public float ParticleGravity
+		{
+			get
+			{
+				return Gravity.Y;
+			}
+			set
+			{
+				Gravity = new Vector2(0, value);
+			}
+		}
 
 		public Color ParticleColor
 		{
@@ -233,7 +245,7 @@ namespace ParticleBuddy
 			Expires = inst.Expires;
 			ParticleLife = inst.ParticleLife;
 			CreationPeriod = inst.CreationPeriod;
-			ParticleGravity = inst.ParticleGravity;
+			Gravity = new Vector2(inst.Gravity.X, inst.Gravity.Y);
 			ParticleColor = new Color(inst.ParticleColor.ToVector4());
 			Spin = new Vector2(inst.Spin.X, inst.Spin.Y);
 			Scale = new Vector2(inst.Scale.X, inst.Scale.Y);
@@ -259,7 +271,7 @@ namespace ParticleBuddy
 			Expires = true;
 			ParticleLife = 1f;
 			CreationPeriod = 1.0f;
-			ParticleGravity = 0.0f;
+			Gravity = Vector2.Zero;
 			ParticleColor = Color.White;
 			Spin = Vector2.Zero;
 			Scale = new Vector2(-100.0f, 100.0f);
@@ -397,6 +409,11 @@ namespace ParticleBuddy
 						CreationPeriod = Convert.ToSingle(value);
 					}
 					break;
+				case "Gravity":
+					{
+						Gravity = value.ToVector2();
+					}
+					break;
 				case "ParticleGrav":
 					{
 						ParticleGravity = Convert.ToSingle(value);
@@ -482,8 +499,8 @@ namespace ParticleBuddy
 			xmlFile.WriteString(CreationPeriod.ToString());
 			xmlFile.WriteEndElement();
 
-			xmlFile.WriteStartElement("ParticleGrav");
-			xmlFile.WriteString(ParticleGravity.ToString());
+			xmlFile.WriteStartElement("Gravity");
+			xmlFile.WriteString(Gravity.StringFromVector());
 			xmlFile.WriteEndElement();
 
 			if (RelativeFile.HasFilename)
